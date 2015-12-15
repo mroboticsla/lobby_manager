@@ -30,35 +30,34 @@
 
                                 <div class="form-group">
                                     <label>Nombres</label>
-                                    <input class="form-control" />
+                                    <input runat="server" id="txt_name" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Apellidos</label>
-                                    <input class="form-control" />
+                                    <input runat="server" id="txt_lastname" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label for="docTypeSelect">Tipo de Documento</label>
-                                    <select id="docTypeSelect" class="form-control">
-                                        <option>DUI</option>
-                                        <option>Otro</option>
-                                    </select>
+                                    <asp:DropDownList runat="server" id="docTypeSelect" class="form-control"
+                                        DataSourceID="SqlDataSourceDocuments" DataValueField="doc_id" DataTextField="doc_name">
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="form-group">
                                     <label>No. de Documento</label>
-                                    <input class="form-control" placeholder="12345678-9" />
+                                    <input runat="server" id="txt_docnumber" class="form-control" placeholder="12345678-9" />
                                 </div>
                                 <div class="form-group">
                                     <label>Empresa</label>
-                                    <input class="form-control" />
+                                    <input runat="server" id="txt_company" class="form-control" />
                                     <p class="help-block">Si es particular, dejar vacío.</p>
                                 </div>
                                 <div class="form-group">
                                     <label>Teléfono de Contacto</label>
-                                    <input class="form-control" placeholder="(503)2222-2222" />
+                                    <input runat="server" id="txt_phone" class="form-control" placeholder="(503)2222-2222" />
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de Ingreso</label>
-                                    <p class="form-control-static"><%= DateTime.Now.ToLocalTime() %></p>
+                                    <p runat="server" id="lbl_date" class="form-control-static"><%= DateTime.Now.ToLocalTime() %></p>
                                 </div>
                             </div>
                             <!-- /.col-lg-6 (nested) -->
@@ -67,42 +66,30 @@
                                 <fieldset>
                                     <div class="form-group">
                                         <label for="reasonSelect">Motivo</label>
-                                        <select id="reasonSelect" class="form-control" onchange="alert('Visita Programada');">
-                                            <option>Recepción de Correspondencia</option>
-                                            <option>Recepción de Factura</option>
-                                            <option>Entrega de Cheque</option>
-                                            <option>Visita Programada</option>
-                                            <option>Visita No Programada</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" id="reasonSelect" class="form-control" 
+                                            DataSourceID="SqlDataSourceReasons" DataValueField="vrs_id" DataTextField="vrs_name">
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="descriptionText">Descripción</label>
-                                        <input class="form-control" id="descriptionText" type="text" placeholder="Objetivo de la visita" />
+                                        <textarea class="form-control" runat="server" id="txt_description" placeholder="Objetivo de la visita" />
                                     </div>
                                     <div class="form-group">
                                         <label for="deptSelect">Departamento</label>
-                                        <select id="deptSelect" class="form-control">
-                                            <option>No especificado</option>
-                                            <option>Recepción</option>
-                                            <option>Dirección General</option>
-                                            <option>Ventas y mercadeo</option>
-                                            <option>Contabilidad</option>
-                                            <option>Compras e Importaciones</option>
-                                            <option>Informática</option>
-                                            <option>Soporte Técnico</option>
-                                            <option>Mantenimiento</option>
-                                        </select>
+                                        <asp:DropDownList runat="server" id="deptSelect" class="form-control"
+                                            DataSourceID="SqlDataSourceDepartments" DataValueField="dep_id" DataTextField="dep_name">
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="contactText">Contacto</label>
-                                        <input class="form-control" id="contactText" type="text" placeholder="Nombre del contacto interno" />
+                                        <input runat="server" class="form-control" id="txt_contact" type="text" placeholder="Nombre del contacto interno" />
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" />Ingresa equipo
+                                            <input runat="server" id="chk_addEQ" type="checkbox" />Ingresa equipo
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    <asp:Button runat="server" class="btn btn-primary" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
                                     <button type="reset" class="btn btn-default">Cancelar</button>
                                 </fieldset>
                             </div>
@@ -156,10 +143,20 @@
                 </div>
             </div>
         </div>
+    <asp:SqlDataSource ID="SqlDataSourceDocuments" runat="server"
+        ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
+        SelectCommand="SELECT doc_id, doc_name FROM [tbl_doc_documents] WHERE doc_status = 1"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceReasons" runat="server"
+        ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
+        SelectCommand="SELECT vrs_id, vrs_name FROM [tbl_vrs_visit_reasons] WHERE vrs_status = 1 AND vrs_level >= 2"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceDepartments" runat="server"
+        ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
+        SelectCommand="SELECT dep_id, dep_name FROM [tbl_dep_departments] WHERE dep_status = 1"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceComments" runat="server"
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
         SelectCommand="SELECT TOP 5 CONVERT(VARCHAR(8), com_date, 3) AS com_date,com_user,com_description FROM [tbl_com_comments]"></asp:SqlDataSource>
         </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
+
 </asp:Content>

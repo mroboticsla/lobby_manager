@@ -4,3 +4,9 @@ C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_m
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.csprojResolveAssemblyReference.cache
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.pdb
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\LobbyManager.dll.config
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\LobbyManager.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\LobbyManager.pdb
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.csprojResolveAssemblyReference.cache
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.pdb
