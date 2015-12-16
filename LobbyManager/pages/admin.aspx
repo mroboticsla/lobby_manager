@@ -178,7 +178,7 @@
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
         SelectCommand="SELECT TOP 10 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class 
                     FROM tbl_log_events, tbl_type_notifications
-                    where log_notification = type_id ORDER BY log_date DESC"></asp:SqlDataSource>
+                    where log_notification = type_id ORDER BY log_id DESC"></asp:SqlDataSource>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="Server">

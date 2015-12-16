@@ -84,6 +84,7 @@ namespace LobbyManager.pages
                 {
                     conn.Open();
                     cmd.CommandText = "SELECT vrs_notification_type FROM [tbl_vrs_visit_reasons] WHERE vrs_id = @vrs_id";
+                    cmd.Parameters.AddWithValue("vrs_id", reasonSelect.SelectedValue);
                     SqlDataReader dreader = cmd.ExecuteReader();
                     if (dreader.Read())
                     {
