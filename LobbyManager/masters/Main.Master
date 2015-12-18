@@ -187,7 +187,25 @@
                         </li>
                         <li>
                             <a href="visitors.aspx"><i class="fa fa-tasks fa-fw"></i>Registro de Vistantes</a>
-                            <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Consola de Administración</a>
+                            <a href="visitors_list.aspx"><i class="fa fa-arrow-circle-o-right fa-fw"></i>Histórico de Vistas</a>
+                        </li>
+                        <li>
+                            <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Administración<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin.aspx">Consola de Administración</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tipos de Documentos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Departamentos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Motivos de Visita</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                     </ul>
                 </div>

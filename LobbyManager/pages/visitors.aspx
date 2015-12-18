@@ -16,13 +16,21 @@
                         Formulario para Visitantes
                     </div>
                     <div class="panel-body">
+                        <div class="row" runat="server" id="images">
+                            <div class="col-lg-6">
+                                <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
+                            </div>
+                            <div class="col-lg-6">
+                                <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <h3>Datos Personales</h3>
 
-                                <a data-toggle="modal" href="#commentsDlg">
+                                <a data-toggle="modal" href="#imagesDlg">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Ver Detalles</span>
+                                        <span class="pull-left">Importar imágenes</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>
@@ -99,46 +107,27 @@
             </div>
         </div>
 
-        <div class="modal fade" id="commentsDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="imagesDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Nuevos Comentarios</h4>
+                        <h4 class="modal-title" id="myModalLabel">Importar desde escáner</h4>
                     </div>
                     <div class="modal-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Nuevos Comentarios
+                                Imágenes disponibles
                             </div>
                             <div class="panel-body">
                                 <div class="dataTable_wrapper">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>Fecha</th>
-                                                <th>Usuario</th>
-                                                <th>Descripción</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSourceComments">
-                                                <ItemTemplate>
-                                                    <tr class="odd gradeX">
-                                                        <td><%# DataBinder.Eval(Container.DataItem, "com_date") %></td>
-                                                        <td><%# DataBinder.Eval(Container.DataItem, "com_user") %></td>
-                                                        <td><%# DataBinder.Eval(Container.DataItem, "com_description") %></td>
-                                                    </tr>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                        </tbody>
-                                    </table>
+                                    Por favor, haga el escaneo del documento antes de contniuar.
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button class="btn btn-primary" runat="server" Text="Cerrar" />
+                        <asp:Button class="btn btn-primary" runat="server" Text="Importar imágenes" OnClick="ImportImages" />
                     </div>
                 </div>
             </div>

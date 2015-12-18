@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace LobbyManager.pages
@@ -15,7 +18,7 @@ namespace LobbyManager.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            images.Visible = false;
         }
 
         public void InsertVisitor(object sender, EventArgs e)
@@ -116,7 +119,60 @@ namespace LobbyManager.pages
 
         public void CleanForm()
         {
+            txt_name.Value = "";
+            txt_lastname.Value = "";
+            txt_docnumber.Value = "";
+            txt_company.Value = "";
+            txt_phone.Value = "";
+            txt_description.Value = "";
+            txt_contact.Value = "";
+            chk_addEQ.Checked = false;
+        }
 
+        public void ImportImages(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap bmp_front = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
+                Bitmap bmp_back = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
+                ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + ConvertImageToBase64(bmp_front);
+                ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + ConvertImageToBase64(bmp_back);
+                bmp_back.Dispose();
+                bmp_front.Dispose();
+                String rawDoc = File.ReadAllText(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
+                String[] fields = rawDoc.Split(',');
+                txt_name.Value = fields[14];
+                txt_lastname.Value = fields[16];
+                txt_docnumber.Value = fields[0];
+                images.Visible = true;
+                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
+                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
+                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
+            }
+            catch (Exception a)
+            {
+                images.Visible = false;
+                txt_name.Value = "No se ha cargado el documento";
+                txt_lastname.Value = "";
+                txt_docnumber.Value = "";
+                Response.Write(a.Message);
+            }
+        }
+
+        private static string ConvertImageToBase64(Bitmap img)
+        {
+            string _code = "";
+
+            if (img != null)
+            {
+                Bitmap im = new Bitmap(img, img.Width / 4, img.Height / 4);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                im.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] byteImage = ms.ToArray();
+                _code = Convert.ToBase64String(byteImage); //Get Base64
+            }
+
+            return _code;
         }
     }
 }

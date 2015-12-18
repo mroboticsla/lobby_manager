@@ -33,13 +33,15 @@
         <ObjectGroup Name="SykesVisitorsDB-Deployment" Order="1" xmlns="">
           <Destination Path="" />
           <Object Type="DbFullSql">
-            <PreSource Path="Data Source=%28LocalDB%29\v11.0%3bAttachDbFileName=|DataDirectory|\SykesVisitorsDB.mdf%3bIntegrated Security=True%3bMultipleActiveResultSets=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
-            <Source Path="obj\Debug\AutoScripts\SykesVisitorsDB-Deployment_SchemaOnly.sql" Transacted="True" />
+            <PreSource Path="Data Source=%28LocalDB%29\v11.0%3bAttachDbFileName=|DataDirectory|\SykesVisitorsDB.mdf%3bIntegrated Security=True%3bMultipleActiveResultSets=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\SykesVisitorsDB-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
     <PublishDatabases>true</PublishDatabases>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,6 +50,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="SykesVisitorsDB-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDB%29\v11.0%3bAttachDbFileName=|DataDirectory|\SykesVisitorsDB.mdf%3bIntegrated Security=True%3bMultipleActiveResultSets=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\SykesVisitorsDB-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -382,6 +395,7 @@
     <Content Include="less\sb-admin-2.less" />
     <Content Include="less\variables.less" />
     <Content Include="masters\Main.Master" />
+    <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -391,9 +405,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SykesVisitorsDB.mdf" />
+    <Content Include="App_Data\SykesVisitorsDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\SykesVisitorsDB_log.ldf">
       <DependentUpon>SykesVisitorsDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -841,6 +858,7 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\visitors_list.aspx" />
     <Content Include="pages\visitors.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -860,6 +878,13 @@
     </Compile>
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\visitors_list.aspx.cs">
+      <DependentUpon>visitors_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\visitors_list.aspx.designer.cs">
+      <DependentUpon>visitors_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visitors.aspx.cs">
       <DependentUpon>visitors.aspx</DependentUpon>
