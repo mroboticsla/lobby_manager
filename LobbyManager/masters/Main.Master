@@ -187,7 +187,8 @@
                         </li>
                         <li>
                             <a href="visitors.aspx"><i class="fa fa-tasks fa-fw"></i>Registro de Vistantes</a>
-                            <a href="visitors_list.aspx"><i class="fa fa-arrow-circle-o-right fa-fw"></i>Histórico de Vistas</a>
+                            <a href="equipment_form.aspx?visitor=1"><i class="fa fa-laptop fa-fw"></i>Registro de Equipo</a>
+                            <a href="visitors_list.aspx"><i class="fa fa-clock-o fa-fw"></i>Histórico de Visitas</a>
                         </li>
                         <li>
                             <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Administración<span class="fa arrow"></span></a>
@@ -203,6 +204,18 @@
                                 </li>
                                 <li>
                                     <a href="#">Motivos de Visita</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tipos de Equipo</a>
+                                </li>
+                                <li>
+                                    <a href="#">Personal por Departamento</a>
+                                </li>
+                                <li>
+                                    <a href="#">Historial de Comentarios</a>
+                                </li>
+                                <li>
+                                    <a href="#">Historial de Errores</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

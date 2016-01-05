@@ -69,6 +69,25 @@
                                             </div>
                                         </div>
                                     </a>
+
+                                    <a data-toggle="modal" href="#noDocDlg">
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="panel panel-red">
+                                                <div class="panel-heading">
+                                                    <div class="row">
+                                                        <div class="col-xs-2">
+                                                            <i class="fa fa-arrow-circle-o-right fa-5x"></i>
+                                                        </div>
+                                                        <div class="col-xs-9 text-center">
+                                                            <div class="huge">
+                                                                <asp:Label ID="Label1" runat="server" Text="No tengo documento"></asp:Label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </fieldset>
                                 <fieldset id="fs_personalData" runat="server">
                                     <h3>Datos Personales</h3>
@@ -133,6 +152,32 @@
                                 </fieldset>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="noDocDlg" tabindex="-1" role="dialog" aria-labelledby="noDocModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="noDocModalLabel">Continuar sin documento</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Demostración
+                            </div>
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    Ésta modalidad es únicamente para fines de prueba.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button class="btn btn-primary" runat="server" Text="Continuar" OnClick="NoDocumentDemo" />
                     </div>
                 </div>
             </div>
@@ -209,9 +254,13 @@
         $(function () {
             //alert("Working...");
             if (<%= showMg.ToString().ToLower() %>) showMsg();
+            if (<%= addEQ.ToString().ToLower() %>) registerEQ();
         });
         function showMsg() {
             $('#completeDlg').modal('show');
+        }
+        function registerEQ() {
+            window.location="equipment_form.aspx?visitor=<%= visitor.ToString().ToLower() %>";
         }
     </script>
 </asp:Content>

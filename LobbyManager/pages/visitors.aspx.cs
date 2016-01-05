@@ -17,6 +17,8 @@ namespace LobbyManager.pages
         String mainConnectionString = "SykesVisitorsDB";
 
         public bool showMg = false;
+        public bool addEQ = false;
+        public int visitor = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -115,7 +117,16 @@ namespace LobbyManager.pages
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     CleanForm();
-                    showMg = true;
+
+                    if (chk_addEQ.Checked)
+                    {
+                        visitor = vis_id;
+                        addEQ = true;
+                    }
+                    else
+                    {
+                        showMg = true;
+                    }
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "showMsg", "showMsg();", true);
                     //ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "showMsg", "showMsg();", true);
                 }
@@ -140,6 +151,14 @@ namespace LobbyManager.pages
             fs_images.Visible = true;
             fs_personalData.Visible = false;
             fs_visitDetails.Visible = false;
+        }
+
+        public void NoDocumentDemo(object sender, EventArgs e)
+        {
+            images.Visible = true;
+            fs_images.Visible = false;
+            fs_personalData.Visible = true;
+            fs_visitDetails.Visible = true;
         }
 
         public void ImportImages(object sender, EventArgs e)
