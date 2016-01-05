@@ -16,15 +16,21 @@ namespace LobbyManager.pages
     {
         String mainConnectionString = "SykesVisitorsDB";
 
+        public bool showMg = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            msgWarn.Visible = false;
             images.Visible = false;
+            fs_personalData.Visible = false;
+            fs_visitDetails.Visible = false;
         }
 
         public void InsertVisitor(object sender, EventArgs e)
         {
             try
             {
+                msgWarn.Visible = false;
                 int vis_id = -1;
                 string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
                 using (var conn = new SqlConnection(connStr))
@@ -109,11 +115,15 @@ namespace LobbyManager.pages
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     CleanForm();
+                    showMg = true;
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "showMsg", "showMsg();", true);
+                    //ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "showMsg", "showMsg();", true);
                 }
             }
             catch (Exception a)
             {
-                Response.Write(a.Message);
+                //Response.Write(a.Message);
+                msgWarn.Visible = true;
             }
         }
 
@@ -127,6 +137,9 @@ namespace LobbyManager.pages
             txt_description.Value = "";
             txt_contact.Value = "";
             chk_addEQ.Checked = false;
+            fs_images.Visible = true;
+            fs_personalData.Visible = false;
+            fs_visitDetails.Visible = false;
         }
 
         public void ImportImages(object sender, EventArgs e)
@@ -145,6 +158,9 @@ namespace LobbyManager.pages
                 txt_lastname.Value = fields[16];
                 txt_docnumber.Value = fields[0];
                 images.Visible = true;
+                fs_images.Visible = false;
+                fs_personalData.Visible = true;
+                fs_visitDetails.Visible = true;
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
@@ -152,10 +168,14 @@ namespace LobbyManager.pages
             catch (Exception a)
             {
                 images.Visible = false;
+                fs_personalData.Visible = false;
+                fs_visitDetails.Visible = false;
+                fs_images.Visible = true;
                 txt_name.Value = "No se ha cargado el documento";
                 txt_lastname.Value = "";
                 txt_docnumber.Value = "";
-                Response.Write(a.Message);
+                //Response.Write(a.Message);
+                msgWarn.Visible = true;
             }
         }
 

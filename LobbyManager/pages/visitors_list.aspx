@@ -9,8 +9,7 @@
                 <h1 class="page-header">Histórico de Visitas</h1>
             </div>
         </div>
-
-        <div class="dataTable_wrapper">
+        <div class="dataTable_wrapper table-responsive">
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                     <tr>

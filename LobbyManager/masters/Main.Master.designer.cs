@@ -22,6 +22,24 @@ namespace LobbyManager {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
         
         /// <summary>
+        /// cb_commentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cb_commentType;
+        
+        /// <summary>
+        /// txt_commentDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txt_commentDescription;
+        
+        /// <summary>
         /// MainHolder control.
         /// </summary>
         /// <remarks>

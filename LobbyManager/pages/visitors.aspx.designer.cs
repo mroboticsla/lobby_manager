@@ -40,6 +40,51 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlImage img_back;
         
         /// <summary>
+        /// msgWarn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgWarn;
+        
+        /// <summary>
+        /// fs_images control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fs_images;
+        
+        /// <summary>
+        /// docTypeSelect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList docTypeSelect;
+        
+        /// <summary>
+        /// lbl_newCommentsCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_newCommentsCount;
+        
+        /// <summary>
+        /// fs_personalData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fs_personalData;
+        
+        /// <summary>
         /// txt_name control.
         /// </summary>
         /// <remarks>
@@ -56,15 +101,6 @@ namespace LobbyManager.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_lastname;
-        
-        /// <summary>
-        /// docTypeSelect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList docTypeSelect;
         
         /// <summary>
         /// txt_docnumber control.
@@ -101,6 +137,15 @@ namespace LobbyManager.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_date;
+        
+        /// <summary>
+        /// fs_visitDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fs_visitDetails;
         
         /// <summary>
         /// reasonSelect control.

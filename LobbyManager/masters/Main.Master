@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="LobbyManager.Main" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="LobbyManager.Main"  %>
 
 <!DOCTYPE html>
 
@@ -21,6 +21,7 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet" />
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet" />
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/feedback.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -32,7 +33,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -213,6 +213,23 @@
         </nav>
 
         <div id="page-wrapper">
+            <div id="feedback">
+		        <div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
+			        
+				        <div class="form-group">
+					        <select id="cb_commentType" runat="server" class="form-control">
+                                <option value="1">Comentario</option>
+                                <option value="2">Error</option>
+                            </select>
+				        </div>
+				        <div class="form-group">
+					        <textarea id="txt_commentDescription" runat="server" class="form-control" name="body" required="required" placeholder="Descripción..." rows="5"></textarea>
+				        </div>
+				        <asp:Button id="btn_sendComment" class="btn btn-primary pull-right" type="submit" ></asp:Button>
+			        
+		        </div>
+		        <div id="feedback-tab">Comentarios</div>
+	        </div>
             <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>
@@ -221,6 +238,7 @@
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/feedback.js"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
 
