@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors.aspx.cs" Inherits="LobbyManager.pages.visitors" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <script type="text/javascript">
+        function registerEQ() {
+            if ((<%= addEQ.ToString().ToLower() %>))
+            {
+                window.location="equipment_form.aspx?visitor=<%= visitor.ToString().ToLower() %>";
+            }
+        }
+        onload=registerEQ();
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
@@ -254,13 +263,9 @@
         $(function () {
             //alert("Working...");
             if (<%= showMg.ToString().ToLower() %>) showMsg();
-            if (<%= addEQ.ToString().ToLower() %>) registerEQ();
         });
         function showMsg() {
             $('#completeDlg').modal('show');
-        }
-        function registerEQ() {
-            window.location="equipment_form.aspx?visitor=<%= visitor.ToString().ToLower() %>";
         }
     </script>
 </asp:Content>

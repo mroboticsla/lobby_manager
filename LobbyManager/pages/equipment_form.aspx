@@ -5,6 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+        </asp:ScriptManager>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Registro de Equipo</h1>
@@ -59,13 +61,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                                            </asp:ScriptManager>
                                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                 <ContentTemplate>
                                                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceList">
                                                         <ItemTemplate>
-                                                            <tr class="gradeU">
+                                                            <tr class="gradeU" onclick="showMsg('<%# DataBinder.Eval(Container.DataItem, "reg_id") %>');">
                                                                 <td><%# DataBinder.Eval(Container.DataItem, "reg_quantity") %></td>
                                                                 <td><%# DataBinder.Eval(Container.DataItem, "type_name") %></td>
                                                                 <td><%# DataBinder.Eval(Container.DataItem, "reg_serial") %></td>
@@ -77,6 +77,36 @@
                                             </asp:UpdatePanel>
                                         </tbody>
                                     </table>
+                                    *Toque sobre la lista para eliminar un registro.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <asp:Button class="btn btn-primary" runat="server" Text="" OnClick="btnExecutePrint_Click" ID="btnExecutePrint" />
+                        </div>
+                    </div>
+                    <div class="modal fade" id="deleteDlg" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Confirmar acción</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Eliminar Registro
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="dataTable_wrapper">
+                                                ¿Desea eliminar el registro? Puede agregarlo desde el formulario posteriormente.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-primary" runat="server" Text="Aceptar" OnClientClick="deleteRecord()" />
+                                    <asp:Button class="btn" runat="server" Text="Cancelar" data-dismiss="modal" />
                                 </div>
                             </div>
                         </div>
@@ -85,6 +115,7 @@
             </div>
         </div>
     </form>
+
 
     <asp:SqlDataSource ID="SqlDataSourceEquipment" runat="server"
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
@@ -99,10 +130,30 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('#equipmentDataTable').DataTable({
-                responsive: true
+        var currentrecord = 0;
+
+        $(document).ready(function() {
+            $('#equipmentDataTable').DataTable({
+                    responsive: true
+            });
         });
-    });
+
+        function deleteRecord() {
+            PageMethods.deleteRecord(currentrecord, OnSuccess);
+            function OnSuccess(response, userContext, methodName) {
+                //alert(response);
+                hideMsg();
+                window.location.reload();
+            }
+        }
+
+        function showMsg(rec) {
+            currentrecord = rec;
+            $('#deleteDlg').modal('show');
+        }
+
+        function hideMsg() {
+            $('#deleteDlg').modal('hide');
+        }
     </script>
 </asp:Content>

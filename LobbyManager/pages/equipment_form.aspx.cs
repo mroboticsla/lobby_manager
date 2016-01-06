@@ -6,13 +6,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using bpac;
 
 namespace LobbyManager.pages
 {
     public partial class equipment_form : System.Web.UI.Page
     {
-        String mainConnectionString = "SykesVisitorsDB";
+        static String mainConnectionString = "SykesVisitorsDB";
         public String visitorID = "";
+
+        private const string TEMPLATE_DIRECTORY = @"C:\Program Files\Brother bPAC3 SDK\Templates\";	// Template file path
+        private const string TEMPLATE_SIMPLE = "BcdItem.lbx";	// Template file name
+        private const string TEMPLATE_FRAME = "NamePlate2.LBX";		// Template file name
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +26,29 @@ namespace LobbyManager.pages
             lblTitle.Text = getVisitorName(visitorID);
             SqlDataSourceList.SelectCommand = "SELECT reg_id, reg_type, type_name, reg_quantity, reg_serial, reg_desc FROM tbl_reg_equipment, tbl_type_equipment where type_id = reg_type and reg_visitor = @reg_visitor";
             SqlDataSourceList.SelectParameters.Add("reg_visitor", visitorID);
+        }
+
+        [System.Web.Services.WebMethod]
+        public static String deleteRecord(String str)
+        {
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "DELETE FROM tbl_reg_equipment where reg_id = @reg_id";
+                    cmd.Parameters.AddWithValue("reg_id", str);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception a)
+            {
+                //Response.Write(a.Message);
+            }
+            return "ok";
         }
 
         private String getVisitorName(String visitor)
@@ -102,6 +130,49 @@ namespace LobbyManager.pages
             txt_quantity.Value = "";
             msgWarn.Visible = false;
             Response.Redirect(Request.Url.ToString()); 
+        }
+
+        protected void btnExecutePrint_Click(object sender, EventArgs e)
+        {
+            string templatePath = TEMPLATE_DIRECTORY;
+            templatePath += TEMPLATE_SIMPLE;
+
+            bpac.DocumentClass doc = new DocumentClass();
+            if (doc.Open(templatePath) != false)
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT reg_id, reg_type, type_name, reg_quantity, reg_serial, reg_desc FROM tbl_reg_equipment, tbl_type_equipment where type_id = reg_type and reg_visitor = @reg_visitor";
+                    cmd.Parameters.AddWithValue("reg_visitor", visitorID);
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    while (dreader.Read())
+                    {
+                        String name = dreader["type_name"].ToString();
+                        doc.GetObject("objName").Text = name;
+                        doc.GetObject("objSerial").Text = dreader["reg_serial"].ToString();
+                        doc.GetObject("objBarcode").Text = dreader["reg_id"].ToString();
+                        doc.GetObject("objDesc").Text = dreader["reg_desc"].ToString();
+                        doc.GetObject("objOwner").Text = lblTitle.Text;
+
+                        // doc.SetMediaById(doc.Printer.GetMediaId(), true);
+                        doc.StartPrint("", PrintOptionConstants.bpoDefault);
+                        doc.PrintOut(1, PrintOptionConstants.bpoDefault);
+                        doc.EndPrint();
+                    }
+                    doc.Close();
+                    dreader.Close();
+                    conn.Close();
+                }
+                
+                        
+            }
+            else
+            {
+                //MessageBox.Show("Open() Error: " + doc.ErrorCode);
+            }
         }
     }
 }

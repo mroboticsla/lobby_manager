@@ -71,7 +71,7 @@ namespace LobbyManager.pages
                     cmd.Parameters.AddWithValue("vis_with_equipment", (chk_addEQ.Checked) ? 1 : 0);
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    CleanForm();
+                    //CleanForm();
                 }
 
                 int log_id = -1;
@@ -116,8 +116,6 @@ namespace LobbyManager.pages
                     cmd.Parameters.AddWithValue("log_user", "est01");
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    CleanForm();
-
                     if (chk_addEQ.Checked)
                     {
                         visitor = vis_id;
@@ -127,6 +125,7 @@ namespace LobbyManager.pages
                     {
                         showMg = true;
                     }
+                    
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "showMsg", "showMsg();", true);
                     //ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "showMsg", "showMsg();", true);
                 }
@@ -135,6 +134,10 @@ namespace LobbyManager.pages
             {
                 //Response.Write(a.Message);
                 msgWarn.Visible = true;
+            }
+            finally
+            {
+                CleanForm();
             }
         }
 
