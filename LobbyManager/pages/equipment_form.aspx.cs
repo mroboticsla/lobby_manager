@@ -174,5 +174,10 @@ namespace LobbyManager.pages
                 //MessageBox.Show("Open() Error: " + doc.ErrorCode);
             }
         }
+
+        protected void btnCancelForm_Click(object sender, EventArgs e)
+        {
+            CleanForm();
+        }
     }
 }

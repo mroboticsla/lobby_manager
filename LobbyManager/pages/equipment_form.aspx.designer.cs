@@ -31,6 +31,33 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.WebControls.Label lblTitle;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// Repeater2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater2;
+        
+        /// <summary>
+        /// btnExecutePrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExecutePrint;
+        
+        /// <summary>
         /// fs_personalData control.
         /// </summary>
         /// <remarks>
@@ -85,31 +112,13 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_quantity;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// btnCancelForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// Repeater2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater2;
-        
-        /// <summary>
-        /// btnExecutePrint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExecutePrint;
+        protected global::System.Web.UI.WebControls.Button btnCancelForm;
         
         /// <summary>
         /// SqlDataSourceEquipment control.

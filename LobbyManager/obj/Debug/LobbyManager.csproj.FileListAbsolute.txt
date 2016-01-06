@@ -16,3 +16,5 @@ C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\App_Data\SykesVisitorsDB_log.ldf
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\bin\HtmlAgilityPack.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\bin\Interop.bpac.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\HtmlAgilityPack.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\bin\Interop.bpac.dll
