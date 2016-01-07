@@ -26,9 +26,10 @@ namespace LobbyManager.pages
             images.Visible = false;
             fs_personalData.Visible = false;
             fs_visitDetails.Visible = false;
-            String finishFlag = Request.QueryString["finish"].ToString();
-            if (finishFlag != null)
+            
+            if (Request.QueryString["finish"]!= null)
             {
+                String finishFlag = Request.QueryString["finish"].ToString();
                 if (finishFlag.Equals("true"))
                 {
                     showMg = true;

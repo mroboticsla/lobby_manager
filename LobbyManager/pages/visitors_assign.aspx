@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors_list.aspx.cs" Inherits="LobbyManager.pages.visitors_list" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors_assign.aspx.cs" Inherits="LobbyManager.pages.visitors_assign" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <style type="text/css">
@@ -15,14 +15,10 @@
         </asp:ScriptManager>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Histórico de Visitas</h1>
+                <h1 class="page-header">Visitantes en Espera</h1>
             </div>
         </div>
         <div class="dataTable_wrapper table-responsive" runat="server" id="tableContainer">
-            <div style="float:right; margin-bottom: 15px">
-                <button type="button" class="btn btn-primary" onclick="doTable();">Exportar Tabla a Excel</button>
-                <asp:Button class="btn btn-primary" runat="server" Text="" OnClick="btnExportTable" style="display:none" ID="btnExecuteExport" />
-            </div>
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                     <tr>
@@ -37,7 +33,7 @@
                 <tbody>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
                         <ItemTemplate>
-                            <tr class="gradeU">
+                            <tr class="gradeU" onclick="showDetails();">
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
@@ -51,23 +47,49 @@
             </table>
         </div>
 
-        <div class="modal fade" id="completeDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="detailsDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Preparando la información</h4>
+                        <h4 class="modal-title" id="lblName"></h4>
                     </div>
                     <div class="modal-body">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Espere...
-                            </div>
-                            <div class="panel-body">
-                                <div class="dataTable_wrapper">
-                                    Se está procesando su solicitud.
-                                </div>
-                            </div>
+                        <div class="dataTable_wrapper table-responsive" runat="server" id="Div1">
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>
+                                        <label for="lblComp">Compañía</label>
+                                    </th>
+                                    <td>
+                                        <input style="width:100%;" type="text" id="lblComp" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label for="lblDate">Fecha de Ingreso</label>
+                                    </th>
+                                    <td>
+                                        <input style="width:100%;" type="text" id="lblDate" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label for="lblDep">Departamento a Visitar</label>
+                                    </th>
+                                    <td>
+                                        <input style="width:100%;" type="text" id="lblDep" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <label for="lblContact">Contacto Interno</label>
+                                    </th>
+                                    <td>
+                                        <input style="width:100%;" type="text" id="lblContact" disabled="disabled" />
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -93,22 +115,17 @@
             });
         });
 
-        function doTable() {
-            showMsg();
-            PageMethods.setHTML($('#<%= tableContainer.ClientID %>').html(), OnSuccess);
-            function OnSuccess(response, userContext, methodName) {
-                //alert(response);
-                setTimeout(hideMsg, 2000);
-            }
+        function showDetails() {
+            $('#lblName').text('Mauricio Montoya');
+            $('#lblComp').val('M-Robotics Latin America');
+            $('#lblDate').val('15/12/2015 04:35:53 p.m.');
+            $('#lblDep').val('Informática');
+            $('#lblContact').val('Alexis Guardado');
+            $('#detailsDlg').modal('show');
         }
 
-        function showMsg() {
-            $('#completeDlg').modal('show');
-        }
-
-        function hideMsg() {
-            document.getElementById("<%= btnExecuteExport.ClientID %>").click();
-            $('#completeDlg').modal('hide');
+        function hideDetails() {
+            $('#detailsDlg').modal('hide');
         }
     </script>
     
