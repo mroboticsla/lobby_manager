@@ -14,16 +14,28 @@ using System.Web.UI.WebControls;
 
 namespace LobbyManager.pages
 {
+    /// <summary>
+    /// Clase principal para la pantalla de Histórico de Visitantes
+    /// </summary>
     public partial class visitors_list : System.Web.UI.Page
     {
-        static String mainConnectionString = "SykesVisitorsDB";
         static String html = "";
 
+        /// <summary>
+        /// Función que se ejecuta al inicar la carga.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             
         }
 
+        /// <summary>
+        /// Define el contenido HTML a utilizar en la exportación de la tabla de datos a formato .XLS.
+        /// </summary>
+        /// <param name="str">Cadena de texto HTML</param>
+        /// <returns></returns>
         [System.Web.Services.WebMethod]
         public static String setHTML(String str)
         {
@@ -31,6 +43,10 @@ namespace LobbyManager.pages
             return str;
         }
 
+        /// <summary>
+        /// Ejecuta la exportación de contenido a un archivo de Microsoft Excel
+        /// </summary>
+        /// <param name="dt"></param>
         public void ExportToExcel(DataTable dt)
         {
             if (dt.Rows.Count > 0)
@@ -55,6 +71,11 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Función de escucha para iniciar la exportación de datos a formato .XLS
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnExportTable(object sender, EventArgs e)
         {
             var doc = new HtmlDocument();

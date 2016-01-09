@@ -10,15 +10,26 @@ using bpac;
 
 namespace LobbyManager.pages
 {
+    /// <summary>
+    /// Clase principal para el formulario de Ingreso de Equipo
+    /// </summary>
     public partial class equipment_form : System.Web.UI.Page
     {
         static String mainConnectionString = "SykesVisitorsDB";
+        /// <summary>
+        /// Guarda el ID de visitante al que se ha de asociar el equipo ingresado.
+        /// </summary>
         public String visitorID = "";
 
         private const string TEMPLATE_DIRECTORY = @"C:\Program Files\Brother bPAC3 SDK\Templates\";	// Template file path
         private const string TEMPLATE_SIMPLE = "BcdItem.lbx";	// Template file name
         private const string TEMPLATE_FRAME = "NamePlate2.LBX";		// Template file name
         
+        /// <summary>
+        /// Se ejcuta al iniciar la carga.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             msgWarn.Visible = false;
@@ -28,8 +39,13 @@ namespace LobbyManager.pages
             SqlDataSourceList.SelectParameters.Add("reg_visitor", visitorID);
         }
 
+        /// <summary>
+        /// Método para eliminar un registro de equipo ingresado utilizando el ID interno del registro.
+        /// </summary>
+        /// <param name="reg_id">ID interno del Equipo ingresado.</param>
+        /// <returns>Respuesta de la ejecución de la función</returns>
         [System.Web.Services.WebMethod]
-        public static String deleteRecord(String str)
+        public static String deleteRecord(String reg_id)
         {
             try
             {
@@ -39,18 +55,21 @@ namespace LobbyManager.pages
                 {
                     conn.Open();
                     cmd.CommandText = "DELETE FROM tbl_reg_equipment where reg_id = @reg_id";
-                    cmd.Parameters.AddWithValue("reg_id", str);
+                    cmd.Parameters.AddWithValue("reg_id", reg_id);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
             }
-            catch (Exception a)
-            {
-                //Response.Write(a.Message);
-            }
+            catch
+            { }
             return "ok";
         }
 
+        /// <summary>
+        /// Obtiene el nombre del visitante a partir de su correlativo de visita.
+        /// </summary>
+        /// <param name="visitor">ID de visitante</param>
+        /// <returns></returns>
         private String getVisitorName(String visitor)
         {
             String _result = "";
@@ -74,6 +93,11 @@ namespace LobbyManager.pages
             return _result;
         }
 
+        /// <summary>
+        /// Guarda los datos de equipo a ingresar
+        /// </summary>
+        /// <param name="sender">Objeto que ejecuta la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         protected void saveItem(object sender, EventArgs e)
         {
             if (txt_desc.Value.Trim().Length == 0)
@@ -119,10 +143,13 @@ namespace LobbyManager.pages
             }
             catch (Exception a)
             {
-                //Response.Write(a.Message);
+                Response.Write(a.Message);
             }
         }
-
+        
+        /// <summary>
+        /// Limpia el formulario de ingreso de equipo.
+        /// </summary>
         public void CleanForm()
         {
             txt_serial.Value = "";
@@ -132,6 +159,11 @@ namespace LobbyManager.pages
             Response.Redirect(Request.Url.ToString()); 
         }
 
+        /// <summary>
+        /// Controla el evento del botón para la impresión de viñetas en el impresor Brother QL 700
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         protected void btnExecutePrint_Click(object sender, EventArgs e)
         {
             string templatePath = TEMPLATE_DIRECTORY;
@@ -175,6 +207,11 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Controla el evento de cancelación en el ingreso de equipo.
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         protected void btnCancelForm_Click(object sender, EventArgs e)
         {
             CleanForm();

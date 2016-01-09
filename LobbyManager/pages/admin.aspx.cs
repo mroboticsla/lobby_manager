@@ -11,28 +11,50 @@ using System.Web.UI.WebControls;
 
 namespace LobbyManager.pages
 {
+    /// <summary>
+    /// Clase que contiene las funciones Code-Behind para la página de administración de la aplicación.
+    /// </summary>
     public partial class admin : System.Web.UI.Page
     {
         String mainConnectionString = "SykesVisitorsDB";
 
+        /// <summary>
+        /// Contiene el resultado en formato JSON para el dibujado de la gráfica de Tipos de Documentos
+        /// </summary>
         public String morris_doctype_data = "";
+        /// <summary>
+        /// Contiene el resultado en formato JSON para el dibujado de la gráfica de Departamentos Visitados
+        /// </summary>
         public String morris_department_data = "";
         
+        /// <summary>
+        /// Función que se ejcuta al iniciar la carga.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_newCommentsCount.Text = getNewComCount();
             lbl_visitorsCount.Text = getVisitorsCount();
             GetGraphData();
-            Timer1.Tick +=Timer1_Tick;
+            GraphTimer.Tick +=GraphTimer_Tick;
         }
 
-        protected void Timer1_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// Función cíclica a utilizar para la actualización de gráficas en la pantalla de administración del sistema.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GraphTimer_Tick(object sender, EventArgs e)
         {
             //read data from SQL or file
             ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "GraphDT", "GraphDT([" + morris_doctype_data + "]);", true);
             ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "GraphDP", "GraphDP([" + morris_department_data + "]);", true);
         }
 
+        /// <summary>
+        /// Actualiza las variables que conciernen al dibujado de las gráficas en la pantalla de administración del sistema.
+        /// </summary>
         public void GetGraphData()
         {
             try
@@ -106,6 +128,10 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Obtiene el número total de visitantes registrado en el sistema.
+        /// </summary>
+        /// <returns></returns>
         public String getVisitorsCount()
         {
             String _result = "";
@@ -134,6 +160,10 @@ namespace LobbyManager.pages
             return _result;
         }
 
+        /// <summary>
+        /// Obtiene una lista de los últimos comentarios publicados en la aplicación.
+        /// </summary>
+        /// <returns></returns>
         public String getNewComCount()
         {
             String _result = "";
@@ -162,6 +192,11 @@ namespace LobbyManager.pages
             return _result;
         }
 
+        /// <summary>
+        /// Actualiza el estado de los comentarios ya leídos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void hideNewComments(object sender, EventArgs e)
         {
             try

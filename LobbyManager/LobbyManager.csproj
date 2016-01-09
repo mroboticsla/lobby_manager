@@ -44,6 +44,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IncludeIisSettings>true</IncludeIisSettings>
     <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>bin\LobbyManager.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

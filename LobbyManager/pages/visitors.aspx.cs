@@ -12,14 +12,33 @@ using System.Web.UI.WebControls;
 
 namespace LobbyManager.pages
 {
+    /// <summary>
+    /// Clase principal de la página de registro de visitantes.
+    /// </summary>
     public partial class visitors : System.Web.UI.Page
     {
         String mainConnectionString = "SykesVisitorsDB";
 
+        /// <summary>
+        /// Establece si se deberá presentar el mensaje de finalización del proceso.
+        /// </summary>
         public bool showMg = false;
+
+        /// <summary>
+        /// Establece si el destino procede a la página para agregar equipo.
+        /// </summary>
         public bool addEQ = false;
+
+        /// <summary>
+        /// Contiene el ID del visitante.
+        /// </summary>
         public int visitor = 0;
 
+        /// <summary>
+        /// Se ejecuta el iniciar la carga.
+        /// </summary>
+        /// <param name="sender">Objecto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             msgWarn.Visible = false;
@@ -37,6 +56,11 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Inserta un nuevo registro de visitante.
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         public void InsertVisitor(object sender, EventArgs e)
         {
             try
@@ -141,7 +165,7 @@ namespace LobbyManager.pages
             }
             catch (Exception a)
             {
-                //Response.Write(a.Message);
+                Response.Write(a.Message);
                 msgWarn.Visible = true;
             }
             finally
@@ -150,6 +174,9 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Limpia el formulario de ingreso de visitantes.
+        /// </summary>
         public void CleanForm()
         {
             txt_name.Value = "";
@@ -165,6 +192,11 @@ namespace LobbyManager.pages
             fs_visitDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Ejecuta el ingreso de datos sin validar el escaneo de documentos.
+        /// </summary>
+        /// <param name="sender">Objeto que llama la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         public void NoDocumentDemo(object sender, EventArgs e)
         {
             images.Visible = true;
@@ -173,6 +205,11 @@ namespace LobbyManager.pages
             fs_visitDetails.Visible = true;
         }
 
+        /// <summary>
+        /// Ejecuta la importación de imágenes al formulario de ingreso de datos para nuevos visitantes
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
         public void ImportImages(object sender, EventArgs e)
         {
             try
@@ -205,11 +242,16 @@ namespace LobbyManager.pages
                 txt_name.Value = "No se ha cargado el documento";
                 txt_lastname.Value = "";
                 txt_docnumber.Value = "";
-                //Response.Write(a.Message);
+                Response.Write(a.Message);
                 msgWarn.Visible = true;
             }
         }
 
+        /// <summary>
+        /// Convierte un mapa de bits a formato string base64
+        /// </summary>
+        /// <param name="img">Mapa de Bits a convertir</param>
+        /// <returns>String base64</returns>
         private static string ConvertImageToBase64(Bitmap img)
         {
             string _code = "";

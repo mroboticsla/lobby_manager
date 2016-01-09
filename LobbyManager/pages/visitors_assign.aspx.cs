@@ -14,16 +14,28 @@ using System.Web.UI.WebControls;
 
 namespace LobbyManager.pages
 {
+    /// <summary>
+    /// Clase principal para el formulario de asignación de gafetes, impresión de viñetas y finalización de visitas.
+    /// </summary>
     public partial class visitors_assign : System.Web.UI.Page
     {
-        static String mainConnectionString = "SykesVisitorsDB";
         static String html = "";
 
+        /// <summary>
+        /// Se ejecuta al iniciar la carga.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             
         }
 
+        /// <summary>
+        /// Establece el contenido html a exportar.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethod]
         public static String setHTML(String str)
         {
@@ -31,6 +43,10 @@ namespace LobbyManager.pages
             return str;
         }
 
+        /// <summary>
+        /// Exporta a XLS
+        /// </summary>
+        /// <param name="dt"></param>
         public void ExportToExcel(DataTable dt)
         {
             if (dt.Rows.Count > 0)
@@ -55,6 +71,11 @@ namespace LobbyManager.pages
             }
         }
 
+        /// <summary>
+        /// Ejecuta la exportación a XLS
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnExportTable(object sender, EventArgs e)
         {
             var doc = new HtmlDocument();
