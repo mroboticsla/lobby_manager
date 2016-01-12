@@ -104,7 +104,7 @@ namespace LobbyManager.pages
                 SqlDataReader dreader = cmd.ExecuteReader();
                 if (dreader.Read())
                 {
-                    _result = dreader["vis_name"].ToString() + " " + dreader["vis_lastname"].ToString();
+                    _result = dreader["vis_name"].ToString().Trim() + " " + dreader["vis_lastname"].ToString().Trim();
                 }
                 dreader.Close();
                 conn.Close();
@@ -137,7 +137,7 @@ namespace LobbyManager.pages
                     SqlDataReader dreader = cmd.ExecuteReader();
                     if (dreader.Read())
                     {
-                        reg_id = int.Parse(dreader["com_total"].ToString());
+                        reg_id = int.Parse(dreader["com_total"].ToString().Trim());
                     }
                     dreader.Close();
                     conn.Close();
@@ -202,12 +202,12 @@ namespace LobbyManager.pages
                     SqlDataReader dreader = cmd.ExecuteReader();
                     while (dreader.Read())
                     {
-                        String name = dreader["type_name"].ToString();
+                        String name = dreader["type_name"].ToString().Trim();
                         doc.GetObject("objName").Text = name;
-                        doc.GetObject("objSerial").Text = dreader["reg_serial"].ToString();
-                        doc.GetObject("objBarcode").Text = dreader["reg_id"].ToString();
-                        doc.GetObject("objDesc").Text = dreader["reg_desc"].ToString();
-                        doc.GetObject("objOwner").Text = lblTitle.Text;
+                        doc.GetObject("objSerial").Text = dreader["reg_serial"].ToString().Trim();
+                        doc.GetObject("objBarcode").Text = dreader["reg_id"].ToString().Trim();
+                        doc.GetObject("objDesc").Text = dreader["reg_desc"].ToString().Trim();
+                        doc.GetObject("objOwner").Text = lblTitle.Text.Trim();
 
                         // doc.SetMediaById(doc.Printer.GetMediaId(), true);
                         doc.StartPrint("", PrintOptionConstants.bpoDefault);

@@ -187,8 +187,9 @@
                         </li>
                         <li>
                             <a href="visitors.aspx"><i class="fa fa-tasks fa-fw"></i>Registro de Vistantes</a>
-                            <a href="visitors_assign.aspx"><i class="fa fa-user fa-fw"></i>Visitantes en espera</a>
-                            <a href="visitors_list.aspx"><i class="fa fa-clock-o fa-fw"></i>Histórico de Visitas</a>
+                            <a href="visitors_assign.aspx"><i class="fa fa-group fa-fw"></i>Visitantes en espera</a>
+                            <a href="current_visits.aspx"><i class="fa fa-clock-o fa-fw"></i>Visitas en Curso</a>
+                            <a href="visitors_list.aspx"><i class="fa fa-folder-open-o fa-fw"></i>Histórico de Visitas</a>
                         </li>
                         <li>
                             <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Administración<span class="fa arrow"></span></a>

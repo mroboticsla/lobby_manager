@@ -10,7 +10,7 @@
 namespace LobbyManager.pages {
     
     
-    public partial class visitors_approve {
+    public partial class visit_termination {
         
         /// <summary>
         /// images control.

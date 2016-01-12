@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors_approve.aspx.cs" Inherits="LobbyManager.pages.visitors_approve" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visit_termination.aspx.cs" Inherits="LobbyManager.pages.visit_termination" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <script type="text/javascript">
@@ -105,11 +105,10 @@
                                         </label>
                                     </div>
                                     <div class="form-group">
-                                        <asp:Button runat="server" class="btn btn-success btn-lg btn-block" OnClick="UpdateVisitor" Text="Iniciar Visita"></asp:Button>
+                                        <asp:Button runat="server" class="btn btn-danger btn-lg btn-block" OnClick="UpdateVisitor" Text="Finalizar Visita"></asp:Button>
                                     </div>
                                     <div class="form-group col-lg-12">
-                                        <button type="reset" class="btn btn-danger col-lg-6" onclick="finishMsg();">Finalizar Visita</button>
-                                        <button type="reset" class="btn btn-default col-lg-6" onclick="returnToList();">Cancelar</button>
+                                        <button type="reset" class="btn btn-default col-lg-12" onclick="returnToList();">Cancelar</button>
                                     </div>
                                 </fieldset>
                             </div>
@@ -211,7 +210,7 @@
         }
 
         function returnToList() {
-            window.location = "visitors_assign.aspx";
+            window.location = "current_visits.aspx";
         }
     </script>
 </asp:Content>

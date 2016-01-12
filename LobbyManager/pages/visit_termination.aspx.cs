@@ -15,7 +15,7 @@ namespace LobbyManager.pages
     /// <summary>
     /// Clase principal de la página de aprobación de visitantes.
     /// </summary>
-    public partial class visitors_approve : System.Web.UI.Page
+    public partial class visit_termination : System.Web.UI.Page
     {
         String mainConnectionString = "SykesVisitorsDB";
 

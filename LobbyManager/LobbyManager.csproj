@@ -870,7 +870,9 @@
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
     <Content Include="pages\equipment_form.aspx" />
+    <Content Include="pages\visit_termination.aspx" />
     <Content Include="pages\visitors_approve.aspx" />
+    <Content Include="pages\current_visits.aspx" />
     <Content Include="pages\visitors_assign.aspx" />
     <Content Include="pages\visitors_list.aspx" />
     <Content Include="pages\visitors.aspx" />
@@ -900,12 +902,26 @@
     <Compile Include="pages\equipment_form.aspx.designer.cs">
       <DependentUpon>equipment_form.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\visit_termination.aspx.cs">
+      <DependentUpon>visit_termination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\visit_termination.aspx.designer.cs">
+      <DependentUpon>visit_termination.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\visitors_approve.aspx.cs">
       <DependentUpon>visitors_approve.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\visitors_approve.aspx.designer.cs">
       <DependentUpon>visitors_approve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\current_visits.aspx.cs">
+      <DependentUpon>current_visits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\current_visits.aspx.designer.cs">
+      <DependentUpon>current_visits.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visitors_assign.aspx.cs">
       <DependentUpon>visitors_assign.aspx</DependentUpon>

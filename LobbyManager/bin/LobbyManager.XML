@@ -412,6 +412,313 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="T:LobbyManager.pages.visit_termination">
+            <summary>
+            Clase principal de la página de aprobación de visitantes.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.showMg">
+            <summary>
+            Establece si se deberá presentar el mensaje de finalización del proceso.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.addEQ">
+            <summary>
+            Establece si el destino procede a la página para agregar equipo.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.returnToList">
+            <summary>
+            Establece si el destino procede a la lista de visitantes en espera.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.visitor">
+            <summary>
+            Contiene el ID del visitante.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.visitorID">
+            <summary>
+            Contiene el valor del parámetro de visitante a consultar.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Se ejecuta el iniciar la carga.
+            </summary>
+            <param name="sender">Objecto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.getVisitor">
+            <summary>
+            Obtiene los datos del visitante seleccionado en la variable "visitor".
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.UpdateVisitor(System.Object,System.EventArgs)">
+            <summary>
+            Inserta un nuevo registro de visitante.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.finishVisit(System.Object,System.EventArgs)">
+            <summary>
+            Finaliza la visita.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.startVisit(System.Object,System.EventArgs)">
+            <summary>
+            Finaliza la visita.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.CleanForm">
+            <summary>
+            Limpia el formulario de ingreso de visitantes.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.ImportImages(System.Object,System.EventArgs)">
+            <summary>
+            Ejecuta la importación de imágenes al formulario de ingreso de datos para nuevos visitantes
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visit_termination.ConvertImageToBase64(System.Drawing.Bitmap)">
+            <summary>
+            Convierte un mapa de bits a formato string base64
+            </summary>
+            <param name="img">Mapa de Bits a convertir</param>
+            <returns>String base64</returns>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.images">
+            <summary>
+            images control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.img_front">
+            <summary>
+            img_front control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.img_back">
+            <summary>
+            img_back control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.msgWarn">
+            <summary>
+            msgWarn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.fs_personalData">
+            <summary>
+            fs_personalData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_name">
+            <summary>
+            txt_name control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_lastname">
+            <summary>
+            txt_lastname control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.docTypeSelect">
+            <summary>
+            docTypeSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_docnumber">
+            <summary>
+            txt_docnumber control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_company">
+            <summary>
+            txt_company control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_phone">
+            <summary>
+            txt_phone control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.lbl_date">
+            <summary>
+            lbl_date control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.fs_visitDetails">
+            <summary>
+            fs_visitDetails control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.reasonSelect">
+            <summary>
+            reasonSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_description">
+            <summary>
+            txt_description control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.deptSelect">
+            <summary>
+            deptSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txt_contact">
+            <summary>
+            txt_contact control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.chk_addEQ">
+            <summary>
+            chk_addEQ control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.Fieldset1">
+            <summary>
+            Fieldset1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txtBadge">
+            <summary>
+            txtBadge control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.txtEmp">
+            <summary>
+            txtEmp control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.SqlDataSourceDocuments">
+            <summary>
+            SqlDataSourceDocuments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.SqlDataSourceReasons">
+            <summary>
+            SqlDataSourceReasons control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.SqlDataSourceDepartments">
+            <summary>
+            SqlDataSourceDepartments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visit_termination.SqlDataSourceComments">
+            <summary>
+            SqlDataSourceComments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="T:LobbyManager.pages.visitors_approve">
             <summary>
             Clase principal de la página de aprobación de visitantes.
@@ -425,6 +732,11 @@
         <member name="F:LobbyManager.pages.visitors_approve.addEQ">
             <summary>
             Establece si el destino procede a la página para agregar equipo.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_approve.returnToList">
+            <summary>
+            Establece si el destino procede a la lista de visitantes en espera.
             </summary>
         </member>
         <member name="F:LobbyManager.pages.visitors_approve.visitor">
@@ -452,6 +764,20 @@
         <member name="M:LobbyManager.pages.visitors_approve.UpdateVisitor(System.Object,System.EventArgs)">
             <summary>
             Inserta un nuevo registro de visitante.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_approve.finishVisit(System.Object,System.EventArgs)">
+            <summary>
+            Finaliza la visita.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_approve.startVisit(System.Object,System.EventArgs)">
+            <summary>
+            Finaliza la visita.
             </summary>
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
@@ -655,9 +981,9 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.visitors_approve.Text1">
+        <member name="F:LobbyManager.pages.visitors_approve.txtEmp">
             <summary>
-            Text1 control.
+            txtEmp control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -694,6 +1020,74 @@
         <member name="F:LobbyManager.pages.visitors_approve.SqlDataSourceComments">
             <summary>
             SqlDataSourceComments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:LobbyManager.pages.current_visits">
+            <summary>
+            Clase principal para el formulario de asignación de gafetes, impresión de viñetas y finalización de visitas.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.current_visits.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Se ejecuta al iniciar la carga.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LobbyManager.pages.current_visits.setHTML(System.String)">
+            <summary>
+            Establece el contenido html a exportar.
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LobbyManager.pages.current_visits.ExportToExcel(System.Data.DataTable)">
+            <summary>
+            Exporta a XLS
+            </summary>
+            <param name="dt"></param>
+        </member>
+        <member name="M:LobbyManager.pages.current_visits.btnExportTable(System.Object,System.EventArgs)">
+            <summary>
+            Ejecuta la exportación a XLS
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:LobbyManager.pages.current_visits.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.current_visits.tableContainer">
+            <summary>
+            tableContainer control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.current_visits.Repeater2">
+            <summary>
+            Repeater2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.current_visits.SqlDataSourceVisitors">
+            <summary>
+            SqlDataSourceVisitors control.
             </summary>
             <remarks>
             Auto-generated field.

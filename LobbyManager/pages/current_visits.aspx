@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors_assign.aspx.cs" Inherits="LobbyManager.pages.visitors_assign" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="current_visits.aspx.cs" Inherits="LobbyManager.pages.current_visits" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <style type="text/css">
@@ -15,7 +15,7 @@
         </asp:ScriptManager>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Visitantes en Espera</h1>
+                <h1 class="page-header">Visitas en Curso</h1>
             </div>
         </div>
         <div class="dataTable_wrapper table-responsive" runat="server" id="tableContainer">
@@ -51,7 +51,7 @@
             ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
             SelectCommand="SELECT vis_id, vis_date, vis_department, vis_name, vis_lastname, vis_internal_contact, dep_name 
                             FROM [tbl_vis_visitors], tbl_dep_departments 
-                            where dep_id = vis_department and vis_status = 1 order by vis_id desc">
+                            where dep_id = vis_department and vis_status = 2 order by vis_id desc">
         </asp:SqlDataSource>
     </form>
 </asp:Content>
@@ -67,7 +67,7 @@
         });
 
         function showDetails(visitor) {
-            window.location = "visitors_approve.aspx?visitor=" + visitor;
+            window.location = "visit_termination.aspx?visitor=" + visitor;
         }
     </script>
     
