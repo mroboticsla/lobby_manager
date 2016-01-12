@@ -21,6 +21,8 @@ namespace LobbyManager.pages
         /// </summary>
         public String visitorID = "";
 
+        public String app = "";
+
         public bool approved = false;
 
         private const string TEMPLATE_DIRECTORY = @"C:\Program Files\Brother bPAC3 SDK\Templates\";	// Template file path
@@ -42,12 +44,12 @@ namespace LobbyManager.pages
 
             if (Request.QueryString["approve"] != null)
             {
-                visitorID = Request.QueryString["approve"].ToString();
-                if (!visitorID.Equals(""))
+                app = Request.QueryString["approve"].ToString();
+                if (!app.Equals(""))
                 {
                     try
                     {
-                        approved = visitorID.Equals("true");
+                        approved = app.Equals("true");
                     }
                     catch
                     {
