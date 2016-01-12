@@ -9,7 +9,7 @@
         </asp:ScriptManager>
         <asp:updatepanel id="UpdatePanel1" runat="server">
             <contenttemplate>
-                <asp:timer id="Timer1" runat="server" Interval="3000"></asp:timer>
+                <asp:timer id="GraphTimer" runat="server" Interval="3000"></asp:timer>
                 <div id="wrapper">
                     <div class="row">
                         <div class="col-lg-12">

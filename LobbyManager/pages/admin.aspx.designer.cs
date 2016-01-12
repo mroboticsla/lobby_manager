@@ -40,7 +40,7 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Timer1 control.
+        /// GraphTimer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

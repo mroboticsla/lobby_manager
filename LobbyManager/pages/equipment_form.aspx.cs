@@ -21,6 +21,8 @@ namespace LobbyManager.pages
         /// </summary>
         public String visitorID = "";
 
+        public bool approved = false;
+
         private const string TEMPLATE_DIRECTORY = @"C:\Program Files\Brother bPAC3 SDK\Templates\";	// Template file path
         private const string TEMPLATE_SIMPLE = "BcdItem.lbx";	// Template file name
         private const string TEMPLATE_FRAME = "NamePlate2.LBX";		// Template file name
@@ -37,6 +39,22 @@ namespace LobbyManager.pages
             lblTitle.Text = getVisitorName(visitorID);
             SqlDataSourceList.SelectCommand = "SELECT reg_id, reg_type, type_name, reg_quantity, reg_serial, reg_desc FROM tbl_reg_equipment, tbl_type_equipment where type_id = reg_type and reg_visitor = @reg_visitor";
             SqlDataSourceList.SelectParameters.Add("reg_visitor", visitorID);
+
+            if (Request.QueryString["approve"] != null)
+            {
+                visitorID = Request.QueryString["approve"].ToString();
+                if (!visitorID.Equals(""))
+                {
+                    try
+                    {
+                        approved = visitorID.Equals("true");
+                    }
+                    catch
+                    {
+                        approved = false;
+                    }
+                }
+            }
         }
 
         /// <summary>

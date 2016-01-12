@@ -33,7 +33,7 @@
                 <tbody>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
                         <ItemTemplate>
-                            <tr class="gradeU" onclick="showDetails();">
+                            <tr class="gradeU" onclick="showDetails('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
@@ -45,55 +45,6 @@
                     </asp:Repeater>
                 </tbody>
             </table>
-        </div>
-
-        <div class="modal fade" id="detailsDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="lblName"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="dataTable_wrapper table-responsive" runat="server" id="Div1">
-                            <table class="table table-striped table-bordered table-hover">
-                                <tr>
-                                    <th>
-                                        <label for="lblComp">Compañía</label>
-                                    </th>
-                                    <td>
-                                        <input style="width:100%;" type="text" id="lblComp" disabled="disabled" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label for="lblDate">Fecha de Ingreso</label>
-                                    </th>
-                                    <td>
-                                        <input style="width:100%;" type="text" id="lblDate" disabled="disabled" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label for="lblDep">Departamento a Visitar</label>
-                                    </th>
-                                    <td>
-                                        <input style="width:100%;" type="text" id="lblDep" disabled="disabled" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <label for="lblContact">Contacto Interno</label>
-                                    </th>
-                                    <td>
-                                        <input style="width:100%;" type="text" id="lblContact" disabled="disabled" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <asp:SqlDataSource ID="SqlDataSourceVisitors" runat="server"
@@ -115,17 +66,8 @@
             });
         });
 
-        function showDetails() {
-            $('#lblName').text('Mauricio Montoya');
-            $('#lblComp').val('M-Robotics Latin America');
-            $('#lblDate').val('15/12/2015 04:35:53 p.m.');
-            $('#lblDep').val('Informática');
-            $('#lblContact').val('Alexis Guardado');
-            $('#detailsDlg').modal('show');
-        }
-
-        function hideDetails() {
-            $('#detailsDlg').modal('hide');
+        function showDetails(visitor) {
+            window.location = "visitors_approve.aspx?visitor=" + visitor;
         }
     </script>
     
