@@ -184,7 +184,13 @@
         }
 
         function finishProc() {
-            window.location="visitors.aspx?finish=true";
+            if ((<%= approved.ToString().ToLower() %>))
+            {
+                window.location="visitors_approve.aspx?visitor=<%= visitorID.ToString().ToLower() %>&finish=true";
+            }else{
+                window.location="visitors.aspx?finish=true";
+            }
+            
         }
     </script>
 </asp:Content>

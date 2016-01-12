@@ -64,6 +64,15 @@ namespace LobbyManager.pages
                     }
                 }
             }
+
+            if (Request.QueryString["finish"] != null)
+            {
+                String finishFlag = Request.QueryString["finish"].ToString();
+                if (finishFlag.Equals("true"))
+                {
+                    showMg = true;
+                }
+            }
         }
 
         /// <summary>

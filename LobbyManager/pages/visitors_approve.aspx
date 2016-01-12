@@ -5,7 +5,7 @@
         function registerEQ() {
             if ((<%= addEQ.ToString().ToLower() %>))
             {
-                window.location="equipment_form.aspx?visitor=<%= visitor.ToString().ToLower() %>";
+                window.location="equipment_form.aspx?approve=true&visitor=<%= visitor.ToString().ToLower() %>";
             }
         }
         onload=registerEQ();
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button class="btn btn-success" runat="server" Text="Iniciar Visita" data-dismiss="modal" />
+                        <asp:Button class="btn btn-success" runat="server" Text="Iniciar Visita" data-dismiss="modal" OnClientClick="returnToList();" />
                         <asp:Button class="btn btn-danger" runat="server" Text="Cancelar" data-dismiss="modal" />
                     </div>
                 </div>
