@@ -23,6 +23,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Foto</th>
                         <th>Fecha</th>
                         <th>Departamento</th>
                         <th>Nombre</th>
@@ -35,6 +36,9 @@
                         <ItemTemplate>
                             <tr class="gradeU" onclick="showDetails('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
+                                <td>
+                                    <img runat="server" id="img_front" src='<%# @"data:image/bmp;base64," + DataBinder.Eval(Container.DataItem, "img_profile") %>' height="48" />
+                                </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_name") %></td>
@@ -49,9 +53,9 @@
 
         <asp:SqlDataSource ID="SqlDataSourceVisitors" runat="server"
             ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
-            SelectCommand="SELECT vis_id, vis_date, vis_department, vis_name, vis_lastname, vis_internal_contact, dep_name 
-                            FROM [tbl_vis_visitors], tbl_dep_departments 
-                            where dep_id = vis_department and vis_status = 2 order by vis_id desc">
+            SelectCommand="SELECT vis_id, vis_date, vis_department, vis_name, vis_lastname, vis_internal_contact, dep_name, img_profile 
+                            FROM [tbl_vis_visitors], tbl_dep_departments, tbl_img_images 
+                            where dep_id = vis_department and vis_status = 2 and img_visitor = vis_id order by vis_id desc">
         </asp:SqlDataSource>
     </form>
 </asp:Content>

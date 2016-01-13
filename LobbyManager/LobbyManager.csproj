@@ -869,6 +869,7 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\equipment_exit.aspx" />
     <Content Include="pages\equipment_form.aspx" />
     <Content Include="pages\visit_termination.aspx" />
     <Content Include="pages\visitors_approve.aspx" />
@@ -894,6 +895,13 @@
     </Compile>
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\equipment_exit.aspx.cs">
+      <DependentUpon>equipment_exit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\equipment_exit.aspx.designer.cs">
+      <DependentUpon>equipment_exit.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\equipment_form.aspx.cs">
       <DependentUpon>equipment_form.aspx</DependentUpon>

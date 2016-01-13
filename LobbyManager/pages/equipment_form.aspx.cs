@@ -21,8 +21,14 @@ namespace LobbyManager.pages
         /// </summary>
         public String visitorID = "";
 
+        /// <summary>
+        /// Contiene la variable de aprobacion
+        /// </summary>
         public String app = "";
 
+        /// <summary>
+        /// Controla el flujo de aprobacion en la pantalla.
+        /// </summary>
         public bool approved = false;
 
         private const string TEMPLATE_DIRECTORY = @"C:\Program Files\Brother bPAC3 SDK\Templates\";	// Template file path
@@ -57,6 +63,8 @@ namespace LobbyManager.pages
                     }
                 }
             }
+
+            btnExecutePrint.Visible = approved;
         }
 
         /// <summary>

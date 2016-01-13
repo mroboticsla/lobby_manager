@@ -28,6 +28,9 @@
                         <div class="row" runat="server" id="images">
                             <div class="col-lg-6">
                                 <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
+                                <input type="hidden" runat="server" id="txt_imgFront" />
+                                <input type="hidden" runat="server" id="txt_imgBack" />
+                                <input type="hidden" runat="server" id="txt_imgProfile" />
                             </div>
                             <div class="col-lg-6">
                                 <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />

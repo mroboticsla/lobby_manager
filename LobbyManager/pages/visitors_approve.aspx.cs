@@ -64,6 +64,7 @@ namespace LobbyManager.pages
                         if (!IsPostBack)
                         {
                             getVisitor();
+                            getImages();
                         }
                     }
                     catch
@@ -114,8 +115,43 @@ namespace LobbyManager.pages
                         reasonSelect.SelectedValue = dreader["vis_reason"].ToString().Trim();
                         txt_description.Value = dreader["vis_description"].ToString().Trim();
                         deptSelect.SelectedValue = dreader["vis_department"].ToString().Trim();
-                        txt_contact.Value = dreader["vis_internal_contact"].ToString();
+                        txt_contact.Value = dreader["vis_internal_contact"].ToString().Trim();
                         chk_addEQ.Checked = dreader["vis_with_equipment"].ToString().Trim().Equals("1");
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+            }
+            catch (Exception a)
+            {
+                Response.Write(a.Message);
+                msgWarn.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene las imagenes del visitante seleccionado en la variable "visitor".
+        /// </summary>
+        public void getImages()
+        {
+            try
+            {
+                msgWarn.Visible = false;
+                int vis_id = visitor;
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT img_id, img_visitor, img_front, img_back, img_profile FROM [tbl_img_images] WHERE img_visitor = @vis_id";
+                    cmd.Parameters.AddWithValue("vis_id", vis_id);
+                    //cmd.Parameters.AddWithValue("vis_image_record", 0);
+
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + dreader["img_front"].ToString().Trim();
+                        ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + dreader["img_back"].ToString().Trim();
                     }
                     dreader.Close();
                     conn.Close();

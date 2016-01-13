@@ -64,6 +64,7 @@ namespace LobbyManager.pages
                         if (!IsPostBack)
                         {
                             getVisitor();
+                            getImages();
                         }
                     }
                     catch
@@ -114,7 +115,7 @@ namespace LobbyManager.pages
                         reasonSelect.SelectedValue = dreader["vis_reason"].ToString().Trim();
                         txt_description.Value = dreader["vis_description"].ToString().Trim();
                         deptSelect.SelectedValue = dreader["vis_department"].ToString().Trim();
-                        txt_contact.Value = dreader["vis_internal_contact"].ToString();
+                        txt_contact.Value = dreader["vis_internal_contact"].ToString().Trim();
                         chk_addEQ.Checked = dreader["vis_with_equipment"].ToString().Trim().Equals("1");
                     }
                     dreader.Close();
@@ -129,11 +130,9 @@ namespace LobbyManager.pages
         }
 
         /// <summary>
-        /// Inserta un nuevo registro de visitante.
+        /// Obtiene las imagenes del visitante seleccionado en la variable "visitor".
         /// </summary>
-        /// <param name="sender">Objeto que llama a la acción</param>
-        /// <param name="e">Evento Ejecutado</param>
-        public void UpdateVisitor(object sender, EventArgs e)
+        public void getImages()
         {
             try
             {
@@ -144,49 +143,43 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "UPDATE [tbl_vis_visitors] SET " +
-                                    "vis_name = @vis_name, vis_lastname = @vis_lastname, vis_doctype = @vis_doctype, " +
-                                    "vis_docnumber = @vis_docnumber, vis_company = @vis_company, vis_phone = @vis_phone, " +
-                                    "vis_reason = @vis_reason, vis_description = @vis_description, vis_department = @vis_department, " +
-                                    "vis_internal_contact = @vis_internal_contact, vis_image_record = @vis_image_record, " +
-                                    "vis_with_equipment = @vis_with_equipment\n" +
-                                    "WHERE vis_id = @vis_id";
+                    cmd.CommandText = "SELECT img_id, img_visitor, img_front, img_back, img_profile FROM [tbl_img_images] WHERE img_visitor = @vis_id";
                     cmd.Parameters.AddWithValue("vis_id", vis_id);
-                    cmd.Parameters.AddWithValue("vis_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("vis_lastname", txt_lastname.Value);
-                    cmd.Parameters.AddWithValue("vis_doctype", docTypeSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_docnumber", txt_docnumber.Value);
-                    cmd.Parameters.AddWithValue("vis_company", txt_company.Value);
-                    cmd.Parameters.AddWithValue("vis_phone", txt_phone.Value);
-                    cmd.Parameters.AddWithValue("vis_reason", reasonSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_description", txt_description.Value);
-                    cmd.Parameters.AddWithValue("vis_department", deptSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Value);
-                    cmd.Parameters.AddWithValue("vis_image_record", 0);
-                    cmd.Parameters.AddWithValue("vis_with_equipment", (chk_addEQ.Checked) ? 1 : 0);
+                    //cmd.Parameters.AddWithValue("vis_image_record", 0);
 
-                    String sql = cmd.CommandText;
-
-                    int total = cmd.ExecuteNonQuery();
-                    
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + dreader["img_front"].ToString().Trim();
+                        ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + dreader["img_back"].ToString().Trim();
+                    }
+                    dreader.Close();
                     conn.Close();
-                    //CleanForm();
-
-                    if (chk_addEQ.Checked)
-                    {
-                        visitor = vis_id;
-                        addEQ = true;
-                    }
-                    else
-                    {
-                        showMg = true;
-                    }
                 }
             }
             catch (Exception a)
             {
                 Response.Write(a.Message);
                 msgWarn.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Verifica registro de visitante.
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
+        public void UpdateVisitor(object sender, EventArgs e)
+        {
+            getVisitor();
+            getImages();
+            if (chk_addEQ.Checked)
+            {
+                addEQ = true;
+            }
+            else
+            {
+                showMg = true;
             }
         }
 
@@ -206,27 +199,10 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "UPDATE [tbl_vis_visitors] SET " +
-                                    "vis_name = @vis_name, vis_lastname = @vis_lastname, vis_doctype = @vis_doctype, " +
-                                    "vis_docnumber = @vis_docnumber, vis_company = @vis_company, vis_phone = @vis_phone, " +
-                                    "vis_reason = @vis_reason, vis_description = @vis_description, vis_department = @vis_department, " +
-                                    "vis_internal_contact = @vis_internal_contact, vis_status = @vis_status, vis_image_record = @vis_image_record, " +
-                                    "vis_with_equipment = @vis_with_equipment, vis_checkout = GETDATE()\n" +
+                    cmd.CommandText = "UPDATE [tbl_vis_visitors] SET vis_status = @vis_status, vis_checkout = GETDATE() \n" +
                                     "WHERE vis_id = @vis_id";
                     cmd.Parameters.AddWithValue("vis_id", vis_id);
-                    cmd.Parameters.AddWithValue("vis_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("vis_lastname", txt_lastname.Value);
-                    cmd.Parameters.AddWithValue("vis_doctype", docTypeSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_docnumber", txt_docnumber.Value);
-                    cmd.Parameters.AddWithValue("vis_company", txt_company.Value);
-                    cmd.Parameters.AddWithValue("vis_phone", txt_phone.Value);
-                    cmd.Parameters.AddWithValue("vis_reason", reasonSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_description", txt_description.Value);
-                    cmd.Parameters.AddWithValue("vis_department", deptSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Value);
                     cmd.Parameters.AddWithValue("vis_status", 0);
-                    cmd.Parameters.AddWithValue("vis_image_record", 0);
-                    cmd.Parameters.AddWithValue("vis_with_equipment", (chk_addEQ.Checked) ? 1 : 0);
 
                     cmd.ExecuteNonQuery();
 

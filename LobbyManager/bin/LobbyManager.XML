@@ -229,6 +229,233 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="T:LobbyManager.pages.equipment_exit">
+            <summary>
+            Clase principal para el formulario de Ingreso de Equipo
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.visitorID">
+            <summary>
+            Guarda el ID de visitante al que se ha de asociar el equipo ingresado.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.app">
+            <summary>
+            Contiene la variable de aprobacion
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.approved">
+            <summary>
+            Controla el flujo de aprobacion en la pantalla.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Se ejcuta al iniciar la carga.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.deleteRecord(System.String)">
+            <summary>
+            Método para eliminar un registro de equipo ingresado utilizando el ID interno del registro.
+            </summary>
+            <param name="reg_id">ID interno del Equipo ingresado.</param>
+            <returns>Respuesta de la ejecución de la función</returns>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.checkRecord(System.String)">
+            <summary>
+            Método para actualizar un registro de equipo ingresado utilizando el ID interno del registro.
+            </summary>
+            <param name="reg_id">ID interno del Equipo ingresado.</param>
+            <returns>Respuesta de la ejecución de la función</returns>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.getVisitorName(System.String)">
+            <summary>
+            Obtiene el nombre del visitante a partir de su correlativo de visita.
+            </summary>
+            <param name="visitor">ID de visitante</param>
+            <returns></returns>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.saveItem(System.Object,System.EventArgs)">
+            <summary>
+            Guarda los datos de equipo a ingresar
+            </summary>
+            <param name="sender">Objeto que ejecuta la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.CleanForm">
+            <summary>
+            Limpia el formulario de ingreso de equipo.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.btnExecutePrint_Click(System.Object,System.EventArgs)">
+            <summary>
+            Controla el evento del botón para la impresión de viñetas en el impresor Brother QL 700
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.equipment_exit.btnCancelForm_Click(System.Object,System.EventArgs)">
+            <summary>
+            Controla el evento de cancelación en el ingreso de equipo.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.lblTitle">
+            <summary>
+            lblTitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.UpdatePanel1">
+            <summary>
+            UpdatePanel1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.Repeater2">
+            <summary>
+            Repeater2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.UpdatePanel2">
+            <summary>
+            UpdatePanel2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.Repeater1">
+            <summary>
+            Repeater1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.btnExecutePrint">
+            <summary>
+            btnExecutePrint control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.fs_personalData">
+            <summary>
+            fs_personalData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.msgWarn">
+            <summary>
+            msgWarn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.eqTypeSelect">
+            <summary>
+            eqTypeSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.txt_serial">
+            <summary>
+            txt_serial control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.txt_desc">
+            <summary>
+            txt_desc control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.txt_quantity">
+            <summary>
+            txt_quantity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.btnCancelForm">
+            <summary>
+            btnCancelForm control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.SqlDataSourceEquipment">
+            <summary>
+            SqlDataSourceEquipment control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.SqlDataSourceList">
+            <summary>
+            SqlDataSourceList control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_exit.SqlDataSourceListEq">
+            <summary>
+            SqlDataSourceListEq control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="T:LobbyManager.pages.equipment_form">
             <summary>
             Clase principal para el formulario de Ingreso de Equipo
@@ -237,6 +464,16 @@
         <member name="F:LobbyManager.pages.equipment_form.visitorID">
             <summary>
             Guarda el ID de visitante al que se ha de asociar el equipo ingresado.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_form.app">
+            <summary>
+            Contiene la variable de aprobacion
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.equipment_form.approved">
+            <summary>
+            Controla el flujo de aprobacion en la pantalla.
             </summary>
         </member>
         <member name="M:LobbyManager.pages.equipment_form.Page_Load(System.Object,System.EventArgs)">
@@ -454,9 +691,14 @@
             Obtiene los datos del visitante seleccionado en la variable "visitor".
             </summary>
         </member>
+        <member name="M:LobbyManager.pages.visit_termination.getImages">
+            <summary>
+            Obtiene las imagenes del visitante seleccionado en la variable "visitor".
+            </summary>
+        </member>
         <member name="M:LobbyManager.pages.visit_termination.UpdateVisitor(System.Object,System.EventArgs)">
             <summary>
-            Inserta un nuevo registro de visitante.
+            Verifica registro de visitante.
             </summary>
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
@@ -759,6 +1001,11 @@
         <member name="M:LobbyManager.pages.visitors_approve.getVisitor">
             <summary>
             Obtiene los datos del visitante seleccionado en la variable "visitor".
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_approve.getImages">
+            <summary>
+            Obtiene las imagenes del visitante seleccionado en la variable "visitor".
             </summary>
         </member>
         <member name="M:LobbyManager.pages.visitors_approve.UpdateVisitor(System.Object,System.EventArgs)">
@@ -1292,7 +1539,7 @@
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
         </member>
-        <member name="M:LobbyManager.pages.visitors.ConvertImageToBase64(System.Drawing.Bitmap)">
+        <member name="M:LobbyManager.pages.visitors.ConvertImageToBase64(System.Drawing.Bitmap,System.Int32)">
             <summary>
             Convierte un mapa de bits a formato string base64
             </summary>
@@ -1311,6 +1558,33 @@
         <member name="F:LobbyManager.pages.visitors.img_front">
             <summary>
             img_front control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors.txt_imgFront">
+            <summary>
+            txt_imgFront control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors.txt_imgBack">
+            <summary>
+            txt_imgBack control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors.txt_imgProfile">
+            <summary>
+            txt_imgProfile control.
             </summary>
             <remarks>
             Auto-generated field.

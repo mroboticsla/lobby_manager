@@ -34,6 +34,10 @@ namespace LobbyManager.pages
         /// </summary>
         public int visitor = 0;
 
+        Bitmap bmp_front = null;
+        Bitmap bmp_back = null;
+        Bitmap bmp_profile = null;
+
         /// <summary>
         /// Se ejecuta el iniciar la carga.
         /// </summary>
@@ -149,6 +153,36 @@ namespace LobbyManager.pages
                     cmd.Parameters.AddWithValue("log_user", "est01");
                     cmd.ExecuteNonQuery();
                     conn.Close();
+                }
+
+                int img_id = -1;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT isnull(MAX(img_id), 0) + 1 AS com_total FROM [tbl_img_images]";
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        img_id = int.Parse(dreader["com_total"].ToString());
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO tbl_img_images (img_id, img_visitor, img_front, img_back, img_profile) \n" +
+                                      "values (@img_id, @img_visitor, @img_front, @img_back, @img_profile)";
+                    cmd.Parameters.AddWithValue("img_id", img_id);
+                    cmd.Parameters.AddWithValue("img_visitor", vis_id);
+                    cmd.Parameters.AddWithValue("img_front", txt_imgFront.Value);
+                    cmd.Parameters.AddWithValue("img_back", txt_imgBack.Value);
+                    cmd.Parameters.AddWithValue("img_profile", txt_imgProfile.Value);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                     if (chk_addEQ.Checked)
                     {
                         visitor = vis_id;
@@ -158,7 +192,7 @@ namespace LobbyManager.pages
                     {
                         showMg = true;
                     }
-                    
+
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "showMsg", "showMsg();", true);
                     //ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "showMsg", "showMsg();", true);
                 }
@@ -214,12 +248,20 @@ namespace LobbyManager.pages
         {
             try
             {
-                Bitmap bmp_front = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
-                Bitmap bmp_back = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
-                ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + ConvertImageToBase64(bmp_front);
-                ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + ConvertImageToBase64(bmp_back);
+                bmp_front = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
+                bmp_back = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
+                bmp_profile = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-Face.bmp");
+                String front = ConvertImageToBase64(bmp_front, 5);
+                String back = ConvertImageToBase64(bmp_back, 5);
+                String profile = ConvertImageToBase64(bmp_profile, 1);
+                txt_imgFront.Value = front;
+                txt_imgBack.Value = back;
+                txt_imgProfile.Value = profile;
+                ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + front;
+                ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + back;
                 bmp_back.Dispose();
                 bmp_front.Dispose();
+                bmp_profile.Dispose();
                 String rawDoc = File.ReadAllText(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
                 String[] fields = rawDoc.Split(',');
                 txt_name.Value = fields[14];
@@ -231,6 +273,7 @@ namespace LobbyManager.pages
                 fs_visitDetails.Visible = true;
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
+                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-Face.bmp");
                 File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
             }
             catch (Exception a)
@@ -252,13 +295,13 @@ namespace LobbyManager.pages
         /// </summary>
         /// <param name="img">Mapa de Bits a convertir</param>
         /// <returns>String base64</returns>
-        private static string ConvertImageToBase64(Bitmap img)
+        private static string ConvertImageToBase64(Bitmap img, int compresion)
         {
             string _code = "";
 
             if (img != null)
             {
-                Bitmap im = new Bitmap(img, img.Width / 4, img.Height / 4);
+                Bitmap im = new Bitmap(img, img.Width / compresion, img.Height / compresion);
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 im.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] byteImage = ms.ToArray();

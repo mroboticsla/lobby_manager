@@ -5,10 +5,10 @@
         function checkVars() {
             if ((<%= returnToList.ToString().ToLower() %>))
             {
-                window.location="visitors_assign.aspx";
+                window.location="current_visits.aspx";
             }else if ((<%= addEQ.ToString().ToLower() %>))
             {
-                window.location="equipment_form.aspx?approve=true&visitor=<%= visitor.ToString().ToLower() %>";
+                window.location="equipment_exit.aspx?visitor=<%= visitor.ToString().ToLower() %>";
             }
         }
         onload=checkVars();
@@ -40,7 +40,7 @@
                                 Sus datos no han sido procesados correctamente</div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <fieldset id="fs_personalData" runat="server">
+                                <fieldset id="fs_personalData" runat="server" disabled>
                                     <h3>Datos Personales</h3>
                                     <div class="form-group">
                                         <label>Nombres</label>
@@ -77,7 +77,7 @@
                             </div>
                             <!-- /.col-lg-6 (nested) -->
                             <div class="col-lg-6">
-                                <fieldset id="fs_visitDetails" runat="server">
+                                <fieldset id="fs_visitDetails" runat="server" disabled>
                                     <h3>Detalle de la Visita</h3>
                                     <div class="form-group">
                                         <label for="reasonSelect">Motivo</label>
@@ -104,6 +104,8 @@
                                             <input runat="server" id="chk_addEQ" type="checkbox" />Ingresa equipo
                                         </label>
                                     </div>
+                                </fieldset>
+                                <fieldset runat="server">
                                     <div class="form-group">
                                         <asp:Button runat="server" class="btn btn-danger btn-lg btn-block" OnClick="UpdateVisitor" Text="Finalizar Visita"></asp:Button>
                                     </div>
@@ -139,7 +141,7 @@
                     </div>
                     <div class="modal-footer">
                         <asp:Button class="btn btn-danger" runat="server" Text="Finalizar Visita" OnClick="finishVisit" />
-                        <asp:Button class="btn btn-default" runat="server" Text="Regresar"  data-dismiss="modal" />
+                        <asp:Button class="btn btn-default" runat="server" Text="Cancelar"  data-dismiss="modal" />
                     </div>
                 </div>
             </div>
@@ -198,7 +200,7 @@
     <script type="text/javascript">
         $(function () {
             //alert("Working...");
-            if (<%= showMg.ToString().ToLower() %>) showMsg();
+            if (<%= showMg.ToString().ToLower() %>) finishMsg();
         });
 
         function finishMsg() {
