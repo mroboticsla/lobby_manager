@@ -67,6 +67,15 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.WebControls.Label lbl_visitorsCount;
         
         /// <summary>
+        /// morris_weekday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl morris_weekday;
+        
+        /// <summary>
         /// morris_doctype control.
         /// </summary>
         /// <remarks>

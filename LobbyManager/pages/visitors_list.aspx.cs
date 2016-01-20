@@ -28,7 +28,7 @@ namespace LobbyManager.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            SqlDataSourceVisitors.SelectCommand = "SELECT vis_id, vis_date, vis_department, vis_name, vis_lastname, vis_internal_contact, dep_name FROM [tbl_vis_visitors], tbl_dep_departments where dep_id = vis_department order by vis_id desc";
         }
 
         /// <summary>

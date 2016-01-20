@@ -239,7 +239,7 @@
 				        <div class="form-group">
 					        <textarea id="txt_commentDescription" runat="server" class="form-control" name="body" required="required" placeholder="Descripción..." rows="5"></textarea>
 				        </div>
-				        <asp:Button id="btn_sendComment" class="btn btn-primary pull-right" type="submit" ></asp:Button>
+				        <button id="btn_sendComment" class="btn btn-primary pull-right" type="submit" >Enviar</button>
 			        
 		        </div>
 		        <div id="feedback-tab">Comentarios</div>

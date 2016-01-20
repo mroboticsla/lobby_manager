@@ -26,6 +26,10 @@ namespace LobbyManager.pages
         /// Contiene el resultado en formato JSON para el dibujado de la gráfica de Departamentos Visitados
         /// </summary>
         public String morris_department_data = "";
+        /// <summary>
+        /// Contiene el resultado en formato JSON para el dibujado de la gráfica de visitantes por dia de la semana
+        /// </summary>
+        public String morris_weekday_data = "";
         
         /// <summary>
         /// Función que se ejcuta al iniciar la carga.
@@ -50,6 +54,7 @@ namespace LobbyManager.pages
             //read data from SQL or file
             ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "GraphDT", "GraphDT([" + morris_doctype_data + "]);", true);
             ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "GraphDP", "GraphDP([" + morris_department_data + "]);", true);
+            ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "GraphWD", "GraphWD([" + morris_weekday_data + "]);", true);
         }
 
         /// <summary>
@@ -116,6 +121,30 @@ namespace LobbyManager.pages
                             }
                             dreader2.Close();
                             conn2.Close();
+                        }
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "select distinct DATENAME(dw, vis_date) as 'day', " +
+                        "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) < convert(time, '12:00:00', 108)) as 'am', " +
+                        "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) >= convert(time, '12:00:00', 108)) as 'pm' " +
+                        "from tbl_vis_visitors a";
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    int count = 0;
+                    while (dreader.Read())
+                    {
+                        using (var conn2 = new SqlConnection(connStr))
+                        using (var cmd2 = conn2.CreateCommand())
+                        {
+                            if (count > 0) morris_weekday_data += ", ";
+                            morris_weekday_data += "{y: \"" + dreader["day"].ToString().Trim() + "\", a:\"" + dreader["am"].ToString().Trim() + "\", b:\"" + dreader["pm"].ToString().Trim() + "\"}";
+                            count++;
                         }
                     }
                     dreader.Close();
