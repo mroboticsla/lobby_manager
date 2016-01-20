@@ -6,6 +6,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAT+p+2ZYD+06Gwpoa1MtpAAAAAAACAAAAAAAQZgAAAAEAACAAAADsnzB1h0rQt1HdxotgvfPJ/ni40jQo3l1yPMCt6NBnEAAAAAAOgAAAAAIAACAAAADg6fXDpFiEyVztPFbroGfVAvR17xmvhYcLq9z455MFbIAAAAA9/sDpzMx7P/dv72SB2qa5n0J8djzhH5pHDCooReZbhhgXAt9wd8vTVI+yBRNPwEWdLyBgzspk4Jf5imduUVZeqkAgqdoYfBqNw5oebnvNwtn3X4ElX6v0KlbrOOeimn4QHgJga4i0Ho8xgYmxOn1C3lCaUtMF61ui8yW2lsuM9kAAAADSHBgPoVUMb0btIO4eMtK4pVL1AAyHehW9b8hgBWAWZorXk4KlbpJmUF2XWYKI9ltqh+Mi3LQ21ubovuX0PVYB</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACfQ4/zRTk02R1XwfTXJtXQAAAAACAAAAAAADZgAAwAAAABAAAAD4QqNsJaGyhXKKfiddjFqUAAAAAASAAACgAAAAEAAAAJr6NNqaOMpzWEh0IIJGV+CAAAAAz3NxdCOCuB1SoCSLv7kDSGGe6HRyx7eKK+cgWaM9G7U9+rwimklWdI9jhmf6Op5vj4FBVeww2v3ee4tyxZ15hUB64kC1dymCeFL4Rm5znP/+RBargmWFs+4I+SVx/qXLSzyMtzs/NGQCwvYlvIu2/+cIoV2jqn1evzbrBkUjBZ0UAAAA36cKo1B6MQwystFD97nbgTBWy/o=</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <AzureDBConnectionStrings Include="Data Source=tcp:s5whv8y78e.database.windows.net,1433;Initial Catalog=sykesvisitors_db;User Id=sykesdb@s5whv8y78e;Password=$Panterosou1tr2y" />
+    <AzureDBConnectionStrings Include="Data Source=tcp:sykesvisitors.database.windows.net,1433;Initial Catalog=sykesvisitors_db;User Id=sykes@sykesvisitors;Password=$Panterosou1tr2y" />
+  </ItemGroup>
 </Project>

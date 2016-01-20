@@ -66,7 +66,9 @@ namespace LobbyManager.pages
             {
                 morris_doctype_data = "";
                 morris_department_data = "";
+                morris_weekday_data = "";
                 string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                
                 using (var conn = new SqlConnection(connStr))
                 using (var cmd = conn.CreateCommand())
                 {
@@ -131,6 +133,8 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
+                    cmd.CommandText = "SET LANGUAGE Spanish;";
+                    cmd.ExecuteNonQuery();
                     cmd.CommandText = "select distinct DATENAME(dw, vis_date) as 'day', " +
                         "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) < convert(time, '12:00:00', 108)) as 'am', " +
                         "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) >= convert(time, '12:00:00', 108)) as 'pm' " +

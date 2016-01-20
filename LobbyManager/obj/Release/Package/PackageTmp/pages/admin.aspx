@@ -9,7 +9,7 @@
         </asp:ScriptManager>
         <asp:updatepanel id="UpdatePanel1" runat="server">
             <contenttemplate>
-                <asp:timer id="Timer1" runat="server" Interval="3000"></asp:timer>
+                <asp:timer id="GraphTimer" runat="server" Interval="3000"></asp:timer>
                 <div id="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
@@ -85,6 +85,24 @@
                                         <div class="clearfix"></div>
                                     </div>
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Flujo de Visitantes por día de la semana
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <div runat="server" id="morris_weekday"></div>
+                                            <a href="#" class="btn btn-default btn-block">Ver Detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -223,6 +241,16 @@
                 data: [<% Response.Write(morris_department_data); %>],
                 resize: true
             });
+
+            Morris.Bar({
+                element: '<%= morris_weekday.ClientID %>',
+                data: [<% Response.Write(morris_weekday_data); %>],
+                xkey: 'y',
+                ykeys: ['a', 'b'],
+                labels: ['Mañana', 'Tarde'],
+                hideHover: 'auto',
+                resize: true
+            });
         });
 
         function GraphDT(doctype) {
@@ -237,6 +265,18 @@
             Morris.Donut({
                 element: '<%= morris_department.ClientID %>',
                 data: dept,
+                resize: true
+            });
+        }
+
+        function GraphWD(dept) {
+            Morris.Bar({
+                element: '<%= morris_weekday.ClientID %>',
+                data: dept,
+                xkey: 'y',
+                ykeys: ['a', 'b'],
+                labels: ['Mañana', 'Tarde'],
+                hideHover: 'auto',
                 resize: true
             });
         }
