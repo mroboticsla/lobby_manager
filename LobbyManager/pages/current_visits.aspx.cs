@@ -20,6 +20,7 @@ namespace LobbyManager.pages
     public partial class current_visits : System.Web.UI.Page
     {
         static String html = "";
+        static String mainConnectionString = "SykesVisitorsDB";
 
         /// <summary>
         /// Se ejecuta al iniciar la carga.
@@ -103,6 +104,35 @@ namespace LobbyManager.pages
             }
 
             ExportToExcel(table);
+        }
+
+        /// <summary>
+        /// Finaliza la visita.
+        /// </summary>
+        /// <param name="sender">Objeto que llama a la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
+        [System.Web.Services.WebMethod]
+        public static void finishVisit(int visitor)
+        {
+            try
+            {
+                int vis_id = visitor;
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "UPDATE [tbl_vis_visitors] SET vis_status = @vis_status, vis_checkout = GETDATE() \n" +
+                                    "WHERE vis_id = @vis_id";
+                    cmd.Parameters.AddWithValue("vis_id", vis_id);
+                    cmd.Parameters.AddWithValue("vis_status", 0);
+
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                }
+            }
+            catch { }
         }
     }
 }

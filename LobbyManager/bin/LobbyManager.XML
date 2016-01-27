@@ -1319,18 +1319,16 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:LobbyManager.pages.current_visits.finishVisit(System.Int32)">
+            <summary>
+            Finaliza la visita.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
         <member name="F:LobbyManager.pages.current_visits.ScriptManager1">
             <summary>
             ScriptManager1 control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
-        <member name="F:LobbyManager.pages.current_visits.tableContainer">
-            <summary>
-            tableContainer control.
             </summary>
             <remarks>
             Auto-generated field.
