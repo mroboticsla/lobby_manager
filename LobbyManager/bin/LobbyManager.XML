@@ -107,6 +107,12 @@
             Actualiza las variables que conciernen al dibujado de las gráficas en la pantalla de administración del sistema.
             </summary>
         </member>
+        <member name="M:LobbyManager.pages.admin.getFromDays(System.String)">
+            <summary>
+            Obtiene el número total de visitantes registrado en los ultimos 30 dias.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:LobbyManager.pages.admin.getVisitorsCount">
             <summary>
             Obtiene el número total de visitantes registrado en el sistema.
@@ -180,6 +186,33 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="F:LobbyManager.pages.admin.lbl30">
+            <summary>
+            lbl30 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.admin.lbl7">
+            <summary>
+            lbl7 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.admin.lblToday">
+            <summary>
+            lblToday control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="F:LobbyManager.pages.admin.morris_weekday">
             <summary>
             morris_weekday control.
@@ -189,18 +222,18 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.admin.morris_doctype">
+        <member name="F:LobbyManager.pages.admin.morris_department">
             <summary>
-            morris_doctype control.
+            morris_department control.
             </summary>
             <remarks>
             Auto-generated field.
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.admin.morris_department">
+        <member name="F:LobbyManager.pages.admin.morris_doctype">
             <summary>
-            morris_department control.
+            morris_doctype control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -1630,15 +1663,6 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.visitors.docTypeSelect">
-            <summary>
-            docTypeSelect control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
         <member name="F:LobbyManager.pages.visitors.lbl_newCommentsCount">
             <summary>
             lbl_newCommentsCount control.
@@ -1678,6 +1702,15 @@
         <member name="F:LobbyManager.pages.visitors.txt_lastname">
             <summary>
             txt_lastname control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors.docTypeSelect">
+            <summary>
+            docTypeSelect control.
             </summary>
             <remarks>
             Auto-generated field.

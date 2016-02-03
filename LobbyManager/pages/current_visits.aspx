@@ -18,68 +18,68 @@
                 <h1 class="page-header">Visitas en Curso</h1>
             </div>
         </div>
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Foto</th>
-                        <th>Fecha</th>
-                        <th>Departamento</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
-                        <ItemTemplate>
-                            <tr class="gradeU">
-                                <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
-                                <td>
-                                    <img runat="server" id="img_front" src='<%# @"data:image/bmp;base64," + DataBinder.Eval(Container.DataItem, "img_profile") %>' height="48" />
-                                </td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td><%# DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[0] %></td>
-                                        </tr>
-                                        <tr>
-                                            <td><%# DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[1] + " " + DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[2] %></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <th>
-                                                <span style="color: darkblue;"><%# DataBinder.Eval(Container.DataItem, "dep_name").ToString().ToUpper() %></span>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <%# DataBinder.Eval(Container.DataItem, "vis_internal_contact").ToString().ToUpper() %>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td><%# DataBinder.Eval(Container.DataItem, "vis_name") %></td>
-                                <td><%# DataBinder.Eval(Container.DataItem, "vis_lastname") %></td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td colspan="2" style="font-size: x-small; font-weight: bold;">TAR:<%# DataBinder.Eval(Container.DataItem, "vis_visitor_card") %></td>
-                                        </tr>
-                                        <tr>
-                                            <td><%# "<button type=\"button\" class=\"btn btn-warning\" onclick=\"showDetails(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-list\"></i></button>" %></td>
-                                            <td><%# (!DataBinder.Eval(Container.DataItem, "vis_with_equipment").ToString().Equals("1")) ? "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"finishMsg(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" : "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"revEq(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" %></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Foto</th>
+                    <th>Fecha</th>
+                    <th>Departamento</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
+                    <ItemTemplate>
+                        <tr class="gradeU">
+                            <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
+                            <td>
+                                <img runat="server" id="img_front" src='<%# @"data:image/bmp;base64," + DataBinder.Eval(Container.DataItem, "img_profile") %>' height="48" />
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><%# DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[0] %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%# DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[1] + " " + DataBinder.Eval(Container.DataItem, "vis_date").ToString().Split(' ')[2] %></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <span style="color: darkblue;"><%# DataBinder.Eval(Container.DataItem, "dep_name").ToString().ToUpper() %></span>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <%# DataBinder.Eval(Container.DataItem, "vis_internal_contact").ToString().ToUpper() %>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td><%# DataBinder.Eval(Container.DataItem, "vis_name") %></td>
+                            <td><%# DataBinder.Eval(Container.DataItem, "vis_lastname") %></td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" style="font-size: x-small; font-weight: bold;">TAR:<%# DataBinder.Eval(Container.DataItem, "vis_visitor_card") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%# "<button type=\"button\" class=\"btn btn-warning\" onclick=\"showDetails(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-list\"></i></button>" %></td>
+                                        <td><%# (!DataBinder.Eval(Container.DataItem, "vis_with_equipment").ToString().Equals("1")) ? "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"finishMsg(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" : "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"revEq(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" %></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
         <div class="modal fade" id="finishDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -149,5 +149,4 @@
             window.location = "equipment_exit.aspx?visitor=" + visID;
         }
     </script>
-    
 </asp:Content>

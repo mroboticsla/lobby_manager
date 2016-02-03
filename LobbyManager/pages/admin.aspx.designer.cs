@@ -67,6 +67,33 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.WebControls.Label lbl_visitorsCount;
         
         /// <summary>
+        /// lbl30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl30;
+        
+        /// <summary>
+        /// lbl7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl7;
+        
+        /// <summary>
+        /// lblToday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblToday;
+        
+        /// <summary>
         /// morris_weekday control.
         /// </summary>
         /// <remarks>
@@ -76,15 +103,6 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl morris_weekday;
         
         /// <summary>
-        /// morris_doctype control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl morris_doctype;
-        
-        /// <summary>
         /// morris_department control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace LobbyManager.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl morris_department;
+        
+        /// <summary>
+        /// morris_doctype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl morris_doctype;
         
         /// <summary>
         /// Repeater2 control.

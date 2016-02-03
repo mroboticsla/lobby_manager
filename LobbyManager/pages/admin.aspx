@@ -9,7 +9,7 @@
         </asp:ScriptManager>
         <asp:updatepanel id="UpdatePanel1" runat="server">
             <contenttemplate>
-                <asp:timer id="GraphTimer" runat="server" Interval="3000"></asp:timer>
+                <asp:timer id="GraphTimer" runat="server" Interval="30000"></asp:timer>
                 <div id="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
@@ -90,59 +90,112 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-4 col-md-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>Flujo de Visitantes por día de la semana
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-archive fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <asp:Label ID="lbl30" runat="server" Text="0"></asp:Label>
+                                            </div>
+                                            <div>Visitas de los últimos 30 días</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-folder-o fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <asp:Label ID="lbl7" runat="server" Text="0"></asp:Label>
+                                            </div>
+                                            <div>Visitas de los últimos 7 días</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-file-o fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">
+                                                <asp:Label ID="lblToday" runat="server" Text="0"></asp:Label>
+                                            </div>
+                                            <div>Visitas el día de hoy</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Visitantes por día de la semana
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_weekday"></div>
-                                            <a href="#" class="btn btn-default btn-block">Ver Detalles</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>Registro Global de Visitantes por Tipo de Documento
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="panel-body">
-                                            <div runat="server" id="morris_doctype"></div>
-                                            <a href="#" class="btn btn-default btn-block">Ver Detalles</a>
+                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="panel panel-default">
+                        <div class="col-lg-4">
+                            <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>Registro Global de Visitantes por Departamento
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Visitantes por Departamento
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_department"></div>
-                                            <a href="#" class="btn btn-default btn-block">Ver Detalles</a>
+                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
+                        <div class="col-lg-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Tipos de Documento
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <div runat="server" id="morris_doctype"></div>
+                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="panel panel-success">
                                 <div class="panel-heading">
                                     <i class="fa fa-bell fa-fw"></i>Visor de Notificaciones
                        
@@ -160,7 +213,7 @@
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </div>
-                                    <a href="#" class="btn btn-default btn-block">Ver todas las notificaciones</a>
+                                    <a href="#" class="btn btn-info btn-block">Ver todas las notificaciones</a>
                                 </div>
                             </div>
                         </div>

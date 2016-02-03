@@ -40,6 +40,9 @@ namespace LobbyManager.pages
         {
             lbl_newCommentsCount.Text = getNewComCount();
             lbl_visitorsCount.Text = getVisitorsCount();
+            lbl30.Text = getFromDays("30");
+            lbl7.Text = getFromDays("7");
+            lblToday.Text = getFromDays("1");
             GetGraphData();
             GraphTimer.Tick +=GraphTimer_Tick;
         }
@@ -159,6 +162,38 @@ namespace LobbyManager.pages
             {
                 Response.Write(a.Message);
             }
+        }
+
+        /// <summary>
+        /// Obtiene el número total de visitantes registrado en los ultimos 30 dias.
+        /// </summary>
+        /// <returns></returns>
+        public String getFromDays(String days)
+        {
+            String _result = "";
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT isnull(count(*), 0) AS com_total FROM [tbl_vis_visitors] WHERE vis_date >= DATEADD(day,-" + days + ",GETDATE())";
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        _result = dreader["com_total"].ToString();
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+            }
+            catch (Exception a)
+            {
+                Response.Write(a.Message);
+            }
+
+            return _result;
         }
 
         /// <summary>
