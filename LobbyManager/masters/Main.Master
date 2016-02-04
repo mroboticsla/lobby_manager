@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="LobbyManager.Main"  %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="LobbyManager.Main" %>
 
 <!DOCTYPE html>
 
@@ -198,25 +198,16 @@
                                     <a href="admin.aspx">Consola de Administración</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tipos de Documentos</a>
+                                    <a href="documents_form.aspx">Tipos de Documentos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Departamentos</a>
+                                    <a href="departments_form.aspx">Departamentos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Motivos de Visita</a>
+                                    <a href="comments_list.aspx">Historial de Comentarios</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tipos de Equipo</a>
-                                </li>
-                                <li>
-                                    <a href="#">Personal por Departamento</a>
-                                </li>
-                                <li>
-                                    <a href="#">Historial de Comentarios</a>
-                                </li>
-                                <li>
-                                    <a href="#">Historial de Errores</a>
+                                    <a href="errors_list.aspx">Historial de Errores</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -228,22 +219,25 @@
 
         <div id="page-wrapper">
             <div id="feedback">
-		        <div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
-			        
-				        <div class="form-group">
-					        <select id="cb_commentType" runat="server" class="form-control">
+                <div id="feedback-form" class="col-xs-4 col-md-4 panel panel-primary" style="display: none;">
+                    <div class="panel-heading">
+                        Envío de Comentarios
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <select id="cb_commentType" runat="server" class="form-control">
                                 <option value="1">Comentario</option>
                                 <option value="2">Error</option>
                             </select>
-				        </div>
-				        <div class="form-group">
-					        <textarea id="txt_commentDescription" runat="server" class="form-control" name="body" required="required" placeholder="Descripción..." rows="5"></textarea>
-				        </div>
-				        <button id="btn_sendComment" class="btn btn-primary pull-right" type="submit" >Enviar</button>
-			        
-		        </div>
-		        <div id="feedback-tab">Comentarios</div>
-	        </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="txt_commentDescription" runat="server" class="form-control" name="body" required="required" placeholder="Descripción..." rows="5"></textarea>
+                            <button id="btn_sendComment" class="btn btn-primary pull-right" style="margin-top: 5px;" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="feedback-tab">Comentarios</div>
+            </div>
             <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>

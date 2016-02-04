@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="visitors_list.aspx">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Detalles</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="errors_list.aspx">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Detalles</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -135,7 +135,7 @@
                                             <div class="huge">
                                                 <asp:Label ID="lblToday" runat="server" Text="0"></asp:Label>
                                             </div>
-                                            <div>Visitas el día de hoy</div>
+                                            <div>Visitas en las últimas 24 horas</div>
                                         </div>
                                     </div>
                                 </div>

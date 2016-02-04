@@ -93,7 +93,7 @@ namespace LobbyManager.pages
                 table.Columns.Add(header);
             }
 
-            var rows = nodes.Skip(1).Select(tr => tr
+            var rows = nodes.Select(tr => tr
                 .Elements("td")
                 .Select(td => td.InnerText.Trim())
                 .ToArray());

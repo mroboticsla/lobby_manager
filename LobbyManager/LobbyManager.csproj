@@ -868,8 +868,12 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\errors_list.aspx" />
+    <Content Include="pages\departments_form.aspx" />
     <Content Include="pages\equipment_exit.aspx" />
+    <Content Include="pages\documents_form.aspx" />
     <Content Include="pages\equipment_form.aspx" />
+    <Content Include="pages\comments_list.aspx" />
     <Content Include="pages\visit_termination.aspx" />
     <Content Include="pages\visitors_approve.aspx" />
     <Content Include="pages\current_visits.aspx" />
@@ -895,6 +899,20 @@
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\errors_list.aspx.cs">
+      <DependentUpon>errors_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\errors_list.aspx.designer.cs">
+      <DependentUpon>errors_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\departments_form.aspx.cs">
+      <DependentUpon>departments_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\departments_form.aspx.designer.cs">
+      <DependentUpon>departments_form.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\equipment_exit.aspx.cs">
       <DependentUpon>equipment_exit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -902,12 +920,26 @@
     <Compile Include="pages\equipment_exit.aspx.designer.cs">
       <DependentUpon>equipment_exit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\documents_form.aspx.cs">
+      <DependentUpon>documents_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\documents_form.aspx.designer.cs">
+      <DependentUpon>documents_form.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\equipment_form.aspx.cs">
       <DependentUpon>equipment_form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\equipment_form.aspx.designer.cs">
       <DependentUpon>equipment_form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\comments_list.aspx.cs">
+      <DependentUpon>comments_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\comments_list.aspx.designer.cs">
+      <DependentUpon>comments_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visit_termination.aspx.cs">
       <DependentUpon>visit_termination.aspx</DependentUpon>
