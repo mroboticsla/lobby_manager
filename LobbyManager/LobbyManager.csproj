@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,6 +76,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -401,6 +404,7 @@
     <Content Include="bower_components\raphael\.bower.json" />
     <Content Include="bower_components\raphael\bower.json" />
     <Content Include="css\feedback.css" />
+    <Content Include="ImageCollector.svc" />
     <Content Include="js\feedback.js" />
     <Content Include="less\mixins.less" />
     <Content Include="less\sb-admin-2.less" />
@@ -885,6 +889,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IImageCollector.cs" />
+    <Compile Include="ImageCollector.svc.cs">
+      <DependentUpon>ImageCollector.svc</DependentUpon>
+    </Compile>
     <Compile Include="masters\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

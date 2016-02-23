@@ -4,6 +4,25 @@
         <name>LobbyManager</name>
     </assembly>
     <members>
+        <member name="T:LobbyManager.IImageCollector">
+            <summary>
+            Images controller Web Service
+            </summary>
+        </member>
+        <member name="M:LobbyManager.IImageCollector.DoWork">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:LobbyManager.IImageCollector.SaveImages(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Save images on temp table as a base 64 String
+            </summary>
+            <param name="desk"></param>
+            <param name="front"></param>
+            <param name="back"></param>
+            <param name="profile"></param>
+        </member>
         <member name="T:LobbyManager.Main">
             <summary>
             Archivo "Master" a utilizar por las páginas de contenido y formularios en la aplicación. Ésta página contiene la definición de los contenedores, administración de notificaciones, mensajería, publicación de comentarios,detalles y opciones de usuario entre otros.

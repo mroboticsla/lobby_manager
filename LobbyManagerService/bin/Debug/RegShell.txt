@@ -1,0 +1,1 @@
+sc.exe create LobbyManagerImageService binPath="<path-to-bin>"
