@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>No. de Documento</label>
-                                        <input runat="server" id="txt_docnumber" class="form-control" placeholder="12345678-9" />
+                                        <input runat="server" id="txt_docnumber" class="form-control" placeholder="" />
                                     </div>
                                     <div class="form-group">
                                         <label>Empresa</label>
@@ -67,11 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Teléfono de Contacto</label>
-                                        <input runat="server" id="txt_phone" class="form-control" placeholder="(503)2222-2222" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Fecha de Ingreso</label>
-                                        <p runat="server" id="lbl_date" class="form-control-static"><%= DateTime.Now.ToLocalTime() %></p>
+                                        <input runat="server" id="txt_phone" class="form-control" placeholder="" />
                                     </div>
                                 </fieldset>
                             </div>
@@ -87,7 +83,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="descriptionText">Descripción</label>
-                                        <textarea class="form-control" runat="server" id="txt_description" placeholder="Objetivo de la visita" />
+                                        <textarea class="form-control" runat="server" id="txt_description" placeholder="" />
                                     </div>
                                     <div class="form-group">
                                         <label for="deptSelect">Departamento</label>
@@ -97,7 +93,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="contactText">Contacto</label>
-                                        <input runat="server" class="form-control" id="txt_contact" type="text" placeholder="Nombre del contacto interno" />
+                                        <input runat="server" class="form-control" id="txt_contact" type="text" placeholder="" />
                                     </div>
                                     <div class="checkbox">
                                         <label>

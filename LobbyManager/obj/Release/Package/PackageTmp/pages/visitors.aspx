@@ -41,28 +41,6 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <fieldset id="fs_images" runat="server">
-                                    <div class="col-lg-12 col-md-6">
-                                        <div class="panel panel-yellow">
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-2">
-                                                        <i class="fa fa-arrow-circle-o-right fa-5x"></i>
-                                                    </div>
-                                                    <div class="col-xs-9 text-center">
-                                                        <div class="h2">
-                                                            Seleccione un Tipo de Documento
-                                                        </div>
-                                                        <div class="huge">
-                                                            <asp:DropDownList runat="server" ID="docTypeSelect" class="form-control"
-                                                                DataSourceID="SqlDataSourceDocuments" DataValueField="doc_id" DataTextField="doc_name">
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <a data-toggle="modal" href="#imagesDlg">
                                         <div class="col-lg-12 col-md-6">
                                             <div class="panel panel-green">
@@ -73,7 +51,7 @@
                                                         </div>
                                                         <div class="col-xs-9 text-center">
                                                             <div class="huge">
-                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Importar imágenes"></asp:Label>
+                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Iniciar con Documento"></asp:Label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -92,7 +70,7 @@
                                                         </div>
                                                         <div class="col-xs-9 text-center">
                                                             <div class="huge">
-                                                                <asp:Label ID="Label1" runat="server" Text="No tengo documento"></asp:Label>
+                                                                <asp:Label ID="Label1" runat="server" Text="Iniciar sin documento"></asp:Label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -110,6 +88,12 @@
                                     <div class="form-group">
                                         <label>Apellidos</label>
                                         <input runat="server" id="txt_lastname" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tipo de Documento</label>
+                                        <asp:DropDownList runat="server" ID="docTypeSelect" class="form-control"
+                                            DataSourceID="SqlDataSourceDocuments" DataValueField="doc_id" DataTextField="doc_name">
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label>No. de Documento</label>
@@ -160,7 +144,7 @@
                                         </label>
                                     </div>
                                     <asp:Button runat="server" class="btn btn-primary" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
-                                    <button type="reset" class="btn btn-default">Cancelar</button>
+                                    <button type="reset" class="btn btn-danger" onclick="cancelProc();">Cancelar</button>
                                 </fieldset>
                             </div>
                         </div>
@@ -200,22 +184,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Importar desde escáner</h4>
+                        <h4 class="modal-title" id="myModalLabel">Iniciar Visita</h4>
                     </div>
                     <div class="modal-body">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Imágenes disponibles
+                                Prepare su documento de identidad...
                             </div>
                             <div class="panel-body">
                                 <div class="dataTable_wrapper">
-                                    Por favor, haga el escaneo del documento antes de contniuar.
+                                    Por favor, realice el escaneo de su documento de identidad y luego haga clic en "Continuar"
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button class="btn btn-primary" runat="server" Text="Importar imágenes" OnClick="ImportImages" />
+                        <asp:Button class="btn btn-primary" runat="server" Text="Continuar" OnClick="ImportImages" />
                     </div>
                 </div>
             </div>
@@ -267,8 +251,13 @@
             //alert("Working...");
             if (<%= showMg.ToString().ToLower() %>) showMsg();
         });
+
         function showMsg() {
             $('#completeDlg').modal('show');
+        }
+
+        function cancelProc() {
+            window.location = "visitors.aspx";
         }
     </script>
 </asp:Content>

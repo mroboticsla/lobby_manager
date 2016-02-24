@@ -410,6 +410,7 @@
     <Content Include="less\sb-admin-2.less" />
     <Content Include="less\variables.less" />
     <Content Include="masters\Main.Master" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

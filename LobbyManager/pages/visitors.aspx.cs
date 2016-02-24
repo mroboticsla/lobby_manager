@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -246,47 +247,82 @@ namespace LobbyManager.pages
         /// <param name="e">Evento Ejecutado</param>
         public void ImportImages(object sender, EventArgs e)
         {
+            Boolean loaded = false;
+            string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
             try
             {
-                bmp_front = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
-                bmp_back = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
-                bmp_profile = new Bitmap(@"C:\MRobotics\LobbyManager\Client\IMG-A-Face.bmp");
-                String front = ConvertImageToBase64(bmp_front, 5);
-                String back = ConvertImageToBase64(bmp_back, 5);
-                String profile = ConvertImageToBase64(bmp_profile, 1);
-                txt_imgFront.Value = front;
-                txt_imgBack.Value = back;
-                txt_imgProfile.Value = profile;
-                ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + front;
-                ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + back;
-                bmp_back.Dispose();
-                bmp_front.Dispose();
-                bmp_profile.Dispose();
-                String rawDoc = File.ReadAllText(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
-                String[] fields = rawDoc.Split(',');
-                txt_name.Value = fields[14];
-                txt_lastname.Value = fields[16];
-                txt_docnumber.Value = fields[0];
-                images.Visible = true;
-                fs_images.Visible = false;
-                fs_personalData.Visible = true;
-                fs_visitDetails.Visible = true;
-                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.bmp");
-                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-back.bmp");
-                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A-Face.bmp");
-                File.Delete(@"C:\MRobotics\LobbyManager\Client\IMG-A.txt");
+                int counter = 0;
+                while (counter < 5)
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "SELECT * FROM tbl_temp_images WHERE temp_desk = @temp_desk";
+                        cmd.Parameters.AddWithValue("temp_desk", "PC01");
+                        SqlDataReader dreader = cmd.ExecuteReader();
+                        if (dreader.Read())
+                        {
+                            String front = dreader["temp_front"].ToString();
+                            String back = dreader["temp_back"].ToString();
+                            String profile = dreader["temp_profile"].ToString();
+                            String rawDoc = dreader["temp_ocr"].ToString();
+
+                            txt_imgFront.Value = front;
+                            txt_imgBack.Value = back;
+                            txt_imgProfile.Value = profile;
+
+                            ((HtmlImage)img_front).Src = @"data:image/bmp;base64," + front;
+                            ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + back;
+
+                            String[] fields = rawDoc.Split(',');
+                            txt_name.Value = fields[14];
+                            txt_lastname.Value = fields[16];
+                            txt_docnumber.Value = fields[0];
+                            images.Visible = true;
+                            fs_images.Visible = false;
+                            fs_personalData.Visible = true;
+                            fs_visitDetails.Visible = true;
+
+                            loaded = true;
+                        }
+                        dreader.Close();
+                        conn.Close();
+                        if (loaded) break;
+                        counter++;
+                        Thread.Sleep(1500);
+                    }
+                }
             }
             catch (Exception a)
             {
-                images.Visible = false;
-                fs_personalData.Visible = false;
-                fs_visitDetails.Visible = false;
-                fs_images.Visible = true;
-                txt_name.Value = "No se ha cargado el documento";
-                txt_lastname.Value = "";
-                txt_docnumber.Value = "";
                 Response.Write(a.Message);
-                msgWarn.Visible = true;
+            }
+            finally
+            {
+                if (!loaded)
+                {
+                    images.Visible = false;
+                    fs_personalData.Visible = false;
+                    fs_visitDetails.Visible = false;
+                    fs_images.Visible = true;
+                    txt_name.Value = "No se ha cargado el documento";
+                    txt_lastname.Value = "";
+                    txt_docnumber.Value = "";
+                    msgWarn.Visible = true;
+                }
+                else
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "DELETE FROM tbl_temp_images WHERE temp_desk = @temp_desk";
+                        cmd.Parameters.AddWithValue("temp_desk", "PC01");
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
             }
         }
 

@@ -16,3 +16,5 @@ C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Release\LobbyManager.csprojResolveAssemblyReference.cache
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Release\LobbyManager.dll
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManager\obj\Release\LobbyManager.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\bin\HtmlAgilityPack.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\bin\Interop.bpac.dll

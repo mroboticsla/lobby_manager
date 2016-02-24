@@ -87,6 +87,7 @@
                             <div  style="float: right; margin-top: 10px;">
                                 <asp:Button class="btn" runat="server" Text="Imprimir Viñetas" OnClick="btnExecutePrint_Click" ID="btnExecutePrint" />
                                 <button type="button" class="btn btn-success" onclick="finishProc();">Finalizar</button>
+                                <button type="button" class="btn btn-danger" onclick="cancelProc();">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -223,6 +224,10 @@
 
         function finishProc() {
             window.location = "visit_termination.aspx?visitor=<%= visitorID.ToString().ToLower() %>&finish=true";
+        }
+
+        function cancelProc() {
+            window.location = "current_visits.aspx";
         }
     </script>
 </asp:Content>
