@@ -23,7 +23,10 @@ namespace LobbyManager
         /// <param name="e">Evento ejecutado</param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["usr_id"] == null)
+            {
+                Response.Redirect("login.aspx", true);
+            }
         }
 
         /// <summary>

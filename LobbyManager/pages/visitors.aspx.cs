@@ -147,11 +147,12 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "INSERT INTO [tbl_log_events] (log_id, log_notification, log_user, log_date) \n" +
-                                      "values (@log_id, @log_notification, @log_user, GETDATE())";
+                    cmd.CommandText = "INSERT INTO [tbl_log_events] (log_id, log_notification, log_user, log_date, log_visitor_record) \n" +
+                                      "values (@log_id, @log_notification, @log_user, GETDATE(), @log_visitor_record)";
                     cmd.Parameters.AddWithValue("log_id", log_id);
                     cmd.Parameters.AddWithValue("log_notification", vrs_notification_type);
-                    cmd.Parameters.AddWithValue("log_user", "est01");
+                    cmd.Parameters.AddWithValue("log_user", Session["usr_device"].ToString());
+                    cmd.Parameters.AddWithValue("log_visitor_record", vis_id);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
@@ -259,7 +260,7 @@ namespace LobbyManager.pages
                     {
                         conn.Open();
                         cmd.CommandText = "SELECT * FROM tbl_temp_images WHERE temp_desk = @temp_desk";
-                        cmd.Parameters.AddWithValue("temp_desk", "PC01");
+                        cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
                         SqlDataReader dreader = cmd.ExecuteReader();
                         if (dreader.Read())
                         {
@@ -318,7 +319,7 @@ namespace LobbyManager.pages
                     {
                         conn.Open();
                         cmd.CommandText = "DELETE FROM tbl_temp_images WHERE temp_desk = @temp_desk";
-                        cmd.Parameters.AddWithValue("temp_desk", "PC01");
+                        cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }

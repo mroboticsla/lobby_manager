@@ -410,6 +410,7 @@
     <Content Include="less\sb-admin-2.less" />
     <Content Include="less\variables.less" />
     <Content Include="masters\Main.Master" />
+    <Content Include="masters\Mobile.Master" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Web.Debug.config">
@@ -880,6 +881,7 @@
     <Content Include="pages\equipment_form.aspx" />
     <Content Include="pages\comments_list.aspx" />
     <Content Include="pages\login.aspx" />
+    <Content Include="pages\visitors_mobile.aspx" />
     <Content Include="pages\visit_termination.aspx" />
     <Content Include="pages\visitors_approve.aspx" />
     <Content Include="pages\current_visits.aspx" />
@@ -894,6 +896,13 @@
     <Compile Include="IImageCollector.cs" />
     <Compile Include="ImageCollector.svc.cs">
       <DependentUpon>ImageCollector.svc</DependentUpon>
+    </Compile>
+    <Compile Include="masters\Mobile.Master.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masters\Mobile.Master.designer.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="masters\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -957,6 +966,13 @@
     </Compile>
     <Compile Include="pages\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\visitors_mobile.aspx.cs">
+      <DependentUpon>visitors_mobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\visitors_mobile.aspx.designer.cs">
+      <DependentUpon>visitors_mobile.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visit_termination.aspx.cs">
       <DependentUpon>visit_termination.aspx</DependentUpon>

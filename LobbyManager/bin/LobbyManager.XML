@@ -23,6 +23,45 @@
             <param name="back"></param>
             <param name="profile"></param>
         </member>
+        <member name="T:LobbyManager.Mobile">
+            <summary>
+            Archivo "Master" a utilizar por las páginas de contenido y formularios en la aplicación. Ésta página contiene la definición de los contenedores, administración de notificaciones, mensajería, publicación de comentarios,detalles y opciones de usuario entre otros.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.Mobile.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Funnción ejecutada al iniciar la carga del templete.
+            </summary>
+            <param name="sender">Objeto que llama a la accíón</param>
+            <param name="e">Evento ejecutado</param>
+        </member>
+        <member name="F:LobbyManager.Mobile.Head">
+            <summary>
+            Head control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.Mobile.MainHolder">
+            <summary>
+            MainHolder control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.Mobile.Footer">
+            <summary>
+            Footer control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="T:LobbyManager.Main">
             <summary>
             Archivo "Master" a utilizar por las páginas de contenido y formularios en la aplicación. Ésta página contiene la definición de los contenedores, administración de notificaciones, mensajería, publicación de comentarios,detalles y opciones de usuario entre otros.
@@ -1203,6 +1242,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:LobbyManager.pages.login.DoLogin(System.Object,System.EventArgs)">
+            <summary>
+            Función que inicia el proceso de verificación de usuario
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:LobbyManager.pages.login.ScriptManager1">
             <summary>
             ScriptManager1 control.
@@ -1212,9 +1258,45 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.login.machineLabel">
+        <member name="F:LobbyManager.pages.login.msgError">
             <summary>
-            machineLabel control.
+            msgError control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.txt_usr">
+            <summary>
+            txt_usr control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.txt_pwd">
+            <summary>
+            txt_pwd control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.btn_login">
+            <summary>
+            btn_login control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.txt_device">
+            <summary>
+            txt_device control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -1224,6 +1306,318 @@
         <member name="F:LobbyManager.pages.login.SqlDataSourceVisitors">
             <summary>
             SqlDataSourceVisitors control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:LobbyManager.pages.visitors_mobile">
+            <summary>
+            Clase principal de la página de registro de visitantes.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.showMg">
+            <summary>
+            Establece si se deberá presentar el mensaje de finalización del proceso.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.addEQ">
+            <summary>
+            Establece si el destino procede a la página para agregar equipo.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.visitor">
+            <summary>
+            Contiene el ID del visitante.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Se ejecuta el iniciar la carga.
+            </summary>
+            <param name="sender">Objecto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.InsertVisitor(System.Object,System.EventArgs)">
+            <summary>
+            Inserta un nuevo registro de visitante.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.CleanForm">
+            <summary>
+            Limpia el formulario de ingreso de visitantes.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.NoDocumentDemo(System.Object,System.EventArgs)">
+            <summary>
+            Ejecuta el ingreso de datos sin validar el escaneo de documentos.
+            </summary>
+            <param name="sender">Objeto que llama la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.ImportImages(System.Object,System.EventArgs)">
+            <summary>
+            Ejecuta la importación de imágenes al formulario de ingreso de datos para nuevos visitantes
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.visitors_mobile.ConvertImageToBase64(System.Drawing.Bitmap,System.Int32)">
+            <summary>
+            Convierte un mapa de bits a formato string base64
+            </summary>
+            <param name="img">Mapa de Bits a convertir</param>
+            <returns>String base64</returns>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.images">
+            <summary>
+            images control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.img_front">
+            <summary>
+            img_front control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_imgFront">
+            <summary>
+            txt_imgFront control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_imgBack">
+            <summary>
+            txt_imgBack control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_imgProfile">
+            <summary>
+            txt_imgProfile control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.img_back">
+            <summary>
+            img_back control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.msgWarn">
+            <summary>
+            msgWarn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.fs_images">
+            <summary>
+            fs_images control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.lbl_newCommentsCount">
+            <summary>
+            lbl_newCommentsCount control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.Label1">
+            <summary>
+            Label1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.fs_personalData">
+            <summary>
+            fs_personalData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_name">
+            <summary>
+            txt_name control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_lastname">
+            <summary>
+            txt_lastname control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.docTypeSelect">
+            <summary>
+            docTypeSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_docnumber">
+            <summary>
+            txt_docnumber control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_company">
+            <summary>
+            txt_company control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_phone">
+            <summary>
+            txt_phone control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.lbl_date">
+            <summary>
+            lbl_date control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.fs_visitDetails">
+            <summary>
+            fs_visitDetails control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.reasonSelect">
+            <summary>
+            reasonSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_description">
+            <summary>
+            txt_description control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.deptSelect">
+            <summary>
+            deptSelect control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.txt_contact">
+            <summary>
+            txt_contact control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.chk_addEQ">
+            <summary>
+            chk_addEQ control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.SqlDataSourceDocuments">
+            <summary>
+            SqlDataSourceDocuments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.SqlDataSourceReasons">
+            <summary>
+            SqlDataSourceReasons control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.SqlDataSourceDepartments">
+            <summary>
+            SqlDataSourceDepartments control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.SqlDataSourceComments">
+            <summary>
+            SqlDataSourceComments control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -1410,15 +1804,6 @@
         <member name="F:LobbyManager.pages.visit_termination.txt_phone">
             <summary>
             txt_phone control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
-        <member name="F:LobbyManager.pages.visit_termination.lbl_date">
-            <summary>
-            lbl_date control.
             </summary>
             <remarks>
             Auto-generated field.

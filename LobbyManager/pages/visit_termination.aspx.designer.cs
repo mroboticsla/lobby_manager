@@ -112,15 +112,6 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_phone;
         
         /// <summary>
-        /// lbl_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_date;
-        
-        /// <summary>
         /// fs_visitDetails control.
         /// </summary>
         /// <remarks>
