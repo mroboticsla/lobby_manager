@@ -1191,6 +1191,45 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="T:LobbyManager.pages.login">
+            <summary>
+            Clase principal para la pantalla de Histórico de Visitantes
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.login.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Función que se ejecuta al inicar la carga.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:LobbyManager.pages.login.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.machineLabel">
+            <summary>
+            machineLabel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.login.SqlDataSourceVisitors">
+            <summary>
+            SqlDataSourceVisitors control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="T:LobbyManager.pages.visit_termination">
             <summary>
             Clase principal de la página de aprobación de visitantes.

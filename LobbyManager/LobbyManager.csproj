@@ -879,6 +879,7 @@
     <Content Include="pages\documents_form.aspx" />
     <Content Include="pages\equipment_form.aspx" />
     <Content Include="pages\comments_list.aspx" />
+    <Content Include="pages\login.aspx" />
     <Content Include="pages\visit_termination.aspx" />
     <Content Include="pages\visitors_approve.aspx" />
     <Content Include="pages\current_visits.aspx" />
@@ -949,6 +950,13 @@
     </Compile>
     <Compile Include="pages\comments_list.aspx.designer.cs">
       <DependentUpon>comments_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visit_termination.aspx.cs">
       <DependentUpon>visit_termination.aspx</DependentUpon>
