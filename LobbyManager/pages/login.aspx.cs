@@ -34,23 +34,41 @@ namespace LobbyManager.pages
             String strHostName = "";
             try
             {
-                strHostName = Dns.GetHostName();
-                //MessageBox.Show(strHostName.ToString());
-                IPHostEntry ipEntry = Dns.GetHostEntry(strHostName);
-                IPAddress[] addr = ipEntry.AddressList;
-
-                for (int i = 0; i < addr.Length; i++)
-                {
-                    //MessageBox.Show(addr[i].ToString());
-                }
-
-                txt_device.Text = "Device: " + strHostName;
-                Session["usr_device"] = strHostName;
+                string[] computer_name = System.Net.Dns.GetHostEntry(Request.ServerVariables["remote_addr"]).HostName.Split(new Char[] { '.' });
+                String ecn = System.Environment.MachineName;
+                strHostName = computer_name[0].ToString();
             }
             catch
             {
-                txt_device.Text = "Device: N/A";
+                if (Request.Cookies["LobbyManagerSettings"] != null)
+                {
+                    if (Request.Cookies["LobbyManagerSettings"]["Device"] != null)
+                    {
+                        strHostName = Request.Cookies["LobbyManagerSettings"]["Device"]; 
+                    }
+                }
+                else
+                {
+                    HttpCookie lobbyCookie = new HttpCookie("LobbyManagerSettings");
+                    lobbyCookie["Device"] = "DEV" + DateTime.Now.GetHashCode();
+                    lobbyCookie.Expires = DateTime.Now.AddDays(1095d);
+                    Response.Cookies.Add(lobbyCookie);
+
+                    if (Request.Cookies["LobbyManagerSettings"] != null)
+                    {
+                        if (Request.Cookies["LobbyManagerSettings"]["Device"] != null)
+                        {
+                            strHostName = Request.Cookies["LobbyManagerSettings"]["Device"];
+                        }
+                    }
+                }
             }
+            finally
+            {
+                txt_device.Text = "Device: " + strHostName;
+                Session["usr_device"] = strHostName;
+            }
+
             Boolean isClient = false;
             Boolean isStation = false;
             string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;

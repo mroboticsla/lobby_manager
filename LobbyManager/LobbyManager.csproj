@@ -874,6 +874,8 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\clients_form.aspx" />
+    <Content Include="pages\stations_form.aspx" />
     <Content Include="pages\errors_list.aspx" />
     <Content Include="pages\departments_form.aspx" />
     <Content Include="pages\equipment_exit.aspx" />
@@ -917,6 +919,20 @@
     </Compile>
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\clients_form.aspx.cs">
+      <DependentUpon>clients_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\clients_form.aspx.designer.cs">
+      <DependentUpon>clients_form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\stations_form.aspx.cs">
+      <DependentUpon>stations_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\stations_form.aspx.designer.cs">
+      <DependentUpon>stations_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\errors_list.aspx.cs">
       <DependentUpon>errors_list.aspx</DependentUpon>

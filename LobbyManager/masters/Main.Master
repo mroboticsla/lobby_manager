@@ -199,6 +199,12 @@
                                     <a href="admin.aspx">Consola de Administración</a>
                                 </li>
                                 <li>
+                                    <a href="stations_form.aspx">Estaciones</a>
+                                </li>
+                                <li>
+                                    <a href="clients_form.aspx">Móviles</a>
+                                </li>
+                                <li>
                                     <a href="documents_form.aspx">Tipos de Documentos</a>
                                 </li>
                                 <li>

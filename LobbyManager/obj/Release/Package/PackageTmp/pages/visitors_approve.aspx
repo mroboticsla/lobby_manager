@@ -29,17 +29,17 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" runat="server" id="images">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
                             </div>
                         </div>
                         <div class="alert alert-warning" id="msgWarn" runat="server">
                                 Sus datos no han sido procesados correctamente</div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <fieldset id="fs_personalData" runat="server">
                                     <h3>Datos Personales</h3>
                                     <div class="form-group">
@@ -76,7 +76,7 @@
                                 </fieldset>
                             </div>
                             <!-- /.col-lg-6 (nested) -->
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <fieldset id="fs_visitDetails" runat="server">
                                     <h3>Detalle de la Visita</h3>
                                     <div class="form-group">

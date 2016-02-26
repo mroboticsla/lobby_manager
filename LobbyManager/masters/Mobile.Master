@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
 
     <title>LobbyManager®</title>
 
@@ -62,6 +64,8 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-
+    <script type="text/javascript">
+        document.documentElement.requestFullscreen();
+    </script>
 </body>
 </html>

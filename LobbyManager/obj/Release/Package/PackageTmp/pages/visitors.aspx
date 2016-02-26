@@ -14,35 +14,35 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h1 class="page-header">Registro de Visitantes</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Formulario para Visitantes
                     </div>
                     <div class="panel-body">
                         <div class="row" runat="server" id="images">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
                                 <input type="hidden" runat="server" id="txt_imgFront" />
                                 <input type="hidden" runat="server" id="txt_imgBack" />
                                 <input type="hidden" runat="server" id="txt_imgProfile" />
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
                             </div>
                         </div>
                         <div class="alert alert-warning" id="msgWarn" runat="server">
                                 Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a></div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <fieldset id="fs_images" runat="server">
                                     <a data-toggle="modal" href="#imagesDlg">
-                                        <div class="col-lg-12 col-md-6">
+                                        <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
                                                     <div class="row">
@@ -61,7 +61,7 @@
                                     </a>
 
                                     <a data-toggle="modal" href="#noDocDlg">
-                                        <div class="col-lg-12 col-md-6">
+                                        <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-red">
                                                 <div class="panel-heading">
                                                     <div class="row">
@@ -79,6 +79,10 @@
                                         </div>
                                     </a>
                                 </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
                                 <fieldset id="fs_personalData" runat="server">
                                     <h3>Datos Personales</h3>
                                     <div class="form-group">

@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mobile.Master.cs" Inherits="LobbyManager.Mobile" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <title>LobbyManager®</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
+    <link href="../dist/css/timeline.css" rel="stylesheet" />
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet" />
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet" />
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet" />
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/feedback.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Ocultar/Mostrar Panel</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="login.aspx">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="../images/sykeslogo.png" height="36" />
+                        </td>
+                        <td class="fa-align-center">Control de Visitantes - LobbyManager®</td>
+                    </tr>
+                </table>
+            </a>
+        </div>
+    </nav>
+    <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
+
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        document.documentElement.requestFullscreen();
+    </script>
+</body>
+</html>
