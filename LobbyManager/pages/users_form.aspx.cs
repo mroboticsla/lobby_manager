@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using bpac;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace LobbyManager.pages
 {
@@ -39,7 +41,7 @@ namespace LobbyManager.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             msgWarn.Visible = false;
-            SqlDataSourceList.SelectCommand = "SELECT dev_id, dev_name, dev_station, dev_status FROM tbl_dev_clients";
+            SqlDataSourceList.SelectCommand = "SELECT usr_id, usr_role, usr_username, usr_name, role_name FROM tbl_usr_users, tbl_roles where role_id = usr_role";
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "DELETE FROM tbl_dev_clients where dev_id = @reg_id";
+                    cmd.CommandText = "DELETE FROM tbl_usr_users where dev_id = @reg_id";
                     cmd.Parameters.AddWithValue("reg_id", reg_id);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -83,16 +85,37 @@ namespace LobbyManager.pages
             try
             {
                 string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                int reg_id = -1;
                 using (var conn = new SqlConnection(connStr))
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "INSERT INTO [tbl_dev_clients] (dev_id, dev_name, dev_station, dev_status) \n" +
-                                      "values (@dev_id, @dev_name, @dev_station, @dev_status)";
-                    cmd.Parameters.AddWithValue("dev_id", txt_serviceID.Value);
-                    cmd.Parameters.AddWithValue("dev_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("dev_station", stationSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("dev_status", (chk_active.Checked) ? "1" : "0");
+                    cmd.CommandText = "SELECT isnull(MAX(usr_id), 0) + 1 AS com_total FROM [tbl_usr_users]";
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        reg_id = int.Parse(dreader["com_total"].ToString().Trim());
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+
+                var sha1 = new SHA1CryptoServiceProvider();
+                var data = Encoding.ASCII.GetBytes(txt_pass.Value);
+                var sha1data = sha1.ComputeHash(data);
+
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO tbl_usr_users (usr_id, usr_role, usr_username, usr_password, usr_status, usr_name) \n" +
+                                      "values (@usr_id, @usr_role, @usr_username, @usr_password, @usr_status, @usr_name)";
+                    cmd.Parameters.AddWithValue("usr_id", reg_id);
+                    cmd.Parameters.AddWithValue("usr_role", roleSelect.SelectedValue);
+                    cmd.Parameters.AddWithValue("usr_username", txt_usr.Value);
+                    cmd.Parameters.AddWithValue("usr_password", sha1data);
+                    cmd.Parameters.AddWithValue("usr_name", txt_name.Value);
+                    cmd.Parameters.AddWithValue("usr_status", (chk_active.Checked) ? "1" : "0");
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     CleanForm();
@@ -109,7 +132,8 @@ namespace LobbyManager.pages
         /// </summary>
         public void CleanForm()
         {
-            txt_serviceID.Value = "";
+            txt_usr.Value = "";
+            txt_pass.Value = "";
             txt_name.Value = "";
             chk_active.Checked = false;
             msgWarn.Visible = false;

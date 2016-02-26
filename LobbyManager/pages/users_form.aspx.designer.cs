@@ -67,15 +67,6 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgWarn;
         
         /// <summary>
-        /// txt_serviceID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_serviceID;
-        
-        /// <summary>
         /// txt_name control.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,31 @@ namespace LobbyManager.pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_name;
         
         /// <summary>
-        /// stationSelect control.
+        /// txt_usr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList stationSelect;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_usr;
+        
+        /// <summary>
+        /// txt_pass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txt_pass;
+        
+        /// <summary>
+        /// roleSelect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList roleSelect;
         
         /// <summary>
         /// chk_active control.

@@ -495,15 +495,6 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.users_form.txt_serviceID">
-            <summary>
-            txt_serviceID control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
         <member name="F:LobbyManager.pages.users_form.txt_name">
             <summary>
             txt_name control.
@@ -513,9 +504,27 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.users_form.stationSelect">
+        <member name="F:LobbyManager.pages.users_form.txt_usr">
             <summary>
-            stationSelect control.
+            txt_usr control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.users_form.txt_pass">
+            <summary>
+            txt_pass control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.users_form.roleSelect">
+            <summary>
+            roleSelect control.
             </summary>
             <remarks>
             Auto-generated field.
