@@ -27,6 +27,39 @@ namespace LobbyManager
             {
                 Response.Redirect("login.aspx", true);
             }
+            else
+            {
+                Boolean isValid = false;
+                Boolean isAdmin = false;
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
+                    cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        isValid = true;
+                        txt_rol.InnerText = dreader["role_name"].ToString();
+
+                        if (dreader["role_level"].ToString().Equals("0")) isAdmin = true;
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+                
+                txt_user.InnerText = Session["usr_name"].ToString();
+                txt_station.InnerText = Session["usr_device"].ToString();
+
+                if (!isValid) Response.Redirect("login.aspx?finish=true", true);
+                if (!isAdmin)
+                {
+                    menu_history.Visible = false;
+                    menu_management.Visible = false;
+                }
+            }
         }
 
         /// <summary>
@@ -53,7 +86,7 @@ namespace LobbyManager
                     dreader.Close();
                     conn.Close();
                 }
-                
+                /*
                 using (var conn = new SqlConnection(connStr))
                 using (var cmd = conn.CreateCommand())
                 {
@@ -68,6 +101,7 @@ namespace LobbyManager
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
+                */
             }
             catch (Exception a)
             {

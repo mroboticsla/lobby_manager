@@ -874,6 +874,7 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\users_form.aspx" />
     <Content Include="pages\clients_form.aspx" />
     <Content Include="pages\stations_form.aspx" />
     <Content Include="pages\errors_list.aspx" />
@@ -919,6 +920,13 @@
     </Compile>
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\users_form.aspx.cs">
+      <DependentUpon>users_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\users_form.aspx.designer.cs">
+      <DependentUpon>users_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\clients_form.aspx.cs">
       <DependentUpon>clients_form.aspx</DependentUpon>

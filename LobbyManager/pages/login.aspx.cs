@@ -108,13 +108,24 @@ namespace LobbyManager.pages
 
             Session["usr_device"] = strHostName;
 
+            if (Request.QueryString["finish"] != null)
+            {
+                String finishFlag = Request.QueryString["finish"].ToString();
+                if (finishFlag.Equals("true"))
+                {
+                    Session["usr_id"] = null;
+                    Session["usr_role"] = null;
+                    Session["usr_name"] = null;
+                }
+            }
+
             if (isClient)
             {
                 Response.Redirect("visitors_mobile.aspx", true);
             }
             else if (Session["usr_id"] != null)
             {
-                Response.Redirect("admin.aspx", true);
+                Response.Redirect("visitors.aspx", true);
             }
             else
             {
@@ -181,7 +192,24 @@ namespace LobbyManager.pages
                 conn.Close();
             }
 
-            if (valid) Response.Redirect("admin.aspx", true);
+            Boolean isAdmin = false;
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
+                cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
+                SqlDataReader dreader = cmd.ExecuteReader();
+                if (dreader.Read())
+                {
+                    if (dreader["role_level"].ToString().Equals("0")) isAdmin = true;
+                }
+                dreader.Close();
+                conn.Close();
+            }
+
+            if (isAdmin) Response.Redirect("admin.aspx", true);
+            if (valid) Response.Redirect("visitors.aspx", true);
         }
     }
 }

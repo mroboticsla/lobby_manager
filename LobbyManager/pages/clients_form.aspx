@@ -32,7 +32,7 @@
                                             <th>Windows Service ID</th>
                                             <th>Nombre de Máquina</th>
                                             <th>Estación</th>
-                                            <th>OFICIAL</th>
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,7 +44,7 @@
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_id") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_name") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_station") %></td>
-                                                            <td><%# DataBinder.Eval(Container.DataItem, "dev_status") %></td>
+                                                            <td><%# (DataBinder.Eval(Container.DataItem, "dev_status").Equals("1"))?"Activo":"Inactivo" %></td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>

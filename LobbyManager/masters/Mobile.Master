@@ -64,8 +64,5 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-    <script type="text/javascript">
-        document.documentElement.requestFullscreen();
-    </script>
 </body>
 </html>

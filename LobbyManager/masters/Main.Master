@@ -21,7 +21,6 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet" />
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet" />
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/feedback.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,103 +56,24 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>Estación 1</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Hoy</em>
-                                    </span>
-                                </div>
-                                <div>Paquete sin reclamar en recepción</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>Estación 1</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Ayer</em>
-                                    </span>
-                                </div>
-                                <div>Marlon Suri ha entregado un paquete en recepción</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Leer todos los mensajes</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i>Estación 2 escribió un comentario
-                                   
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i>17 Personas registradas hoy
-                                   
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i>Estación 1 envió un mensaje
-                                   
-                                        <span class="pull-right text-muted small">14 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i>Estación 2 inició sesión
-                                   
-                                        <span class="pull-right text-muted small">38 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i>Estación 1 inició sesión
-                                   
-                                        <span class="pull-right text-muted small">40 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Ver todas las notificaciones</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+
+                        <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceNotifications">
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class='<%# DataBinder.Eval(Container.DataItem, "type_class") %>'></i>
+                                            <p><%# DataBinder.Eval(Container.DataItem, "log_user") %> - <%# DataBinder.Eval(Container.DataItem, "dep_name") %></p>
+                                            <p><%# DataBinder.Eval(Container.DataItem, "type_label") %>: <%# DataBinder.Eval(Container.DataItem, "vis_name") %></p>
+                                            <span class="pull-right text-muted small"><em><%# DataBinder.Eval(Container.DataItem, "log_date") %></em></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </li>
 
@@ -162,12 +82,12 @@
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil de Usuario</a>
+                        <li><a data-toggle="modal" href="#userDlg"><i class="fa fa-user fa-fw"></i>Perfil de Usuario</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Opciones</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Salir</a>
+                        <li><a id="link_logoff" onclick="logoff();"><i class="fa fa-sign-out fa-fw"></i>Salir</a>
                         </li>
                     </ul>
                 </li>
@@ -190,9 +110,9 @@
                             <a href="visitors.aspx"><i class="fa fa-tasks fa-fw"></i>Registro de Vistantes</a>
                             <a href="visitors_assign.aspx"><i class="fa fa-group fa-fw"></i>Visitantes en espera</a>
                             <a href="current_visits.aspx"><i class="fa fa-clock-o fa-fw"></i>Visitas en Curso</a>
-                            <a href="visitors_list.aspx"><i class="fa fa-folder-open-o fa-fw"></i>Histórico de Visitas</a>
+                            <a runat="server" id="menu_history" href="../pages/visitors_list.aspx"><i class="fa fa-folder-open-o fa-fw"></i>Histórico de Visitas</a>
                         </li>
-                        <li>
+                        <li  runat="server" id="menu_management" >
                             <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Administración<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -224,36 +144,64 @@
             </div>
         </nav>
 
-        <div id="page-wrapper">
-            <div id="feedback">
-                <div id="feedback-form" class="col-xs-4 col-md-4 panel panel-primary" style="display: none;">
-                    <div class="panel-heading">
-                        Envío de Comentarios
+        <div class="modal fade" id="userDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">M-Robotics LobbyManager®</h4>
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <select id="cb_commentType" runat="server" class="form-control">
-                                <option value="1">Comentario</option>
-                                <option value="2">Error</option>
-                            </select>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Información de Usuario
+                            </div>
+                            <div class="panel-body">
+                                <fieldset id="fs_visitDetails" runat="server">
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Nombre de Usuario</label>
+                                        <label runat="server" class="form-control" id="txt_user"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Estación</label>
+                                        <label runat="server" class="form-control" id="txt_station" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Tipo de Usuario</label>
+                                        <label runat="server" class="form-control" id="txt_rol" />
+                                    </div>
+                                </fieldset>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea id="txt_commentDescription" runat="server" class="form-control" name="body" required="required" placeholder="Descripción..." rows="5"></textarea>
-                            <button id="btn_sendComment" class="btn btn-primary pull-right" style="margin-top: 5px;" type="submit">Enviar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" runat="server" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
-                <div id="feedback-tab">Comentarios</div>
             </div>
+        </div>
+
+        <div id="page-wrapper">
             <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>
+
+    <asp:SqlDataSource ID="SqlDataSourceNotifications" runat="server"
+        ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
+        SelectCommand="SELECT TOP 3 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class, vis_name, dep_name 
+                    FROM tbl_log_events, tbl_type_notifications, tbl_vis_visitors, tbl_dep_departments 
+                    where log_notification = type_id and log_visitor_record = vis_id and dep_id = vis_department ORDER BY log_id DESC"></asp:SqlDataSource>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
-    <script src="../js/feedback.js"></script>
+
+    <script type="text/javascript">
+        function logoff() {
+            window.location = "login.aspx?finish=true";
+        }
+    </script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
 

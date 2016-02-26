@@ -22,22 +22,67 @@ namespace LobbyManager {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
         
         /// <summary>
-        /// cb_commentType control.
+        /// Repeater2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cb_commentType;
+        protected global::System.Web.UI.WebControls.Repeater Repeater2;
         
         /// <summary>
-        /// txt_commentDescription control.
+        /// menu_history control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txt_commentDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor menu_history;
+        
+        /// <summary>
+        /// menu_management control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_management;
+        
+        /// <summary>
+        /// fs_visitDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fs_visitDetails;
+        
+        /// <summary>
+        /// txt_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txt_user;
+        
+        /// <summary>
+        /// txt_station control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txt_station;
+        
+        /// <summary>
+        /// txt_rol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txt_rol;
         
         /// <summary>
         /// MainHolder control.
@@ -47,6 +92,15 @@ namespace LobbyManager {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainHolder;
+        
+        /// <summary>
+        /// SqlDataSourceNotifications control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceNotifications;
         
         /// <summary>
         /// Footer control.
