@@ -47,5 +47,49 @@ namespace LobbyManager
                 conn.Close();
             }
         }
+
+        public String label(string desk)
+        {
+            String lbl = null;
+
+            string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = "SELECT TOP 1 lbl_desk, lbl_name, lbl_serial, lbl_equipment, lbl_desc, lbl_owner FROM tbl_lbl_labels where lbl_desk = @lbl_desk";
+                cmd.Parameters.AddWithValue("lbl_desk", desk);
+                SqlDataReader dreader = cmd.ExecuteReader();
+                if (dreader.Read())
+                {
+                    String name = dreader["lbl_name"].ToString().Trim();
+                    String serial = dreader["lbl_serial"].ToString().Trim();
+                    String bcode = dreader["lbl_equipment"].ToString().Trim();
+                    String desc = dreader["lbl_desc"].ToString().Trim();
+                    String owner = dreader["lbl_owner"].ToString().Trim();
+
+                    String[] line = { name, serial, bcode, desc, owner };
+                    lbl = name + "|" + serial + "|" + bcode + "|" + desc + "|" + owner;
+                }
+                dreader.Close();
+
+                if (lbl != null)
+                {
+                    cmd.CommandText = "DELETE FROM tbl_lbl_labels \n" +
+                                      "WHERE  lbl_desk = @desk and lbl_name = @name and lbl_serial = @serial and lbl_equipment = @equipment and lbl_desc = @desc and lbl_owner = @owner";
+                    cmd.Parameters.AddWithValue("desk", desk);
+                    cmd.Parameters.AddWithValue("name", lbl.Split('|')[0]);
+                    cmd.Parameters.AddWithValue("serial", lbl.Split('|')[1]);
+                    cmd.Parameters.AddWithValue("equipment", lbl.Split('|')[2]);
+                    cmd.Parameters.AddWithValue("desc", lbl.Split('|')[3]);
+                    cmd.Parameters.AddWithValue("owner", lbl.Split('|')[4]);
+                    cmd.ExecuteNonQuery();
+                }
+                
+                conn.Close();
+            }
+
+            return lbl;
+        }
     }
 }

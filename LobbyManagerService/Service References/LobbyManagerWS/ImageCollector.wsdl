@@ -18,6 +18,12 @@
   <wsdl:message name="IImageCollector_SaveImages_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveImagesResponse" />
   </wsdl:message>
+  <wsdl:message name="IImageCollector_label_InputMessage">
+    <wsdl:part name="parameters" element="tns:label" />
+  </wsdl:message>
+  <wsdl:message name="IImageCollector_label_OutputMessage">
+    <wsdl:part name="parameters" element="tns:labelResponse" />
+  </wsdl:message>
   <wsdl:portType name="IImageCollector">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageCollector/DoWork" message="tns:IImageCollector_DoWork_InputMessage" />
@@ -26,6 +32,10 @@
     <wsdl:operation name="SaveImages">
       <wsdl:input wsaw:Action="http://tempuri.org/IImageCollector/SaveImages" message="tns:IImageCollector_SaveImages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IImageCollector/SaveImagesResponse" message="tns:IImageCollector_SaveImages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="label">
+      <wsdl:input wsaw:Action="http://tempuri.org/IImageCollector/label" message="tns:IImageCollector_label_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IImageCollector/labelResponse" message="tns:IImageCollector_label_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IImageCollector" type="tns:IImageCollector">
@@ -41,6 +51,15 @@
     </wsdl:operation>
     <wsdl:operation name="SaveImages">
       <soap:operation soapAction="http://tempuri.org/IImageCollector/SaveImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="label">
+      <soap:operation soapAction="http://tempuri.org/IImageCollector/label" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

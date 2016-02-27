@@ -29,5 +29,8 @@ namespace LobbyManager
         /// <param name="profile"></param>
         [OperationContract]
         void SaveImages(String desk, String front, String back, String profile, String ocr);
+
+        [OperationContract]
+        String label(string desk);
     }
 }

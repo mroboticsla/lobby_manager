@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/SykesVisitorsDB.mdf">
-      <publishTime>02/26/2016 00:55:28</publishTime>
+      <publishTime>02/27/2016 00:26:16</publishTime>
     </File>
     <File Include="App_Data/SykesVisitorsDB_log.ldf">
-      <publishTime>02/26/2016 00:55:28</publishTime>
+      <publishTime>02/27/2016 00:26:16</publishTime>
     </File>
     <File Include="bin/App_Data/SykesVisitorsDB.mdf">
-      <publishTime>02/26/2016 00:55:28</publishTime>
+      <publishTime>02/27/2016 00:26:16</publishTime>
     </File>
     <File Include="bin/App_Data/SykesVisitorsDB_log.ldf">
-      <publishTime>02/26/2016 00:55:28</publishTime>
+      <publishTime>02/27/2016 00:26:16</publishTime>
     </File>
     <File Include="bin/HtmlAgilityPack.dll">
       <publishTime>02/03/2016 22:25:48</publishTime>
@@ -28,7 +28,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/03/2016 22:25:48</publishTime>
     </File>
     <File Include="bin/LobbyManager.dll">
-      <publishTime>02/26/2016 00:55:38</publishTime>
+      <publishTime>02/27/2016 00:26:17</publishTime>
     </File>
     <File Include="bower.json">
       <publishTime>02/03/2016 22:25:39</publishTime>
@@ -2311,16 +2311,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/03/2016 22:25:40</publishTime>
     </File>
     <File Include="masters/Main.Master">
-      <publishTime>02/26/2016 00:48:29</publishTime>
+      <publishTime>02/26/2016 12:26:44</publishTime>
     </File>
     <File Include="masters/Mobile.Master">
-      <publishTime>02/26/2016 01:25:25</publishTime>
+      <publishTime>02/26/2016 12:19:42</publishTime>
     </File>
     <File Include="pages/admin.aspx">
       <publishTime>02/04/2016 13:14:30</publishTime>
     </File>
     <File Include="pages/clients_form.aspx">
-      <publishTime>02/26/2016 00:45:34</publishTime>
+      <publishTime>02/26/2016 12:21:57</publishTime>
     </File>
     <File Include="pages/comments_list.aspx">
       <publishTime>02/04/2016 13:14:30</publishTime>
@@ -2347,7 +2347,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/25/2016 22:07:36</publishTime>
     </File>
     <File Include="pages/stations_form.aspx">
-      <publishTime>02/26/2016 00:32:09</publishTime>
+      <publishTime>02/26/2016 12:19:42</publishTime>
+    </File>
+    <File Include="pages/users_form.aspx">
+      <publishTime>02/26/2016 12:47:54</publishTime>
     </File>
     <File Include="pages/visitors.aspx">
       <publishTime>02/25/2016 21:28:21</publishTime>

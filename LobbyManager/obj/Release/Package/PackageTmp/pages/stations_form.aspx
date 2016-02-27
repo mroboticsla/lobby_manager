@@ -31,7 +31,7 @@
                                         <tr>
                                             <th>Windows Service ID</th>
                                             <th>Nombre de Máquina</th>
-                                            <th>OFICIAL</th>
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +42,7 @@
                                                         <tr class="gradeU" onclick="showMsg('<%# DataBinder.Eval(Container.DataItem, "dev_id") %>');">
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_id") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_name") %></td>
-                                                            <td><%# DataBinder.Eval(Container.DataItem, "dev_status") %></td>
+                                                            <td><%# (DataBinder.Eval(Container.DataItem, "dev_status").Equals("1"))?"Activo":"Inactivo" %></td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>

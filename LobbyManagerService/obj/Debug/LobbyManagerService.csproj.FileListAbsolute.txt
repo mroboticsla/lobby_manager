@@ -10,3 +10,5 @@ C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_m
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\obj\Debug\LobbyManagerService.csprojResolveAssemblyReference.cache
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\obj\Debug\LobbyManagerService.exe
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\obj\Debug\LobbyManagerService.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\bin\Debug\Interop.bpac.dll

@@ -194,44 +194,41 @@ namespace LobbyManager.pages
         /// <param name="e">Evento Ejecutado</param>
         protected void btnExecutePrint_Click(object sender, EventArgs e)
         {
-            string templatePath = TEMPLATE_DIRECTORY;
-            templatePath += TEMPLATE_SIMPLE;
-
-            bpac.DocumentClass doc = new DocumentClass();
-            if (doc.Open(templatePath) != false)
+            string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
             {
-                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                conn.Open();
+                cmd.CommandText = "SELECT reg_id, reg_type, type_name, reg_quantity, reg_serial, reg_desc FROM tbl_reg_equipment, tbl_type_equipment where type_id = reg_type and reg_visitor = @reg_visitor";
+                cmd.Parameters.AddWithValue("reg_visitor", visitorID);
+                SqlDataReader dreader = cmd.ExecuteReader();
+                while (dreader.Read())
                 {
-                    conn.Open();
-                    cmd.CommandText = "SELECT reg_id, reg_type, type_name, reg_quantity, reg_serial, reg_desc FROM tbl_reg_equipment, tbl_type_equipment where type_id = reg_type and reg_visitor = @reg_visitor";
-                    cmd.Parameters.AddWithValue("reg_visitor", visitorID);
-                    SqlDataReader dreader = cmd.ExecuteReader();
-                    while (dreader.Read())
-                    {
-                        String name = dreader["type_name"].ToString().Trim();
-                        doc.GetObject("objName").Text = name;
-                        doc.GetObject("objSerial").Text = dreader["reg_serial"].ToString().Trim();
-                        doc.GetObject("objBarcode").Text = dreader["reg_id"].ToString().Trim();
-                        doc.GetObject("objDesc").Text = dreader["reg_desc"].ToString().Trim();
-                        doc.GetObject("objOwner").Text = lblTitle.Text.Trim();
+                    String name = dreader["type_name"].ToString().Trim();
+                    String serial = dreader["reg_serial"].ToString().Trim();
+                    String barcode = dreader["reg_id"].ToString().Trim();
+                    String desc = dreader["reg_desc"].ToString().Trim();
+                    String owner = lblTitle.Text.Trim();
 
-                        // doc.SetMediaById(doc.Printer.GetMediaId(), true);
-                        doc.StartPrint("", PrintOptionConstants.bpoDefault);
-                        doc.PrintOut(1, PrintOptionConstants.bpoDefault);
-                        doc.EndPrint();
+                    using (var conn2 = new SqlConnection(connStr))
+                    using (var cmd2 = conn2.CreateCommand())
+                    {
+                        conn2.Open();
+                        cmd2.CommandText = "insert into tbl_lbl_labels (lbl_desk, lbl_name, lbl_serial, lbl_equipment, lbl_desc, lbl_owner) values \n" +
+                            " (@lbl_desk, @lbl_name, @lbl_serial, @lbl_equipment, @lbl_desc, @lbl_owner)";
+                        cmd2.Parameters.AddWithValue("lbl_desk", Session["usr_device"]);
+                        cmd2.Parameters.AddWithValue("lbl_name", name);
+                        cmd2.Parameters.AddWithValue("lbl_serial", serial);
+                        cmd2.Parameters.AddWithValue("lbl_equipment", barcode);
+                        cmd2.Parameters.AddWithValue("lbl_desc", desc);
+                        cmd2.Parameters.AddWithValue("lbl_owner", owner);
+                        cmd2.ExecuteNonQuery();
+                        conn2.Close();
                     }
-                    doc.Close();
-                    dreader.Close();
-                    conn.Close();
+                    
                 }
-                
-                        
-            }
-            else
-            {
-                //MessageBox.Show("Open() Error: " + doc.ErrorCode);
+                dreader.Close();
+                conn.Close();
             }
         }
 
