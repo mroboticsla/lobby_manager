@@ -122,6 +122,9 @@
                                     <a href="users_form.aspx">Usuarios</a>
                                 </li>
                                 <li>
+                                    <a href="blacklist.aspx">Lista Negra</a>
+                                </li>
+                                <li>
                                     <a href="stations_form.aspx">Estaciones</a>
                                 </li>
                                 <li>

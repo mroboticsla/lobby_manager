@@ -153,7 +153,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_weekday"></div>
-                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_department"></div>
-                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_doctype"></div>
-                                            <a href="#" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +204,7 @@
                                     <div class="list-group">
                                         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceNotifications">
                                             <ItemTemplate>
-                                                <a href="#" class="list-group-item">
+                                                <a href="visitors_list.aspx" class="list-group-item">
                                                     <i class='<%# DataBinder.Eval(Container.DataItem, "type_class") %>'></i><%# DataBinder.Eval(Container.DataItem, "log_user") %> - <%# DataBinder.Eval(Container.DataItem, "type_label") %>
 
                                                     <span class="pull-right text-muted small"><em><%# DataBinder.Eval(Container.DataItem, "log_date") %></em>

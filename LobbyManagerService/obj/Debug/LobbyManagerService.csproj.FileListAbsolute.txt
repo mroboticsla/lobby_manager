@@ -12,3 +12,5 @@ C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_m
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\obj\Debug\LobbyManagerService.pdb
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManagerService\bin\Debug\Interop.bpac.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManagerService\bin\Debug\HtmlAgilityPack.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\LobbyManagerService\bin\Debug\Interop.bpac.dll

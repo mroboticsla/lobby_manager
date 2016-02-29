@@ -32,6 +32,9 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Contacto</th>
+                        <th>Salida</th>
+                        <th>No. de Tarjeta Asignado</th>
+                        <th>Empleado Asociado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +47,9 @@
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_name") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_lastname") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_internal_contact") %></td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "vis_checkout") %></td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "vis_visitor_card") %></td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "vis_in_charge") %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>

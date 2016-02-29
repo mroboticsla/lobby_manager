@@ -874,6 +874,7 @@
     <Content Include="htm\panels-wells.html" />
     <Content Include="htm\tables.html" />
     <Content Include="htm\typography.html" />
+    <Content Include="pages\blacklist.aspx" />
     <Content Include="pages\users_form.aspx" />
     <Content Include="pages\clients_form.aspx" />
     <Content Include="pages\stations_form.aspx" />
@@ -920,6 +921,13 @@
     </Compile>
     <Compile Include="pages\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\blacklist.aspx.cs">
+      <DependentUpon>blacklist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\blacklist.aspx.designer.cs">
+      <DependentUpon>blacklist.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\users_form.aspx.cs">
       <DependentUpon>users_form.aspx</DependentUpon>

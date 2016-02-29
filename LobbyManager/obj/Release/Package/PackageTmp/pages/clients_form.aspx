@@ -29,8 +29,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="equipmentDataTable">
                                     <thead>
                                         <tr>
-                                            <th>Internal ID</th>
-                                            <th>Nombre de Dispositivo</th>
+                                            <th>Nombre</th>
+                                            <th>ID de Dispositivo</th>
                                             <th>Estación</th>
                                             <th>Estado</th>
                                         </tr>
@@ -99,11 +99,11 @@
                                                     El campo 'Nombre' es obligatorio
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="eqTypeSelect">Windows Service ID</label>
+                                                    <label for="eqTypeSelect">Nombre</label>
                                                     <input runat="server" id="txt_serviceID" class="form-control" placeholder="" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Nombre de Máquina</label>
+                                                    <label>ID de Dispositivo</label>
                                                     <input runat="server" id="txt_name" class="form-control" placeholder="" />
                                                 </div>
                                                 <div class="form-group">

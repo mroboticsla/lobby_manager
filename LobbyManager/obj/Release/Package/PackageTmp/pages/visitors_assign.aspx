@@ -33,7 +33,7 @@
                 <tbody>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
                         <ItemTemplate>
-                            <tr class="gradeU" onclick="showDetails('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
+                            <tr class="gradeU <%# DataBinder.Eval(Container.DataItem, "alert") %>" onclick="showDetails('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
@@ -49,9 +49,11 @@
 
         <asp:SqlDataSource ID="SqlDataSourceVisitors" runat="server"
             ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
-            SelectCommand="SELECT vis_id, vis_date, vis_department, vis_name, vis_lastname, vis_internal_contact, dep_name 
-                            FROM [tbl_vis_visitors], tbl_dep_departments 
-                            where dep_id = vis_department and vis_status = 1 order by vis_id desc">
+            SelectCommand="SELECT vis_id, vis_date, vis_department, upper(vis_name) vis_name, upper(vis_lastname) vis_lastname, upper(vis_internal_contact) vis_internal_contact, upper(dep_name) dep_name, 
+                            isnull((select vis_alert_level from tbl_vis_blacklist b where b.vis_document = a.vis_docnumber or (UPPER(RTRIM(a.vis_name)) like '%' + UPPER(RTRIM(b.vis_name)) + '%' and UPPER(RTRIM(a.vis_lastname)) like '%' + UPPER(RTRIM(b.vis_lastname)) + '%')), '') alert
+                            FROM [tbl_vis_visitors] a, tbl_dep_departments  
+                            where dep_id = vis_department and vis_status = 1 
+                            order by vis_id desc">
         </asp:SqlDataSource>
     </form>
 </asp:Content>
