@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visitors_list.aspx.cs" Inherits="LobbyManager.pages.visitors_list" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <link href="../Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <style type="text/css">
         tfoot input {
             width: 100%;
@@ -20,7 +21,41 @@
         </div>
         <div class="dataTable_wrapper table-responsive" runat="server" id="tableContainer">
             <div style="float:right; margin-bottom: 15px">
-                <button type="button" class="btn btn-primary" onclick="doTable();">Exportar Tabla a Excel</button>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Desde:</label>
+                            <div class='input-group date' id='dateFrom'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Hasta:</label>
+                            <div class='input-group date' id='dateTo'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="doTable();">Buscar en Rango de Fechas</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn btn-primary" onclick="doTable();">Exportar Tabla a Excel</button>
+                        </div>
+                    </div>
+                </div>
                 <asp:Button class="btn btn-primary" runat="server" Text="" OnClick="btnExportTable" style="display:none" ID="btnExecuteExport" />
             </div>
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -87,6 +122,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
     <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="../Scripts/moment-with-locales.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.js"></script>
     <script>
         $(document).ready(function () {
            $('#dataTables-example').DataTable({
@@ -113,5 +150,12 @@
             $('#completeDlg').modal('hide');
         }
     </script>
-    
+    <script type="text/javascript">
+        $(function () {
+            $('#dateFrom,#dateTo').datetimepicker({
+                locale: 'es',
+                format: 'DD/MM/YYYY'
+            });
+        });
+    </script>
 </asp:Content>
