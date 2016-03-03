@@ -3123,6 +3123,13 @@
             </summary>
             <param name="dt"></param>
         </member>
+        <member name="M:LobbyManager.pages.visitors_list.DoSearch(System.Object,System.EventArgs)">
+            <summary>
+            Función de escucha para iniciar la busqueda por fechas
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:LobbyManager.pages.visitors_list.btnExportTable(System.Object,System.EventArgs)">
             <summary>
             Función de escucha para iniciar la exportación de datos a formato .XLS
@@ -3133,6 +3140,42 @@
         <member name="F:LobbyManager.pages.visitors_list.ScriptManager1">
             <summary>
             ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_list.msgWarn">
+            <summary>
+            msgWarn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_list.txt_initialDate">
+            <summary>
+            txt_initialDate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_list.txt_finalDate">
+            <summary>
+            txt_finalDate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_list.btnSearch">
+            <summary>
+            btnSearch control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -3486,6 +3529,258 @@
             Auto-generated field.
             To modify move field declaration from designer file to code-behind file.
             </remarks>
+        </member>
+        <member name="T:Service1">
+            <remarks/>
+        </member>
+        <member name="M:Service1.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getProfilePicture(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetProfilePicture(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetProfilePicture(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getProfilePictureAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getProfilePictureAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployees">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetEmployees(System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetEmployees(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeesAsync">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeesAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployee(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetEmployee(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetEmployee(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getReferred">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetReferred(System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetReferred(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getReferredAsync">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getReferredAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLogin(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetEmployeeByWLogin(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetEmployeeByWLogin(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLoginAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLoginAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCompanyCode">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetCompanyCode(System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetCompanyCode(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCompanyCodeAsync">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCompanyCodeAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLoginWCompany(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetEmployeeByWLoginWCompany(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetEmployeeByWLoginWCompany(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLoginWCompanyAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getEmployeeByWLoginWCompanyAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCostCenters">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetCostCenters(System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetCostCenters(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCostCentersAsync">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getCostCentersAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getDepartments">
+            <remarks/>
+        </member>
+        <member name="M:Service1.BegingetDepartments(System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.EndgetDepartments(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getDepartmentsAsync">
+            <remarks/>
+        </member>
+        <member name="M:Service1.getDepartmentsAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Service1.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getProfilePictureCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getEmployeesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getEmployeeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getReferredCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getEmployeeByWLoginCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getCompanyCodeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getEmployeeByWLoginWCompanyCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getCostCentersCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Service1.getDepartmentsCompleted">
+            <remarks/>
+        </member>
+        <member name="T:getProfilePictureCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getProfilePictureCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getProfilePictureCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getEmployeesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getEmployeeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getReferredCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getReferredCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getReferredCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeByWLoginCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeByWLoginCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getEmployeeByWLoginCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getCompanyCodeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getCompanyCodeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getCompanyCodeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeByWLoginWCompanyCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getEmployeeByWLoginWCompanyCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getEmployeeByWLoginWCompanyCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getCostCentersCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getCostCentersCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getCostCentersCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:getDepartmentsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:getDepartmentsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:getDepartmentsCompletedEventArgs.Result">
+            <remarks/>
         </member>
     </members>
 </doc>

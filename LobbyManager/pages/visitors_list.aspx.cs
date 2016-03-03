@@ -28,6 +28,7 @@ namespace LobbyManager.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            msgWarn.Visible = false;
             SqlDataSourceVisitors.SelectCommand = "SELECT vis_id, vis_date, vis_department, UPPER(vis_name) vis_name, UPPER(vis_lastname) vis_lastname, UPPER(vis_internal_contact) vis_internal_contact, UPPER(dep_name) dep_name, vis_checkout, vis_visitor_card, vis_in_charge FROM [tbl_vis_visitors], tbl_dep_departments where dep_id = vis_department order by vis_id desc";
         }
 
@@ -68,6 +69,24 @@ namespace LobbyManager.pages
                 this.EnableViewState = false;
                 Response.Write(tw.ToString());
                 Response.End();
+            }
+        }
+
+        /// <summary>
+        /// Función de escucha para iniciar la busqueda por fechas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DoSearch(object sender, EventArgs e)
+        {
+            if (txt_initialDate.Value.ToString().Equals("") || txt_finalDate.Value.ToString().Equals(""))
+            {
+                msgWarn.Visible = true;
+            }
+            else
+            {
+                SqlDataSourceVisitors.SelectCommand = "SELECT vis_id, vis_date, vis_department, UPPER(vis_name) vis_name, UPPER(vis_lastname) vis_lastname, UPPER(vis_internal_contact) vis_internal_contact, UPPER(dep_name) dep_name, vis_checkout, vis_visitor_card, vis_in_charge FROM [tbl_vis_visitors], tbl_dep_departments where dep_id = vis_department and vis_date between Convert(date,'" + txt_initialDate.Value + "',103) and Convert(date,'" + txt_finalDate.Value + "',103) order by vis_id desc";
+                Repeater2.DataBind();
             }
         }
 
