@@ -196,16 +196,19 @@ namespace LobbyManager.pages
             using (var conn = new SqlConnection(connStr))
             using (var cmd = conn.CreateCommand())
             {
-                conn.Open();
-                cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
-                cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
-                SqlDataReader dreader = cmd.ExecuteReader();
-                if (dreader.Read())
+                if (Session["usr_role"] != null)
                 {
-                    if (dreader["role_level"].ToString().Equals("0")) isAdmin = true;
-                }
-                dreader.Close();
-                conn.Close();
+                    conn.Open();
+                    cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
+                    cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        if (dreader["role_level"].ToString().Equals("0")) isAdmin = true;
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }  
             }
 
             if (isAdmin) Response.Redirect("admin.aspx", true);

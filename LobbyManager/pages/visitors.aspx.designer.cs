@@ -217,7 +217,7 @@ namespace LobbyManager.pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_contact;
+        protected global::System.Web.UI.WebControls.TextBox txt_contact;
         
         /// <summary>
         /// chk_addEQ control.

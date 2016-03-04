@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -18,7 +19,7 @@ namespace LobbyManager.pages
     /// </summary>
     public partial class visitors : System.Web.UI.Page
     {
-        String mainConnectionString = "SykesVisitorsDB";
+        static String mainConnectionString = "SykesVisitorsDB";
 
         /// <summary>
         /// Establece si se deberá presentar el mensaje de finalización del proceso.
@@ -103,7 +104,7 @@ namespace LobbyManager.pages
                     cmd.Parameters.AddWithValue("vis_reason", reasonSelect.SelectedValue);
                     cmd.Parameters.AddWithValue("vis_description", txt_description.Value);
                     cmd.Parameters.AddWithValue("vis_department", deptSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Value);
+                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Text);
                     cmd.Parameters.AddWithValue("vis_status", 1);
                     cmd.Parameters.AddWithValue("vis_image_record", 0);
                     cmd.Parameters.AddWithValue("vis_with_equipment", (chk_addEQ.Checked) ? 1 : 0);
@@ -221,7 +222,7 @@ namespace LobbyManager.pages
             txt_company.Value = "";
             txt_phone.Value = "";
             txt_description.Value = "";
-            txt_contact.Value = "";
+            txt_contact.Text = "";
             chk_addEQ.Checked = false;
             fs_images.Visible = true;
             fs_personalData.Visible = false;
@@ -346,6 +347,34 @@ namespace LobbyManager.pages
             }
 
             return _code;
+        }
+
+        [WebMethod]
+        public static string[] GetEmployees(string keyword)
+        {
+            List<string> employee = new List<string>();
+            string query = string.Format("SELECT emp_name, emp_lastname FROM tbl_emp_employees WHERE emp_name LIKE '%{0}%' OR emp_lastname LIKE '%{0}%'", keyword);
+            
+            if (keyword.Split(' ').Length > 1)
+            {
+                query = string.Format("SELECT emp_name, emp_lastname FROM tbl_emp_employees WHERE (emp_name + ' ' + emp_lastname) LIKE '%{0}%{1}%' OR (emp_name LIKE '%{0}%' AND emp_lastname LIKE '%{1}%')", keyword.Split(' '));
+            }
+            
+            string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = query;
+                SqlDataReader dreader = cmd.ExecuteReader();
+                while (dreader.Read())
+                {
+                    employee.Add(dreader.GetString(0).ToString().Trim() + " " + dreader.GetString(1).ToString().Trim());
+                }
+                dreader.Close();
+                conn.Close();
+            }
+            return employee.ToArray();
         }
     }
 }

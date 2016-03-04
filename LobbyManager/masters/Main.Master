@@ -198,7 +198,10 @@
                     FROM tbl_log_events, tbl_type_notifications, tbl_vis_visitors, tbl_dep_departments 
                     where log_notification = type_id and log_visitor_record = vis_id and dep_id = vis_department ORDER BY log_id DESC"></asp:SqlDataSource>
 
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link href="../css/jquery-ui.css" rel="stylesheet" />
+    <script src="../js/jquery-ui-min.js"></script>
+    
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
