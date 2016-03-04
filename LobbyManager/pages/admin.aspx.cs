@@ -138,10 +138,10 @@ namespace LobbyManager.pages
                     conn.Open();
                     cmd.CommandText = "SET LANGUAGE Spanish;";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = "select distinct DATENAME(dw, vis_date) as 'day', " +
+                    cmd.CommandText = "select distinct DATEPART(dw, vis_date), DATENAME(dw, vis_date) as 'day', " +
                         "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) < convert(time, '12:00:00', 108)) as 'am', " +
                         "(select count (b.vis_date) from tbl_vis_visitors b where DATEPART(dw, b.vis_date) = DATEPART(dw, a.vis_date) and convert(time, b.vis_date, 108) >= convert(time, '12:00:00', 108)) as 'pm' " +
-                        "from tbl_vis_visitors a";
+                        "from tbl_vis_visitors a order by DATEPART(dw, vis_date) asc";
                     SqlDataReader dreader = cmd.ExecuteReader();
                     int count = 0;
                     while (dreader.Read())

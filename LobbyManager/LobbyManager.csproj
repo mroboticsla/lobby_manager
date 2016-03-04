@@ -524,6 +524,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="pages\visit_consult.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1196,6 +1197,13 @@
     </Compile>
     <Compile Include="pages\visitors_mobile.aspx.designer.cs">
       <DependentUpon>visitors_mobile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\visit_consult.aspx.cs">
+      <DependentUpon>visit_consult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\visit_consult.aspx.designer.cs">
+      <DependentUpon>visit_consult.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\visit_termination.aspx.cs">
       <DependentUpon>visit_termination.aspx</DependentUpon>

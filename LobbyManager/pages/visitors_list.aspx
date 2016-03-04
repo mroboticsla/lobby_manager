@@ -74,7 +74,7 @@
                 <tbody>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
                         <ItemTemplate>
-                            <tr class="gradeU">
+                            <tr class="gradeU" onclick="goTo('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
@@ -129,6 +129,10 @@
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
             });
         });
+
+        function goTo(visit) {
+            window.location = "visit_consult.aspx?visitor=" + visit;
+        }
 
         function doTable() {
             showMsg();

@@ -204,7 +204,7 @@
                                     <div class="list-group">
                                         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceNotifications">
                                             <ItemTemplate>
-                                                <a href="visitors_list.aspx" class="list-group-item">
+                                                <a href="visit_consult.aspx?visitor=<%# DataBinder.Eval(Container.DataItem, "log_visitor_record") %>" class="list-group-item">
                                                     <i class='<%# DataBinder.Eval(Container.DataItem, "type_class") %>'></i><%# DataBinder.Eval(Container.DataItem, "log_user") %> - <%# DataBinder.Eval(Container.DataItem, "type_label") %>
 
                                                     <span class="pull-right text-muted small"><em><%# DataBinder.Eval(Container.DataItem, "log_date") %></em>
@@ -213,7 +213,7 @@
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </div>
-                                    <a href="#" class="btn btn-info btn-block">Ver todas las notificaciones</a>
+                                    <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver todas las notificaciones</a>
                                 </div>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
 
     <asp:SqlDataSource ID="SqlDataSourceNotifications" runat="server"
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
-        SelectCommand="SELECT TOP 10 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class 
+        SelectCommand="SELECT TOP 10 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class, log_visitor_record  
                     FROM tbl_log_events, tbl_type_notifications
                     where log_notification = type_id ORDER BY log_id DESC"></asp:SqlDataSource>
 </asp:Content>
@@ -332,6 +332,10 @@
                 hideHover: 'auto',
                 resize: true
             });
+        }
+
+        function goTo(visit) {
+            window.location = "visit_consult.aspx?visitor=" + visit;
         }
     </script>
 </asp:Content>
