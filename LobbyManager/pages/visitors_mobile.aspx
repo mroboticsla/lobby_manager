@@ -140,7 +140,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="contactText">Contacto</label>
-                                        <input runat="server" class="form-control" id="txt_contact" type="text" placeholder="Nombre del contacto interno" />
+                                        <asp:TextBox runat="server" class="form-control" id="txt_contact" placeholder="Nombre del contacto interno" />
                                     </div>
                                     <div class="checkbox">
                                         <label>
@@ -263,5 +263,37 @@
         function cancelProc() {
             window.location = "visitors.aspx";
         }
+
+        $(document).ready(function () {
+            $("#<%= txt_contact.ClientID %>").autocomplete({
+                source: function (request, response) {
+                    var param = { keyword: $('#<%= txt_contact.ClientID %>').val() };
+                    $.ajax({
+                        url: "visitors.aspx/GetEmployees",
+                        data: JSON.stringify(param),
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            response($.map(data.d, function (item) {
+                                return {
+                                    value: item
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(textStatus);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $('#txt_contact').val(ui.item.value);
+                    }
+                },
+                minLength: 2
+            });
+        });
     </script>
 </asp:Content>

@@ -108,7 +108,7 @@ namespace LobbyManager.pages
                     cmd.Parameters.AddWithValue("vis_reason", reasonSelect.SelectedValue);
                     cmd.Parameters.AddWithValue("vis_description", txt_description.Value);
                     cmd.Parameters.AddWithValue("vis_department", deptSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Value);
+                    cmd.Parameters.AddWithValue("vis_internal_contact", txt_contact.Text);
                     cmd.Parameters.AddWithValue("vis_status", 1);
                     cmd.Parameters.AddWithValue("vis_image_record", 0);
                     cmd.Parameters.AddWithValue("vis_with_equipment", (chk_addEQ.Checked) ? 1 : 0);
@@ -226,7 +226,7 @@ namespace LobbyManager.pages
             txt_company.Value = "";
             txt_phone.Value = "";
             txt_description.Value = "";
-            txt_contact.Value = "";
+            txt_contact.Text = "";
             chk_addEQ.Checked = false;
             fs_images.Visible = true;
             fs_personalData.Visible = false;

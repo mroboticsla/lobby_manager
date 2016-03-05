@@ -420,6 +420,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\feedback.css" />
     <Content Include="css\jquery-ui.css" />
+    <Content Include="css\ScrollTable.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ImageCollector.svc" />
     <Content Include="js\feedback.js" />
