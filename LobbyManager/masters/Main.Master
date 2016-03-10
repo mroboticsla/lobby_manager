@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     <table>
                         <tr>
                             <td>
@@ -106,45 +106,19 @@
                                 </span>
                             </div>
                         </li>
-                        <li>
-                            <a href="visitors.aspx"><i class="fa fa-tasks fa-fw"></i>Registro de Vistantes</a>
-                            <a href="visitors_assign.aspx"><i class="fa fa-group fa-fw"></i>Visitantes en espera</a>
-                            <a href="current_visits.aspx"><i class="fa fa-clock-o fa-fw"></i>Visitas en Curso</a>
-                            <a runat="server" id="menu_history" href="../pages/visitors_list.aspx"><i class="fa fa-folder-open-o fa-fw"></i>Histórico de Visitas</a>
-                        </li>
-                        <li  runat="server" id="menu_management" >
-                            <a href="admin.aspx"><i class="fa fa-dashboard fa-fw"></i>Administración<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="admin.aspx">Consola de Administración</a>
-                                </li>
-                                <li>
-                                    <a href="users_form.aspx">Usuarios</a>
-                                </li>
-                                <li>
-                                    <a href="blacklist.aspx">Lista Negra</a>
-                                </li>
-                                <li>
-                                    <a href="stations_form.aspx">Estaciones</a>
-                                </li>
-                                <li>
-                                    <a href="clients_form.aspx">Móviles</a>
-                                </li>
-                                <li>
-                                    <a href="documents_form.aspx">Tipos de Documentos</a>
-                                </li>
-                                <li>
-                                    <a href="departments_form.aspx">Departamentos</a>
-                                </li>
-                                <li>
-                                    <a href="comments_list.aspx">Historial de Comentarios</a>
-                                </li>
-                                <li>
-                                    <a href="errors_list.aspx">Historial de Errores</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        
+                            <asp:Repeater ID="UserMenuBuilder" runat="server" DataSourceID="SqlDataSourceMenu">
+                                <ItemTemplate>
+                                    <li>
+                                    <%# (DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("1"))? "<li><ul class=\"nav nav-second-level\">" : "" %>
+                                        <%# !(DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("0"))? "<li>" : "" %>
+                                            <a href="<%# DataBinder.Eval(Container.DataItem, "menu_file").ToString().Trim() %>"><i class="fa <%# DataBinder.Eval(Container.DataItem, "menu_icon").ToString().Trim() %> fa-fw"></i><%# DataBinder.Eval(Container.DataItem, "menu_label").ToString().Trim() %><%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim())? "<span class=\"fa arrow\"></span>" : "") %></a>
+                                        <%# !(DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("0"))? "</li>" : "" %>
+                                    <%# (DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("3"))? "</ul></li>" : "" %>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        
                     </ul>
                 </div>
             </div>
@@ -191,6 +165,8 @@
             <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>
+
+    <asp:SqlDataSource ID="SqlDataSourceMenu" runat="server" ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SqlDataSourceNotifications" runat="server"
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"

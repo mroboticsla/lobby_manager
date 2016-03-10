@@ -31,22 +31,13 @@ namespace LobbyManager {
         protected global::System.Web.UI.WebControls.Repeater Repeater2;
         
         /// <summary>
-        /// menu_history control.
+        /// UserMenuBuilder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor menu_history;
-        
-        /// <summary>
-        /// menu_management control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_management;
+        protected global::System.Web.UI.WebControls.Repeater UserMenuBuilder;
         
         /// <summary>
         /// fs_visitDetails control.
@@ -92,6 +83,15 @@ namespace LobbyManager {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainHolder;
+        
+        /// <summary>
+        /// SqlDataSourceMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMenu;
         
         /// <summary>
         /// SqlDataSourceNotifications control.

@@ -99,18 +99,9 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.Main.menu_history">
+        <member name="F:LobbyManager.Main.UserMenuBuilder">
             <summary>
-            menu_history control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
-        <member name="F:LobbyManager.Main.menu_management">
-            <summary>
-            menu_management control.
+            UserMenuBuilder control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -156,6 +147,15 @@
         <member name="F:LobbyManager.Main.MainHolder">
             <summary>
             MainHolder control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.Main.SqlDataSourceMenu">
+            <summary>
+            SqlDataSourceMenu control.
             </summary>
             <remarks>
             Auto-generated field.

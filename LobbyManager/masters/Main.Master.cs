@@ -56,9 +56,15 @@ namespace LobbyManager
                 if (!isValid) Response.Redirect("login.aspx?finish=true", true);
                 if (!isAdmin)
                 {
-                    menu_history.Visible = false;
-                    menu_management.Visible = false;
+                    //menu_history.Visible = false;
+                    //menu_management.Visible = false;
                 }
+
+                SqlDataSourceMenu.SelectCommand = "select a.role_id, a.role_menu, a.role_access, b.menu_id, b.menu_label, b.menu_file, b.menu_icon, b.menu_root_level, b.menu_root " +
+                                                    "from tbl_role_menu a, tbl_menu b " +
+                                                    "where a.role_menu = b.menu_id " +
+                                                    "and a.role_id = " + Session["usr_role"] +
+                                                    "order by b.menu_id, b.menu_root, b.menu_root_level asc";
             }
         }
 
