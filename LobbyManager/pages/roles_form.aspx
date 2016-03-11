@@ -5,8 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
-        <input type="text" id="selectedID" runat="server" value="" />
-        <input type="text" id="option" runat="server" value="" />
+        <input type="text" id="selectedID" runat="server" value="" visible="false" />
+        <input type="text" id="option" runat="server" value="" visible="false" />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div class="row">
@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div  style="float: right; margin-bottom: 10px;">
-                                <button type="button" class="btn btn-primary" onclick="showForm();" >Agregar Usuario</button>
+                                <button type="button" class="btn btn-primary" onclick="showForm();" >Agregar Nuevo Rol</button>
                             </div>
                         </div>
                         <div class="row">
@@ -35,6 +35,7 @@
                                             <th>Nombre</th>
                                             <th>Nivel de Acceso</th>
                                             <th>Estado</th>
+                                            <th>Opciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,11 +43,15 @@
                                             <ContentTemplate>
                                                 <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceList">
                                                     <ItemTemplate>
-                                                        <tr class="gradeU" onclick="editRecord('<%# DataBinder.Eval(Container.DataItem, "role_id").ToString().Trim() %>','<%# DataBinder.Eval(Container.DataItem, "role_name").ToString().Trim() %>','<%# DataBinder.Eval(Container.DataItem, "role_level").ToString().Trim() %>','<%# DataBinder.Eval(Container.DataItem, "role_status").ToString().Trim() %>');">
+                                                        <tr class="gradeU">
                                                             <td><%# DataBinder.Eval(Container.DataItem, "role_id").ToString().Trim() %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "role_name").ToString().Trim() %></td>
                                                             <td><%# (DataBinder.Eval(Container.DataItem, "role_level").ToString().Trim().Equals("0"))? "Administrador" : "Usuario" %></td>
                                                             <td><%# (DataBinder.Eval(Container.DataItem, "role_status").ToString().Trim().Equals("1"))? "Activo" : "Inactivo" %></td>
+                                                            <td>
+                                                                <%# "<button type=\"button\" class=\"btn btn-success\" onclick=\"showMenuDetails(" + DataBinder.Eval(Container.DataItem, "role_id") + ");\"><i class=\"fa fa-list\"></i></button>" %>
+                                                                <%# "<button type=\"button\" class=\"btn btn-info\" onclick=\"editRecord('" + DataBinder.Eval(Container.DataItem, "role_id").ToString().Trim() + "','" + DataBinder.Eval(Container.DataItem, "role_name").ToString().Trim() + "','" + DataBinder.Eval(Container.DataItem, "role_level").ToString().Trim() + "','" + DataBinder.Eval(Container.DataItem, "role_status").ToString().Trim() + "');\"><i class=\"fa fa-pencil\"></i></button>" %>
+                                                            </td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
@@ -141,12 +146,17 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
         var currentrecord = 0;
-
+        /*
         $(document).ready(function() {
             $('#equipmentDataTable').DataTable({
                     responsive: true
             });
         });
+        */
+        function showMenuDetails(role) {
+            alert(role);
+            window.location = "role_menu.aspx?role=" + role;
+        }
 
         function deleteRecord() {
             PageMethods.deleteRecord(currentrecord, OnSuccess);
@@ -164,6 +174,7 @@
             $('#<%=btnDelete.ClientID%>').hide();
             $('#<%=chk_active.ClientID%>').prop('checked', true);
             $('#addDlg').modal('show');
+            setFocus();
         }
 
         function editRecord(rec, name, level, status) {
@@ -175,6 +186,11 @@
             $('#<%=roleLevel.ClientID%>').val(level);
             $('#<%=chk_active.ClientID%>').prop('checked', (status === '1')? true : false);
             $('#addDlg').modal('show');
+            setFocus();
+        }
+
+        function setFocus(){
+            setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
         }
 
         function showMsg() {
@@ -184,16 +200,6 @@
 
         function hideMsg() {
             $('#deleteDlg').modal('hide');
-        }
-
-        function finishProc() {
-            if ((<%= approved.ToString().ToLower() %>))
-            {
-                window.location="visitors_approve.aspx?visitor=<%= visitorID.ToString().ToLower() %>&finish=true";
-            }else{
-                window.location="visitors.aspx?finish=true";
-            }
-            
         }
     </script>
 </asp:Content>
