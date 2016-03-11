@@ -558,6 +558,185 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="T:LobbyManager.pages.roles_form">
+            <summary>
+            Clase principal para el formulario de Ingreso de Equipo
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.visitorID">
+            <summary>
+            Guarda el ID de visitante al que se ha de asociar el equipo ingresado.
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.app">
+            <summary>
+            Contiene la variable de aprobacion
+            </summary>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.approved">
+            <summary>
+            Controla el flujo de aprobacion en la pantalla.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.roles_form.Page_Load(System.Object,System.EventArgs)">
+            <summary>
+            Se ejcuta al iniciar la carga.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LobbyManager.pages.roles_form.deleteRecord(System.String)">
+            <summary>
+            Método para eliminar un registro de equipo ingresado utilizando el ID interno del registro.
+            </summary>
+            <param name="reg_id">ID interno del Equipo ingresado.</param>
+            <returns>Respuesta de la ejecución de la función</returns>
+        </member>
+        <member name="M:LobbyManager.pages.roles_form.saveItem(System.Object,System.EventArgs)">
+            <summary>
+            Guarda los datos de equipo a ingresar
+            </summary>
+            <param name="sender">Objeto que ejecuta la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="M:LobbyManager.pages.roles_form.CleanForm">
+            <summary>
+            Limpia el formulario de ingreso de equipo.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.pages.roles_form.btnCancelForm_Click(System.Object,System.EventArgs)">
+            <summary>
+            Controla el evento de cancelación en el ingreso de equipo.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.selectedID">
+            <summary>
+            selectedID control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.option">
+            <summary>
+            option control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.lblTitle">
+            <summary>
+            lblTitle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.UpdatePanel1">
+            <summary>
+            UpdatePanel1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.Repeater2">
+            <summary>
+            Repeater2 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.fs_personalData">
+            <summary>
+            fs_personalData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.msgWarn">
+            <summary>
+            msgWarn control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.txt_name">
+            <summary>
+            txt_name control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.roleLevel">
+            <summary>
+            roleLevel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.chk_active">
+            <summary>
+            chk_active control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.btnDelete">
+            <summary>
+            btnDelete control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.btnCancelForm">
+            <summary>
+            btnCancelForm control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.roles_form.SqlDataSourceList">
+            <summary>
+            SqlDataSourceList control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="T:LobbyManager.pages.users_form">
             <summary>
             Clase principal para el formulario de Ingreso de Equipo

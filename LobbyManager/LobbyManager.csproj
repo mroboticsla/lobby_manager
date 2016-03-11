@@ -525,6 +525,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="pages\roles_form.aspx" />
     <Content Include="pages\visit_consult.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -1121,6 +1122,13 @@
     </Compile>
     <Compile Include="pages\blacklist.aspx.designer.cs">
       <DependentUpon>blacklist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\roles_form.aspx.cs">
+      <DependentUpon>roles_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\roles_form.aspx.designer.cs">
+      <DependentUpon>roles_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\users_form.aspx.cs">
       <DependentUpon>users_form.aspx</DependentUpon>
