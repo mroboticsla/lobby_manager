@@ -525,6 +525,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\sykesvisitors.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="pages\equipment_mobile.aspx" />
     <Content Include="pages\roles_form.aspx" />
     <Content Include="pages\role_menu.aspx" />
     <Content Include="pages\visit_consult.aspx" />
@@ -1123,6 +1124,13 @@
     </Compile>
     <Compile Include="pages\blacklist.aspx.designer.cs">
       <DependentUpon>blacklist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\equipment_mobile.aspx.cs">
+      <DependentUpon>equipment_mobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\equipment_mobile.aspx.designer.cs">
+      <DependentUpon>equipment_mobile.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\roles_form.aspx.cs">
       <DependentUpon>roles_form.aspx</DependentUpon>

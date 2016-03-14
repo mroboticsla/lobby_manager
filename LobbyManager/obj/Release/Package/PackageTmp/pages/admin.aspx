@@ -16,6 +16,9 @@
                             <h1 class="page-header">Consola de Administración</h1>
                         </div>
                     </div>
+                    <div class="alert alert-warning" id="msgAccess" style="display:none;">
+                        Modo de acceso restringido.
+                    </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="panel panel-primary">
@@ -32,7 +35,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a data-toggle="modal" href="#commentsDlg">
+                                <a class="customlink" data-toggle="modal" href="#commentsDlg">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Detalles</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -56,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="visitors_list.aspx">
+                                <a class="customlink" href="visitors_list.aspx?access=<%=Request.QueryString["access"]%>">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Detalles</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -78,7 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="errors_list.aspx">
+                                <a class="customlink" href="errors_list.aspx?access=<%=Request.QueryString["access"]%>">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Detalles</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -153,7 +156,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_weekday"></div>
-                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx?access=<%=Request.QueryString["access"]%>" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +172,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_department"></div>
-                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx?access=<%=Request.QueryString["access"]%>" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +190,7 @@
                                     <div class="row">
                                         <div class="panel-body">
                                             <div runat="server" id="morris_doctype"></div>
-                                            <a href="visitors_list.aspx" class="btn btn-info btn-block">Ver Detalles</a>
+                                            <a href="visitors_list.aspx?access=<%=Request.QueryString["access"]%>" class="btn btn-info btn-block">Ver Detalles</a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +207,7 @@
                                     <div class="list-group">
                                         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceNotifications">
                                             <ItemTemplate>
-                                                <a href="visitors_list.aspx" class="list-group-item">
+                                                <a href="visit_consult.aspx?visitor=<%# DataBinder.Eval(Container.DataItem, "log_visitor_record") %>" class="list-group-item">
                                                     <i class='<%# DataBinder.Eval(Container.DataItem, "type_class") %>'></i><%# DataBinder.Eval(Container.DataItem, "log_user") %> - <%# DataBinder.Eval(Container.DataItem, "type_label") %>
 
                                                     <span class="pull-right text-muted small"><em><%# DataBinder.Eval(Container.DataItem, "log_date") %></em>
@@ -213,7 +216,7 @@
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </div>
-                                    <a href="#" class="btn btn-info btn-block">Ver todas las notificaciones</a>
+                                    <a href="visitors_list.aspx?access=<%=Request.QueryString["access"]%>" class="btn btn-info btn-block">Ver todas las notificaciones</a>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +263,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button class="btn btn-primary" runat="server" OnClick="hideNewComments" Text="Cerrar" />
+                        <asp:Button class="btn btn-primary" runat="server" OnClick="hideNewComments" Text="Aceptar" />
                     </div>
                 </div>
             </div>
@@ -273,7 +276,7 @@
 
     <asp:SqlDataSource ID="SqlDataSourceNotifications" runat="server"
         ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
-        SelectCommand="SELECT TOP 10 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class 
+        SelectCommand="SELECT TOP 10 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class, log_visitor_record  
                     FROM tbl_log_events, tbl_type_notifications
                     where log_notification = type_id ORDER BY log_id DESC"></asp:SqlDataSource>
 </asp:Content>
@@ -304,6 +307,12 @@
                 hideHover: 'auto',
                 resize: true
             });
+
+            if (<%= Request.QueryString["access"] %> != '0'){
+                $('#msgAccess').show();
+                $('.btn').attr("disabled", "disabled");
+                $('.customlink').on('click.myDisable', function(e) { e.preventDefault(); });
+            }
         });
 
         function GraphDT(doctype) {
@@ -332,6 +341,10 @@
                 hideHover: 'auto',
                 resize: true
             });
+        }
+
+        function goTo(visit) {
+            window.location = "visit_consult.aspx?visitor=" + visit;
         }
     </script>
 </asp:Content>

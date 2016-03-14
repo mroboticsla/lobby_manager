@@ -18,6 +18,9 @@
                 <h1 class="page-header">Histórico de Errores</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+            Modo de acceso restringido.
+        </div>
         <div class="dataTable_wrapper table-responsive" runat="server" id="tableContainer">
             <div style="float:right; margin-bottom: 15px">
                 <button type="button" class="btn btn-primary" onclick="doTable();">Exportar Tabla a Excel</button>
@@ -82,7 +85,12 @@
            $('#dataTables-example').DataTable({
                 responsive: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
-            });
+           });
+
+           if (<%= Request.QueryString["access"] %> != '0'){
+               $('#msgAccess').show();
+               $('.btn').attr("disabled", "disabled");
+           }
         });
 
         function doTable() {

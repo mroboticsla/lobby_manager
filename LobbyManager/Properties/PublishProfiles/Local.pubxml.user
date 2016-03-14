@@ -10,16 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/SykesVisitorsDB.mdf">
-      <publishTime>03/04/2016 09:07:54</publishTime>
+      <publishTime>03/14/2016 08:30:23</publishTime>
     </File>
     <File Include="App_Data/SykesVisitorsDB_log.ldf">
-      <publishTime>03/04/2016 09:07:54</publishTime>
+      <publishTime>03/14/2016 08:30:23</publishTime>
     </File>
     <File Include="bin/App_Data/SykesVisitorsDB.mdf">
-      <publishTime>03/04/2016 09:07:54</publishTime>
+      <publishTime>03/14/2016 08:30:23</publishTime>
     </File>
     <File Include="bin/App_Data/SykesVisitorsDB_log.ldf">
-      <publishTime>03/04/2016 09:07:54</publishTime>
+      <publishTime>03/14/2016 08:30:23</publishTime>
     </File>
     <File Include="bin/HtmlAgilityPack.dll">
       <publishTime>01/06/2016 08:03:27</publishTime>
@@ -28,7 +28,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2016 08:03:28</publishTime>
     </File>
     <File Include="bin/LobbyManager.dll">
-      <publishTime>03/04/2016 08:41:09</publishTime>
+      <publishTime>03/14/2016 08:34:08</publishTime>
     </File>
     <File Include="bower.json">
       <publishTime>12/14/2015 07:34:54</publishTime>
@@ -2538,6 +2538,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="css/jquery-ui.css">
       <publishTime>03/03/2016 19:08:54</publishTime>
     </File>
+    <File Include="css/ScrollTable.css">
+      <publishTime>03/05/2016 11:55:40</publishTime>
+    </File>
     <File Include="dist/css/sb-admin-2.css">
       <publishTime>12/14/2015 07:34:58</publishTime>
     </File>
@@ -2638,34 +2641,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/14/2015 07:34:58</publishTime>
     </File>
     <File Include="masters/Main.Master">
-      <publishTime>03/03/2016 19:10:00</publishTime>
+      <publishTime>03/14/2016 08:30:23</publishTime>
     </File>
     <File Include="masters/Mobile.Master">
-      <publishTime>02/26/2016 08:24:40</publishTime>
+      <publishTime>03/05/2016 10:39:07</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>03/01/2016 16:18:21</publishTime>
     </File>
     <File Include="pages/admin.aspx">
-      <publishTime>02/29/2016 12:01:48</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/blacklist.aspx">
-      <publishTime>02/29/2016 11:35:57</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/clients_form.aspx">
-      <publishTime>02/29/2016 11:15:50</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/comments_list.aspx">
-      <publishTime>02/04/2016 12:31:01</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/current_visits.aspx">
-      <publishTime>02/02/2016 10:47:46</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/departments_form.aspx">
-      <publishTime>02/04/2016 12:03:54</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/documents_form.aspx">
-      <publishTime>02/04/2016 11:45:54</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/equipment_exit.aspx">
       <publishTime>02/03/2016 11:24:59</publishTime>
@@ -2674,31 +2677,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 18:49:36</publishTime>
     </File>
     <File Include="pages/errors_list.aspx">
-      <publishTime>02/04/2016 12:34:27</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/login.aspx">
       <publishTime>02/25/2016 12:02:07</publishTime>
     </File>
+    <File Include="pages/roles_form.aspx">
+      <publishTime>03/14/2016 08:30:24</publishTime>
+    </File>
+    <File Include="pages/role_menu.aspx">
+      <publishTime>03/14/2016 08:30:24</publishTime>
+    </File>
     <File Include="pages/stations_form.aspx">
-      <publishTime>02/26/2016 09:54:34</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/users_form.aspx">
-      <publishTime>02/27/2016 11:05:10</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/visitors.aspx">
-      <publishTime>03/03/2016 18:45:48</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/visitors_approve.aspx">
       <publishTime>02/25/2016 16:21:35</publishTime>
     </File>
     <File Include="pages/visitors_assign.aspx">
-      <publishTime>02/29/2016 11:01:10</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/visitors_list.aspx">
-      <publishTime>03/03/2016 12:26:02</publishTime>
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/visitors_mobile.aspx">
-      <publishTime>02/25/2016 16:23:00</publishTime>
+      <publishTime>03/05/2016 10:02:45</publishTime>
+    </File>
+    <File Include="pages/visit_consult.aspx">
+      <publishTime>03/14/2016 08:30:24</publishTime>
     </File>
     <File Include="pages/visit_termination.aspx">
       <publishTime>02/25/2016 16:22:56</publishTime>

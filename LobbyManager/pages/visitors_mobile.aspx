@@ -5,7 +5,7 @@
         function registerEQ() {
             if ((<%= addEQ.ToString().ToLower() %>))
             {
-                window.location="equipment_form.aspx?visitor=<%= visitor.ToString().ToLower() %>";
+                window.location="equipment_mobile.aspx?visitor=<%= visitor.ToString().ToLower() %>";
             }
         }
         onload=registerEQ();
@@ -21,23 +21,47 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Formulario para Visitantes
-                    </div>
                     <div class="panel-body">
                         <div class="row" runat="server" id="images">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
-                                <input type="hidden" runat="server" id="txt_imgFront" />
-                                <input type="hidden" runat="server" id="txt_imgBack" />
-                                <input type="hidden" runat="server" id="txt_imgProfile" />
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="imageTabs">
+                                <ul>
+                                    <li><a href="#tabs-1">Frente</a></li>
+                                    <li><a href="#tabs-2">Reverso</a></li>
+                                </ul>
+                                <div id="tabs-1">
+                                    <img runat="server" id="img_front" class="img-responsive" src="~/images/sykeslogo.png" />
+                                    <input type="hidden" runat="server" id="txt_imgFront" />
+                                    <input type="hidden" runat="server" id="txt_imgBack" />
+                                    <input type="hidden" runat="server" id="txt_imgProfile" />
+                                </div>
+                                <div id="tabs-2">
+                                    <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
+                                </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="readerInfo">
+                                <fieldset id="fsCheckData" runat="server">
+                                    <h3>Datos Personales</h3>
+                                    <div class="form-group">
+                                        <label>Nombres</label>
+                                        <input runat="server" id="checkName" class="form-control" disabled="disabled" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Apellidos</label>
+                                        <input runat="server" id="checkLastname" class="form-control" disabled="disabled" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No. de Documento</label>
+                                        <input runat="server" id="checkDocNum" class="form-control" disabled="disabled" />
+                                    </div>
+                                    <button type="reset" class="btn btn-success btn-lg" onclick="readerOK(false);">Aceptar</button>
+                                    <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep1(false);">Editar</button>
+                                    <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                </fieldset>
                             </div>
                         </div>
                         <div class="alert alert-warning" id="msgWarn" runat="server">
-                                Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a></div>
+                                Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a>
+                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset id="fs_images" runat="server">
@@ -82,73 +106,163 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <fieldset id="fs_personalData" runat="server">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <fieldset id="fs_personalData" style="display: none;">
                                     <h3>Datos Personales</h3>
-                                    <div class="form-group">
-                                        <label>Nombres</label>
-                                        <input runat="server" id="txt_name" class="form-control" />
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Nombres</label>
+                                                <input runat="server" id="txt_name" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Apellidos</label>
+                                                <input runat="server" id="txt_lastname" class="form-control" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Apellidos</label>
-                                        <input runat="server" id="txt_lastname" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tipo de Documento</label>
-                                        <asp:DropDownList runat="server" ID="docTypeSelect" class="form-control"
-                                            DataSourceID="SqlDataSourceDocuments" DataValueField="doc_id" DataTextField="doc_name">
-                                        </asp:DropDownList>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>No. de Documento</label>
-                                        <input runat="server" id="txt_docnumber" class="form-control" placeholder="12345678-9" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Empresa</label>
-                                        <input runat="server" id="txt_company" class="form-control" />
-                                        <p class="help-block">Si es particular, dejar vacío.</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Teléfono de Contacto</label>
-                                        <input runat="server" id="txt_phone" class="form-control" placeholder="(503)2222-2222" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Fecha de Ingreso</label>
-                                        <p runat="server" id="lbl_date" class="form-control-static"><%= DateTime.Now.ToLocalTime() %></p>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep1(true);">Anterior</button>
+                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep2(false);">Siguiente</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </fieldset>
-                            </div>
-                            <!-- /.col-lg-6 (nested) -->
-                            <div class="col-lg-6 col-md-6">
-                                <fieldset id="fs_visitDetails" runat="server">
-                                    <h3>Detalle de la Visita</h3>
-                                    <div class="form-group">
-                                        <label for="reasonSelect">Motivo</label>
-                                        <asp:DropDownList runat="server" ID="reasonSelect" class="form-control"
-                                            DataSourceID="SqlDataSourceReasons" DataValueField="vrs_id" DataTextField="vrs_name">
-                                        </asp:DropDownList>
+                                <fieldset id="fs_documentData" style="display: none;">
+                                    <h3>Documento de Identidad</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Tipo de Documento</label>
+                                                <asp:DropDownList runat="server" ID="docTypeSelect" class="form-control"
+                                                    DataSourceID="SqlDataSourceDocuments" DataValueField="doc_id" DataTextField="doc_name">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>No. de Documento</label>
+                                                <input runat="server" id="txt_docnumber" class="form-control" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="descriptionText">Descripción</label>
-                                        <textarea class="form-control" runat="server" id="txt_description" placeholder="Objetivo de la visita" />
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep2(true);">Anterior</button>
+                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep3(false);">Siguiente</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="deptSelect">Departamento</label>
-                                        <asp:DropDownList runat="server" ID="deptSelect" class="form-control"
-                                            DataSourceID="SqlDataSourceDepartments" DataValueField="dep_id" DataTextField="dep_name">
-                                        </asp:DropDownList>
+                                </fieldset>
+                                <fieldset id="fs_companyData" style="display: none;">
+                                    <h3>¿De qué empresa nos visita?</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Empresa</label>
+                                                <input runat="server" id="txt_company" class="form-control" />
+                                                <p class="help-block">Si es particular, dejar vacío.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>Teléfono de Contacto</label>
+                                                <input runat="server" id="txt_phone" class="form-control" placeholder="" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="contactText">Contacto</label>
-                                        <asp:TextBox runat="server" class="form-control" id="txt_contact" placeholder="Nombre del contacto interno" />
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep3(true);">Anterior</button>
+                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep4(false);">Siguiente</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input runat="server" id="chk_addEQ" type="checkbox" />Ingresa equipo
-                                        </label>
+                                </fieldset>
+                                <fieldset id="fs_visitDetails" style="display: none;">
+                                    <h3>¿Por qué nos visita?</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="reasonSelect">Motivo</label>
+                                                <asp:DropDownList runat="server" ID="reasonSelect" class="form-control"
+                                                    DataSourceID="SqlDataSourceReasons" DataValueField="vrs_id" DataTextField="vrs_name">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="descriptionText">Descripción</label>
+                                                <textarea class="form-control" runat="server" id="txt_description" placeholder="Objetivo de la visita" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <asp:Button runat="server" class="btn btn-primary" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
-                                    <button type="reset" class="btn btn-danger" onclick="cancelProc();">Cancelar</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep4(true);">Anterior</button>
+                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep5(false);">Siguiente</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset id="fs_visitContact" style="display: none;">
+                                    <h3>¿A quién visita?</h3>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="deptSelect">Departamento</label>
+                                                <asp:DropDownList runat="server" ID="deptSelect" class="form-control"
+                                                    DataSourceID="SqlDataSourceDepartments" DataValueField="dep_id" DataTextField="dep_name">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="contactText">Contacto</label>
+                                                <asp:TextBox runat="server" class="form-control" id="txt_contact" placeholder="Nombre del contacto interno" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep5(true);">Anterior</button>
+                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep6(false);">Siguiente</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset id="fs_finishData" style="display: none;">
+                                    <h3>¿Desea ingresar equipo electrónico y/o herramientas?</h3>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group" style="margin-top:10px;">
+                                                <input runat="server" id="chk_addEQ" type="checkbox" style="width:24px; height:24px; margin-left:30px;" />
+                                                <label for="chk_addEQ" style="margin-right: 3px; color: green" class="h3"><i class="fa fa-arrow-right" style="margin-right: 2px;"></i>Marcar si desea ingresar equipo o herramientas</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="pull-right bottom">
+                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep6(true);">Anterior</button>
+                                                <asp:Button runat="server" class="btn btn-success btn-lg" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </fieldset>
                             </div>
                         </div>
@@ -264,6 +378,115 @@
             window.location = "visitors.aspx";
         }
 
+        function readerOK(back){
+            var param1 = '#<%= images.ClientID %>';
+            var param2 = '#fs_companyData';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+        
+        function toggleStep1(back){
+            var param1 = '#<%= images.ClientID %>';
+            var param2 = '#fs_personalData';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+
+        function toggleStep2(back){
+            var param1 = '#fs_personalData';
+            var param2 = '#fs_documentData';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+
+        function toggleStep3(back){
+            var param1 = '#fs_documentData';
+            var param2 = '#fs_companyData';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+
+        function toggleStep4(back){
+            var param1 = '#fs_companyData';
+            var param2 = '#fs_visitDetails';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+
+        function toggleStep5(back){
+            var param1 = '#fs_visitDetails';
+            var param2 = '#fs_visitContact';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
+                });
+            }
+        }
+
+        function toggleStep6(back){
+            var param1 = '#fs_visitContact';
+            var param2 = '#fs_finishData';
+            if (back){
+                $( param2 ).fadeToggle( "fast", function() {
+                    $( param1 ).fadeToggle();
+                    setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
+                });
+            }else{
+                $( param1 ).fadeToggle( "fast", function() {
+                    $( param2 ).fadeToggle();
+                });
+            }
+        }
+
         $(document).ready(function () {
             $("#<%= txt_contact.ClientID %>").autocomplete({
                 source: function (request, response) {
@@ -294,6 +517,8 @@
                 },
                 minLength: 2
             });
+
+            $( "#imageTabs" ).tabs();
         });
     </script>
 </asp:Content>

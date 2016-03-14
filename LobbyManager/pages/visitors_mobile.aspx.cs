@@ -48,8 +48,6 @@ namespace LobbyManager.pages
         {
             msgWarn.Visible = false;
             images.Visible = false;
-            fs_personalData.Visible = false;
-            fs_visitDetails.Visible = false;
             
             if (Request.QueryString["finish"]!= null)
             {
@@ -229,8 +227,6 @@ namespace LobbyManager.pages
             txt_contact.Text = "";
             chk_addEQ.Checked = false;
             fs_images.Visible = true;
-            fs_personalData.Visible = false;
-            fs_visitDetails.Visible = false;
         }
 
         /// <summary>
@@ -242,8 +238,6 @@ namespace LobbyManager.pages
         {
             images.Visible = true;
             fs_images.Visible = false;
-            fs_personalData.Visible = true;
-            fs_visitDetails.Visible = true;
         }
 
         /// <summary>
@@ -282,13 +276,17 @@ namespace LobbyManager.pages
                             ((HtmlImage)img_back).Src = @"data:image/bmp;base64," + back;
 
                             String[] fields = rawDoc.Split(',');
+
                             txt_name.Value = fields[14];
                             txt_lastname.Value = fields[16];
                             txt_docnumber.Value = fields[0];
+
+                            checkName.Value = txt_name.Value;
+                            checkLastname.Value = txt_lastname.Value;
+                            checkDocNum.Value = txt_docnumber.Value;
+
                             images.Visible = true;
                             fs_images.Visible = false;
-                            fs_personalData.Visible = true;
-                            fs_visitDetails.Visible = true;
 
                             loaded = true;
                         }
@@ -309,8 +307,6 @@ namespace LobbyManager.pages
                 if (!loaded)
                 {
                     images.Visible = false;
-                    fs_personalData.Visible = false;
-                    fs_visitDetails.Visible = false;
                     fs_images.Visible = true;
                     txt_name.Value = "No se ha cargado el documento";
                     txt_lastname.Value = "";

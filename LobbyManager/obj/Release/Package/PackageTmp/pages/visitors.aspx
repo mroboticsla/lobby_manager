@@ -36,12 +36,16 @@
                                 <img runat="server" id="img_back" class="img-responsive" src="~/images/sykeslogo.png" />
                             </div>
                         </div>
+                        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+                                Modo de acceso restringido.
+                        </div>
+                        <div class="row">
                         <div class="alert alert-warning" id="msgWarn" runat="server">
                                 Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset id="fs_images" runat="server">
-                                    <a data-toggle="modal" href="#imagesDlg">
+                                    <a data-toggle="modal" href="#imagesDlg" id="btnInit">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
@@ -60,7 +64,7 @@
                                         </div>
                                     </a>
 
-                                    <a data-toggle="modal" href="#noDocDlg">
+                                    <a data-toggle="modal" href="#noDocDlg" id="btnNoDoc">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-red">
                                                 <div class="panel-heading">
@@ -294,6 +298,12 @@
                 },
                 minLength: 2
             });
+
+            if (<%= Request.QueryString["access"] %> != '0'){
+                $('#msgAccess').show();
+                $('#btnInit').attr("disabled", "disabled");
+                $('#btnNoDoc').attr("disabled", "disabled");
+            }
         });
     </script>
 </asp:Content>

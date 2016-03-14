@@ -19,6 +19,9 @@
                 <h1 class="page-header">Histórico de Visitas</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+            Modo de acceso restringido.
+        </div>
         <div class="alert alert-warning" id="msgWarn" runat="server">
             Fechas no válidas
         </div>
@@ -52,12 +55,12 @@
                 </div>
             </div>
         </div>
-        <div class="dataTable_wrapper table-responsive" style="overflow-x: scroll;" runat="server" id="tableContainer">
+        <div class="dataTable_wrapper table-responsive" style="overflow-x: auto;" runat="server" id="tableContainer">
             <div style="float: left; margin-bottom: 15px; margin-top: 15px;">
-                <button type="button" class="btn btn-primary" onclick="doTable();">Exportar a Excel</button>
+                <button type="button" class="btn btn-primary" onclick="doTable();" id="exportBtn" style="display: none">Exportar a Excel</button>
                 <asp:Button class="btn btn-primary" runat="server" Text="" OnClick="btnExportTable" Style="display: none" ID="btnExecuteExport" />
             </div>
-            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="display: none;">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -74,7 +77,7 @@
                 <tbody>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceVisitors">
                         <ItemTemplate>
-                            <tr class="gradeU">
+                            <tr class="gradeU" onclick="goTo('<%# DataBinder.Eval(Container.DataItem, "vis_id") %>');">
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "vis_id") %></td>
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "vis_date") %></td>
                                 <td style="white-space: nowrap;"><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
@@ -124,11 +127,22 @@
     <script src="../Scripts/bootstrap-datetimepicker.js"></script>
     <script>
         $(document).ready(function () {
+            $('#dataTables-example').fadeIn("slow");
             $('#dataTables-example').DataTable({
                 responsive: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
             });
+
+            if (<%= Request.QueryString["access"] %> != '0'){
+                $('#msgAccess').show();
+            }else{
+                $('#exportBtn').show();
+            }
         });
+
+        function goTo(visit) {
+            window.location = "visit_consult.aspx?visitor=" + visit;
+        }
 
         function doTable() {
             showMsg();
@@ -147,8 +161,7 @@
             document.getElementById("<%= btnExecuteExport.ClientID %>").click();
             $('#completeDlg').modal('hide');
         }
-    </script>
-    <script type="text/javascript">
+
         $(function () {
             $('#dateFrom,#dateTo').datetimepicker({
                 locale: 'es',

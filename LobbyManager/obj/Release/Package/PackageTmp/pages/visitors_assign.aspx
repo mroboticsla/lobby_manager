@@ -18,6 +18,9 @@
                 <h1 class="page-header">Visitantes en Espera</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+                Modo de acceso restringido.
+        </div>
         <div class="dataTable_wrapper table-responsive" runat="server" id="tableContainer">
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
@@ -61,15 +64,27 @@
     <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script>
+        var isReadOnly = false;
+
         $(document).ready(function () {
            $('#dataTables-example').DataTable({
                 responsive: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
-            });
+           });
+
+           if (<%= Request.QueryString["access"] %> != '0'){
+               isReadOnly = true;
+               $('#msgAccess').show();
+           }
         });
 
         function showDetails(visitor) {
-            window.location = "visitors_approve.aspx?visitor=" + visitor;
+            if (isReadOnly){
+                window.location = "visit_consult.aspx?visitor=" + visitor;
+            }else{
+                window.location = "visitors_approve.aspx?visitor=" + visitor;
+            }
+            
         }
     </script>
     
