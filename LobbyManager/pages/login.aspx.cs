@@ -125,7 +125,7 @@ namespace LobbyManager.pages
             }
             else if (Session["usr_id"] != null)
             {
-                Response.Redirect("visitors.aspx", true);
+                Response.Redirect("visitors.aspx?access=0", true);
             }
             else
             {
@@ -211,8 +211,8 @@ namespace LobbyManager.pages
                 }  
             }
 
-            if (isAdmin) Response.Redirect("admin.aspx", true);
-            if (valid) Response.Redirect("visitors.aspx", true);
+            if (isAdmin) Response.Redirect("admin.aspx?access=0", true);
+            if (valid) Response.Redirect("visitors.aspx?access=0", true);
         }
     }
 }

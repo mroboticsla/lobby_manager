@@ -14,6 +14,9 @@
                 <h1 class="page-header">Administración de Roles</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+            Modo de acceso restringido.
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -146,15 +149,19 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
         var currentrecord = 0;
-        /*
+        
         $(document).ready(function() {
-            $('#equipmentDataTable').DataTable({
+            /*$('#equipmentDataTable').DataTable({
                     responsive: true
-            });
+            });*/
+
+            if (<%= Request.QueryString["access"] %> != '0'){
+                $('#msgAccess').show();
+                $('.btn').attr("disabled", "disabled");
+            }
         });
-        */
+        
         function showMenuDetails(role) {
-            alert(role);
             window.location = "role_menu.aspx?role=" + role;
         }
 

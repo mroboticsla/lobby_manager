@@ -18,6 +18,9 @@
                 <h1 class="page-header">Visitas en Curso</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+            Modo de acceso restringido.
+        </div>
         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
@@ -71,7 +74,7 @@
                                     </tr>
                                     <tr>
                                         <td><%# "<button type=\"button\" class=\"btn btn-warning\" onclick=\"showDetails(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-list\"></i></button>" %></td>
-                                        <td><%# (!DataBinder.Eval(Container.DataItem, "vis_with_equipment").ToString().Equals("1")) ? "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"finishMsg(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" : "<button type=\"button\" class=\"btn btn-danger\" style=\"margin-left: 10px;\" onclick=\"revEq(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" %></td>
+                                        <td><%# (!DataBinder.Eval(Container.DataItem, "vis_with_equipment").ToString().Equals("1")) ? "<button type=\"button\" class=\"btn btn-danger custombtn\" style=\"margin-left: 10px; display: none;\" onclick=\"finishMsg(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" : "<button type=\"button\" class=\"btn btn-danger custombtn\" style=\"margin-left: 10px; display: none;\" onclick=\"revEq(" + DataBinder.Eval(Container.DataItem, "vis_id") + ");\"><i class=\"fa fa-times\"></i></button>" %></td>
                                     </tr>
                                 </table>
                             </td>
@@ -124,11 +127,21 @@
            $('#dataTables-example').DataTable({
                 responsive: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
-            });
+           });
+
+           if (<%= Request.QueryString["access"] %> != '0'){
+               $('#msgAccess').show();
+           }else{
+               $('.custombtn').show();
+           }
         });
 
         function showDetails(visitor) {
-            window.location = "visit_termination.aspx?visitor=" + visitor;
+            if (<%= Request.QueryString["access"] %> != '0'){
+                window.location = "visit_consult.aspx?visitor=" + visitor;
+            }else{
+                window.location = "visit_termination.aspx?visitor=" + visitor;
+            }
         }
 
         var visitor = 0;

@@ -23,49 +23,47 @@ namespace LobbyManager
         /// <param name="e">Evento ejecutado</param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usr_id"] == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("login.aspx", true);
-            }
-            else
-            {
-                Boolean isValid = false;
-                Boolean isAdmin = false;
-                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                if (Session["usr_id"] == null)
                 {
-                    conn.Open();
-                    cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
-                    cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
-                    SqlDataReader dreader = cmd.ExecuteReader();
-                    if (dreader.Read())
+                    Response.Redirect("login.aspx", true);
+                }
+                else
+                {
+                    Boolean isValid = false;
+                    string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
                     {
-                        isValid = true;
-                        txt_rol.InnerText = dreader["role_name"].ToString();
-
-                        if (dreader["role_level"].ToString().Equals("0")) isAdmin = true;
+                        conn.Open();
+                        cmd.CommandText = "select role_name, role_level from tbl_roles where role_id = @role_id and role_status = 1";
+                        cmd.Parameters.AddWithValue("role_id", Session["usr_role"].ToString());
+                        SqlDataReader dreader = cmd.ExecuteReader();
+                        if (dreader.Read())
+                        {
+                            isValid = true;
+                            txt_rol.InnerText = dreader["role_name"].ToString();
+                        }
+                        dreader.Close();
+                        conn.Close();
                     }
-                    dreader.Close();
-                    conn.Close();
-                }
-                
-                txt_user.InnerText = Session["usr_name"].ToString();
-                txt_station.InnerText = Session["usr_device"].ToString();
 
-                if (!isValid) Response.Redirect("login.aspx?finish=true", true);
-                if (!isAdmin)
-                {
-                    //menu_history.Visible = false;
-                    //menu_management.Visible = false;
-                }
+                    txt_user.InnerText = Session["usr_name"].ToString();
+                    txt_station.InnerText = Session["usr_device"].ToString();
 
-                SqlDataSourceMenu.SelectCommand = "select a.role_id, a.role_menu, a.role_access, b.menu_id, b.menu_label, b.menu_file, b.menu_icon, b.menu_root_level, b.menu_root " +
-                                                    "from tbl_role_menu a, tbl_menu b " +
-                                                    "where a.role_menu = b.menu_id " +
-                                                    "and a.role_id = " + Session["usr_role"] +
-                                                    "order by b.menu_id, b.menu_root, b.menu_root_level asc";
+                    if (!isValid) Response.Redirect("login.aspx?finish=true", true);
+
+                    SqlDataSourceMenu.SelectCommand = "select a.role_id, a.role_menu, a.role_access, b.menu_id, b.menu_label, b.menu_file, b.menu_icon, b.menu_root_level, b.menu_root, " +
+                                                        "isnull((select min(d.role_menu) from tbl_menu c, tbl_role_menu d where d.role_menu = c.menu_id and c.menu_root = b.menu_root and c.menu_root_level > 0 and d.role_id = a.role_id),0) openList, " +
+                                                        "isnull((select max(d.role_menu) from tbl_menu c, tbl_role_menu d where d.role_menu = c.menu_id and c.menu_root = b.menu_root and c.menu_root_level > 0 and d.role_id = a.role_id),0) closeList " +
+                                                        "from tbl_role_menu a, tbl_menu b " +
+                                                        "where a.role_menu = b.menu_id " +
+                                                        "and a.role_id = " + Session["usr_role"] +
+                                                        "order by b.menu_id, b.menu_root, b.menu_root_level asc";
+                }
             }
+            
         }
 
         /// <summary>

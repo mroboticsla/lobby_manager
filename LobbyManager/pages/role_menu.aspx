@@ -12,7 +12,7 @@
                 <table>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-arrow-circle-o-left fa-2x"></i></button>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="window.history.back();"><i class="fa fa-arrow-circle-o-left fa-2x"></i></button>
                         </td>
                         <td>
                             <h1 class="page-header" style="margin-left: 10px;">Opciones de Menu - <asp:Label runat="server" id="lblRoleTitle" Text=""></asp:Label></h1>
@@ -31,13 +31,13 @@
                         <table class="table table-striped table-bordered table-hover" id="equipmentDataTable">
                             <thead>
                                 <tr>
-                                    <th class="info" rowspan="2" style="vertical-align: middle;">Opción de Menú</th>
-                                    <th class="info" colspan="3" style="text-align: center;">Nivel de Permiso</th>
+                                    <th class="info h4" rowspan="2" style="vertical-align: middle;">Opción de Menú</th>
+                                    <th class="info h4" colspan="3" style="text-align: center;">Nivel de Permiso</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">Lectura y Escritura</th>
-                                    <th style="text-align: center;">Solo Lectura</th>
-                                    <th style="text-align: center;">Ninguno</th>
+                                    <th class="success" style="text-align: center;">Control total</th>
+                                    <th class="warning" style="text-align: center;">Solo consulta</th>
+                                    <th class="danger" style="text-align: center;">Ninguno</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,11 +45,11 @@
                                     <ContentTemplate>
                                         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceList">
                                             <ItemTemplate>
-                                                <tr class="gradeU">
-                                                    <td><%# DataBinder.Eval(Container.DataItem, "menu_label").ToString().Trim() %></td>
-                                                    <td style="text-align: center;"><input type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() %>" value="0" /></td>
-                                                    <td style="text-align: center;"><input type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() %>" value="1" /></td>
-                                                    <td style="text-align: center;"><input type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() %>" value="2" /></td>
+                                                <tr class="gradeU <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim()))?"info" : "" %>">
+                                                    <td class="<%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim()))?"h4" : "" %>"><%# DataBinder.Eval(Container.DataItem, "menu_label").ToString().Trim() %></td>
+                                                    <td style="text-align: center;"><input class="roleAccess <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim()))?"hidden" : "" %>" type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() + "_" + Request.QueryString["role"] %>" value="0" <%# (DataBinder.Eval(Container.DataItem, "role_access").ToString().Trim().Equals("0"))?"checked=\"checked\"" : "" %> /></td>
+                                                    <td style="text-align: center;"><input class="roleAccess <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim()))?"hidden" : "" %>" type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() + "_" + Request.QueryString["role"] %>" value="1" <%# (DataBinder.Eval(Container.DataItem, "role_access").ToString().Trim().Equals("1"))?"checked=\"checked\"" : "" %> /></td>
+                                                    <td style="text-align: center;"><input class="roleAccess <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim()))?"hidden" : "" %>" type="radio" name="rad_<%# DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim() + "_" + Request.QueryString["role"] %>" value="2" <%# (DataBinder.Eval(Container.DataItem, "role_access").ToString().Trim().Equals("2"))?"checked=\"checked\"" : "" %> /></td>
                                                 </tr>
                                             </ItemTemplate>
                                         </asp:Repeater>
@@ -80,5 +80,29 @@
                 window.location.reload();
             }
         }
+
+        $(document).ready(function () {
+            $(".roleAccess").change(function () {
+                var values = this.name.split('_');
+                
+                var param = { role_id: values[2], menu_id: values[1], role_access: this.value };
+                $.ajax({
+                    url: "role_menu.aspx/SetMenuOption",
+                    data: JSON.stringify(param),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+                        //Datos guardados
+                        //alert('Datos guardados!');
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+                
+            });
+        });
     </script>
 </asp:Content>

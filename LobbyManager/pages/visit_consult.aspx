@@ -1,18 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masters/Main.Master" AutoEventWireup="true" CodeBehind="visit_consult.aspx.cs" Inherits="LobbyManager.pages.visit_consult" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-    <script type="text/javascript">
-        function checkVars() {
-            if ((<%= returnToList.ToString().ToLower() %>))
-            {
-                window.location="visitors_list.aspx";
-            }else if ((<%= addEQ.ToString().ToLower() %>))
-            {
-                window.location="equipment_exit.aspx?visitor=<%= visitor.ToString().ToLower() %>";
-            }
-        }
-        onload=checkVars();
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
@@ -103,7 +91,7 @@
                                 </fieldset>
                                 <fieldset runat="server">
                                     <div class="form-group">
-                                        <button type="reset" class="btn btn-info col-lg-12" onclick="returnToList();">Ir a Historial</button>
+                                        <button type="reset" class="btn btn-info col-lg-12" onclick="returnToList();">Regresar</button>
                                     </div>
                                 </fieldset>
                             </div>
@@ -174,7 +162,8 @@
         }
 
         function returnToList() {
-            window.location = "visitors_list.aspx";
+            //window.location = "visitors_list.aspx";
+            window.history.back();
         }
     </script>
 </asp:Content>

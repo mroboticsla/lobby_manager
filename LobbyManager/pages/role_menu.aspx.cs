@@ -45,7 +45,7 @@ namespace LobbyManager.pages
                 roleID = Request.QueryString["role"].ToString();
                 if (!roleID.Equals(""))
                 {
-                    SqlDataSourceList.SelectCommand = "select isnull((select a.role_access from tbl_role_menu a where a.role_menu = " + roleID + "), 2) role_access, " +
+                    SqlDataSourceList.SelectCommand = "select isnull((select a.role_access from tbl_role_menu a where a.role_menu = b.menu_id and a.role_id = " + roleID + "), 2) role_access, " +
                                                     "b.menu_id, b.menu_label, b.menu_file, b.menu_icon, b.menu_root_level, b.menu_root " +
                                                     "from tbl_menu b " +
                                                     "order by b.menu_id, b.menu_root, b.menu_root_level asc";
@@ -99,6 +99,100 @@ namespace LobbyManager.pages
             catch
             { }
             return "ok";
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void SetMenuOption(string role_id, string menu_id, string role_access)
+        {
+            int menu_root = 0;
+            int root_count = 0;
+
+            string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = "DELETE FROM tbl_role_menu where role_id = @role_id and role_menu = @menu_id";
+                cmd.Parameters.AddWithValue("role_id", role_id);
+                cmd.Parameters.AddWithValue("menu_id", menu_id);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            if (!role_access.Equals("2"))
+            {
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO tbl_role_menu (role_id, role_menu, role_access) values (@role_id, @role_menu, @role_access)";
+                    cmd.Parameters.AddWithValue("role_id", role_id);
+                    cmd.Parameters.AddWithValue("role_menu", menu_id);
+                    cmd.Parameters.AddWithValue("role_access", role_access);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+
+            using (var conn = new SqlConnection(connStr))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = "SELECT menu_root FROM tbl_menu where menu_id = @menu_id";
+                cmd.Parameters.AddWithValue("menu_id", menu_id);
+                SqlDataReader dreader = cmd.ExecuteReader();
+                while (dreader.Read())
+                {
+                    menu_root = dreader.GetInt32(0);
+                }
+                dreader.Close();
+                conn.Close();
+            }
+
+            if (menu_root != 0)
+            {
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "DELETE FROM tbl_role_menu where role_id = @role_id and role_menu = @menu_root";
+                    cmd.Parameters.AddWithValue("role_id", role_id);
+                    cmd.Parameters.AddWithValue("menu_root", menu_root);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT count(role_menu) FROM tbl_role_menu where role_id = @role_id and role_menu in (select menu_id from tbl_menu where menu_root = @menu_root)";
+                    cmd.Parameters.AddWithValue("role_id", role_id);
+                    cmd.Parameters.AddWithValue("menu_root", menu_root);
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    while (dreader.Read())
+                    {
+                        root_count = dreader.GetInt32(0);
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+
+                if (root_count > 0)
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO tbl_role_menu (role_id, role_menu, role_access) values (@role_id, @role_menu, @role_access)";
+                        cmd.Parameters.AddWithValue("role_id", role_id);
+                        cmd.Parameters.AddWithValue("role_menu", menu_root);
+                        cmd.Parameters.AddWithValue("role_access", role_access);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
         }
     }
 }

@@ -12,6 +12,9 @@
                 <h1 class="page-header">Administración de Usuarios</h1>
             </div>
         </div>
+        <div class="alert alert-warning" id="msgAccess" style="display:none;">
+            Modo de acceso restringido.
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -153,6 +156,11 @@
             /*$('#equipmentDataTable').DataTable({
                     responsive: true
             });*/
+
+            if (<%= Request.QueryString["access"] %> != '0'){
+                $('#msgAccess').show();
+                $('.btn').attr("disabled", "disabled");
+            }
         });
 
         function deleteRecord() {
