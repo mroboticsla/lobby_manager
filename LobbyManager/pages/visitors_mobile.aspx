@@ -62,6 +62,7 @@
                         <div class="alert alert-warning" id="msgWarn" runat="server">
                                 Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a>
                         </div>
+                        <div class="alert alert-danger" id="msgFormError" style="display:none;"></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset id="fs_images" runat="server">
@@ -168,7 +169,7 @@
                                             <div class="form-group">
                                                 <label>Empresa</label>
                                                 <input runat="server" id="txt_company" class="form-control" />
-                                                <p class="help-block">Si es particular, dejar vacío.</p>
+                                                <p class="help-block">Si es particular, escriba <span style="font-weight: bold;">"Particular"</span> o haga click <a href="#" onclick='$("#<%= txt_company.ClientID %>").val("Particular"); $("#<%= txt_phone.ClientID %>").focus();'>aquí</a></p>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -250,7 +251,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group" style="margin-top:10px;">
                                                 <input runat="server" id="chk_addEQ" type="checkbox" style="width:24px; height:24px; margin-left:30px;" />
-                                                <label for="chk_addEQ" style="margin-right: 3px; color: green" class="h3"><i class="fa fa-arrow-right" style="margin-right: 2px;"></i>Marcar si desea ingresar equipo o herramientas</label>
+                                                <label for="chk_addEQ" style="margin-right: 3px; color: green" class="h3"><i class="fa fa-arrow-left" style="margin-right: 2px;"></i>Marcar si desea ingresar equipo o herramientas</label>
                                             </div>
                                         </div>
                                     </div>
@@ -396,95 +397,147 @@
         function toggleStep1(back){
             var param1 = '#<%= images.ClientID %>';
             var param2 = '#fs_personalData';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                    });
+                }else{
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+                    });
+                }
+            });
         }
 
         function toggleStep2(back){
             var param1 = '#fs_personalData';
             var param2 = '#fs_documentData';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+                    });
+                }else{
+                    if ($("#<%= txt_name.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Ingrese su Nombre');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }else if ($("#<%= txt_lastname.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Ingrese su Apellido.');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_lastname.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
+                    });
+                }
+            });
         }
 
         function toggleStep3(back){
             var param1 = '#fs_documentData';
             var param2 = '#fs_companyData';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
+                    });
+                }else{
+                    if ($("#<%= txt_docnumber.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Ingrese su número de documento');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_docnumber.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                    });
+                }
+            });
         }
 
         function toggleStep4(back){
             var param1 = '#fs_companyData';
             var param2 = '#fs_visitDetails';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                    });
+                }else{
+                    if ($("#<%= txt_company.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Escriba el nombre de la Empresa que representa');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_company.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }else if ($("#<%= txt_phone.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Escriba su número telefónico');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_phone.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
+                    });
+                }
+            });
         }
 
         function toggleStep5(back){
             var param1 = '#fs_visitDetails';
             var param2 = '#fs_visitContact';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
+                    });
+                }else{
+                    if ($("#<%= txt_description.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Describa el motivo de su visita.');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_description.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
+                    });
+                }
+            });
         }
 
         function toggleStep6(back){
             var param1 = '#fs_visitContact';
             var param2 = '#fs_finishData';
-            if (back){
-                $( param2 ).fadeToggle( "fast", function() {
-                    $( param1 ).fadeToggle();
-                    setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
-                });
-            }else{
-                $( param1 ).fadeToggle( "fast", function() {
-                    $( param2 ).fadeToggle();
-                });
-            }
+            $("#msgFormError").slideUp(function (){
+                if (back){
+                    $( param2 ).fadeToggle( "fast", function() {
+                        $( param1 ).fadeToggle();
+                        setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
+                    });
+                }else{
+                    if ($("#<%= txt_contact.ClientID %>").val() == ''){
+                        $("#msgFormError").text('Escriba el nombre de la persona a visitar.');
+                        $("#msgFormError").slideDown();
+                        setTimeout(function(){ $( "#<%=txt_contact.ClientID%>" ).focus(); }, 500);
+                        return;
+                    }
+                    $( param1 ).fadeToggle( "fast", function() {
+                        $( param2 ).fadeToggle();
+                    });
+                }
+            });
         }
 
         $(document).ready(function () {

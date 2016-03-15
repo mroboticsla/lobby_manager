@@ -54,8 +54,16 @@ namespace LobbyManager.pages
                 String finishFlag = Request.QueryString["finish"].ToString();
                 if (finishFlag.Equals("true"))
                 {
-                    showMg = true;
+                    if (!IsPostBack) showMg = true;
                 }
+                else
+                {
+                    showMg = false;
+                }
+            }
+            else
+            {
+                showMg = false;
             }
 
             if (Session["usr_device"] == null)
@@ -227,6 +235,7 @@ namespace LobbyManager.pages
             txt_contact.Text = "";
             chk_addEQ.Checked = false;
             fs_images.Visible = true;
+            lbl_tittle.Visible = true;
         }
 
         /// <summary>
@@ -238,6 +247,7 @@ namespace LobbyManager.pages
         {
             images.Visible = true;
             fs_images.Visible = false;
+            lbl_tittle.Visible = false;
         }
 
         /// <summary>
@@ -309,6 +319,7 @@ namespace LobbyManager.pages
                 {
                     images.Visible = false;
                     fs_images.Visible = true;
+                    lbl_tittle.Visible = true;
                     txt_name.Value = "No se ha cargado el documento";
                     txt_lastname.Value = "";
                     txt_docnumber.Value = "";
