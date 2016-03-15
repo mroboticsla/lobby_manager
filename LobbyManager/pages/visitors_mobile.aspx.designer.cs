@@ -13,6 +13,15 @@ namespace LobbyManager.pages {
     public partial class visitors_mobile {
         
         /// <summary>
+        /// lbl_tittle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_tittle;
+        
+        /// <summary>
         /// images control.
         /// </summary>
         /// <remarks>

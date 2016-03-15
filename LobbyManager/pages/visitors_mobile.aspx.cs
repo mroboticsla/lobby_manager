@@ -287,6 +287,7 @@ namespace LobbyManager.pages
 
                             images.Visible = true;
                             fs_images.Visible = false;
+                            lbl_tittle.Visible = false;
 
                             loaded = true;
                         }

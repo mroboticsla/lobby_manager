@@ -72,7 +72,7 @@
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
            });
 
-           if (<%= Request.QueryString["access"] %> != '0'){
+           if (<%= (Request.QueryString["access"] != null)?Request.QueryString["access"] : "0" %> != '0'){
                isReadOnly = true;
                $('#msgAccess').show();
            }

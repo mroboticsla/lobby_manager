@@ -129,7 +129,7 @@
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "TODOS"]]
            });
 
-           if (<%= Request.QueryString["access"] %> != '0'){
+           if (<%= (Request.QueryString["access"] != null)?Request.QueryString["access"] : "0" %> != '0'){
                $('#msgAccess').show();
            }else{
                $('.custombtn').show();
@@ -137,7 +137,7 @@
         });
 
         function showDetails(visitor) {
-            if (<%= Request.QueryString["access"] %> != '0'){
+            if (<%= (Request.QueryString["access"] != null)?Request.QueryString["access"] : "0" %> != '0'){
                 window.location = "visit_consult.aspx?visitor=" + visitor;
             }else{
                 window.location = "visit_termination.aspx?visitor=" + visitor;

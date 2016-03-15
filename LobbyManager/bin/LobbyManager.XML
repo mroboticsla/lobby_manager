@@ -2557,6 +2557,15 @@
             <param name="img">Mapa de Bits a convertir</param>
             <returns>String base64</returns>
         </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.lbl_tittle">
+            <summary>
+            lbl_tittle control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="F:LobbyManager.pages.visitors_mobile.images">
             <summary>
             images control.

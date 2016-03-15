@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
-        <div class="row">
+        <div class="row" runat="server" id="lbl_tittle">
             <div class="col-lg-12">
                 <h1 class="page-header">Registro de Visitantes</h1>
             </div>
@@ -53,8 +53,8 @@
                                         <label>No. de Documento</label>
                                         <input runat="server" id="checkDocNum" class="form-control" disabled="disabled" />
                                     </div>
-                                    <button type="reset" class="btn btn-success btn-lg" onclick="readerOK(false);">Aceptar</button>
-                                    <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep1(false);">Editar</button>
+                                    <button type="button" class="btn btn-success btn-lg" onclick="readerOK(false);">Aceptar</button>
+                                    <button type="button" class="btn btn-info btn-lg" onclick="toggleStep1(false);">Editar</button>
                                     <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                 </fieldset>
                             </div>
@@ -73,8 +73,8 @@
                                                         <div class="col-xs-2">
                                                             <i class="fa fa-arrow-circle-o-right fa-5x"></i>
                                                         </div>
-                                                        <div class="col-xs-9 text-center">
-                                                            <div class="huge">
+                                                        <div class="col-xs-5 text-center">
+                                                            <div class="h2">
                                                                 <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Iniciar con Documento"></asp:Label>
                                                             </div>
                                                         </div>
@@ -92,8 +92,8 @@
                                                         <div class="col-xs-2">
                                                             <i class="fa fa-arrow-circle-o-right fa-5x"></i>
                                                         </div>
-                                                        <div class="col-xs-9 text-center">
-                                                            <div class="huge">
+                                                        <div class="col-xs-5 text-center">
+                                                            <div class="h2">
                                                                 <asp:Label ID="Label1" runat="server" Text="Iniciar sin documento"></asp:Label>
                                                             </div>
                                                         </div>
@@ -126,8 +126,8 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep1(true);">Anterior</button>
-                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep2(false);">Siguiente</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep1(true);">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="toggleStep2(false);">Siguiente</button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>
                                         </div>
@@ -154,8 +154,8 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep2(true);">Anterior</button>
-                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep3(false);">Siguiente</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep2(true);">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="toggleStep3(false);">Siguiente</button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>
                                         </div>
@@ -181,8 +181,8 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep3(true);">Anterior</button>
-                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep4(false);">Siguiente</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep3(true);">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="toggleStep4(false);">Siguiente</button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>
                                         </div>
@@ -209,8 +209,8 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep4(true);">Anterior</button>
-                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep5(false);">Siguiente</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep4(true);">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="toggleStep5(false);">Siguiente</button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>
                                         </div>
@@ -237,8 +237,8 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep5(true);">Anterior</button>
-                                                <button type="reset" class="btn btn-success btn-lg" onclick="toggleStep6(false);">Siguiente</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep5(true);">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="toggleStep6(false);">Siguiente</button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>
                                         </div>
@@ -257,7 +257,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="reset" class="btn btn-info btn-lg" onclick="toggleStep6(true);">Anterior</button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep6(true);">Anterior</button>
                                                 <asp:Button runat="server" class="btn btn-success btn-lg" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
                                                 <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
                                             </div>

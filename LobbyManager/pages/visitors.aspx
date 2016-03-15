@@ -299,7 +299,7 @@
                 minLength: 2
             });
 
-            if (<%= Request.QueryString["access"] %> != '0'){
+            if (<%= (Request.QueryString["access"] != null)?Request.QueryString["access"] : "0" %> != '0'){
                 $('#msgAccess').show();
                 $('#btnInit').attr("disabled", "disabled");
                 $('#btnNoDoc').attr("disabled", "disabled");
