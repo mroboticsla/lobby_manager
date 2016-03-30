@@ -89,7 +89,44 @@ namespace LobbyManager.pages
         }
 
         /// <summary>
-        /// Guarda los datos de equipo a ingresar
+        /// Editar el departamento
+        /// </summary>
+        /// <param name="sender">Objeto que ejecuta la acción</param>
+        /// <param name="e">Evento Ejecutado</param>
+        protected void editItem(object sender, EventArgs e)
+        {
+            if (txt_name.Value.Trim().Length == 0)
+            {
+                msgWarn.Visible = true;
+                return;
+            }
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "UPDATE tbl_dep_departments SET dep_name = @dep_name, dep_contact = @dep_contact, dep_phone = @dep_phone, dep_status = @dep_status \n" +
+                                      "WHERE dep_id = @dep_id ";
+                    cmd.Parameters.AddWithValue("dep_id", reg_id);
+                    cmd.Parameters.AddWithValue("dep_name", txt_name.Value);
+                    cmd.Parameters.AddWithValue("dep_contact", txt_contact.Value);
+                    cmd.Parameters.AddWithValue("dep_phone", txt_phone.Value);
+                    cmd.Parameters.AddWithValue("dep_status", 1);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    CleanForm();
+                }
+            }
+            catch (Exception a)
+            {
+                Response.Write(a.Message);
+            }
+        }
+
+        /// <summary>
+        /// Guarda departamento
         /// </summary>
         /// <param name="sender">Objeto que ejecuta la acción</param>
         /// <param name="e">Evento Ejecutado</param>
