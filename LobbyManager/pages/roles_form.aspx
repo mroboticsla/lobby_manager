@@ -5,8 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
-        <input type="text" id="selectedID" runat="server" value="" visible="false" />
-        <input type="text" id="option" runat="server" value="" visible="false" />
+        <asp:hiddenfield ID="selectedID" runat="server" value="" />
+        <asp:hiddenfield ID="option" runat="server" value="" />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div class="row">

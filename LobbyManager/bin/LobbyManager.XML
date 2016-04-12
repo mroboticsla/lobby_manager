@@ -1632,7 +1632,7 @@
         </member>
         <member name="M:LobbyManager.pages.departments_form.saveItem(System.Object,System.EventArgs)">
             <summary>
-            Guarda los datos de equipo a ingresar
+            Guarda departamento
             </summary>
             <param name="sender">Objeto que ejecuta la acción</param>
             <param name="e">Evento Ejecutado</param>
@@ -1648,6 +1648,24 @@
             </summary>
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
+        </member>
+        <member name="F:LobbyManager.pages.departments_form.selectedID">
+            <summary>
+            selectedID control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.departments_form.recordOption">
+            <summary>
+            recordOption control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
         </member>
         <member name="F:LobbyManager.pages.departments_form.ScriptManager1">
             <summary>
@@ -1724,6 +1742,15 @@
         <member name="F:LobbyManager.pages.departments_form.txt_phone">
             <summary>
             txt_phone control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.departments_form.btnDelete">
+            <summary>
+            btnDelete control.
             </summary>
             <remarks>
             Auto-generated field.

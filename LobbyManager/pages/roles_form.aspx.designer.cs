@@ -19,7 +19,7 @@ namespace LobbyManager.pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText selectedID;
+        protected global::System.Web.UI.WebControls.HiddenField selectedID;
         
         /// <summary>
         /// option control.
@@ -28,7 +28,7 @@ namespace LobbyManager.pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText option;
+        protected global::System.Web.UI.WebControls.HiddenField option;
         
         /// <summary>
         /// ScriptManager1 control.
