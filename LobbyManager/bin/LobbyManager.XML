@@ -1071,6 +1071,24 @@
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
         </member>
+        <member name="F:LobbyManager.pages.users_form.selectedID">
+            <summary>
+            selectedID control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.users_form.recordOption">
+            <summary>
+            recordOption control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="F:LobbyManager.pages.users_form.ScriptManager1">
             <summary>
             ScriptManager1 control.
@@ -1164,6 +1182,15 @@
         <member name="F:LobbyManager.pages.users_form.chk_active">
             <summary>
             chk_active control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.users_form.btnDelete">
+            <summary>
+            btnDelete control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -2710,6 +2737,15 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.NoDocOption">
+            <summary>
+            NoDocOption control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="F:LobbyManager.pages.visitors_mobile.Label1">
             <summary>
             Label1 control.
@@ -4161,6 +4197,15 @@
         <member name="F:LobbyManager.pages.visitors.lbl_newCommentsCount">
             <summary>
             lbl_newCommentsCount control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors.btnNoDoc">
+            <summary>
+            btnNoDoc control.
             </summary>
             <remarks>
             Auto-generated field.

@@ -64,7 +64,7 @@
                                         </div>
                                     </a>
 
-                                    <a data-toggle="modal" href="#noDocDlg" id="btnNoDoc">
+                                    <a runat="server" id="btnNoDoc" data-toggle="modal" href="#noDocDlg" style="display:none;">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-red">
                                                 <div class="panel-heading">

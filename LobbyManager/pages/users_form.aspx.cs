@@ -41,7 +41,7 @@ namespace LobbyManager.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             msgWarn.Visible = false;
-            SqlDataSourceList.SelectCommand = "SELECT usr_id, usr_role, usr_username, usr_name, role_name FROM tbl_usr_users, tbl_roles where role_id = usr_role";
+            SqlDataSourceList.SelectCommand = "SELECT usr_id, usr_role, usr_username, usr_name, usr_password, role_name, usr_status FROM tbl_usr_users, tbl_roles where role_id = usr_role";
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace LobbyManager.pages
                 using (var cmd = conn.CreateCommand())
                 {
                     conn.Open();
-                    cmd.CommandText = "DELETE FROM tbl_usr_users where dev_id = @reg_id";
+                    cmd.CommandText = "DELETE FROM tbl_usr_users where usr_id = @reg_id";
                     cmd.Parameters.AddWithValue("reg_id", reg_id);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -77,11 +77,6 @@ namespace LobbyManager.pages
         /// <param name="e">Evento Ejecutado</param>
         protected void saveItem(object sender, EventArgs e)
         {
-            if (txt_name.Value.Trim().Length == 0)
-            {
-                msgWarn.Visible = true;
-                return;
-            }
             try
             {
                 string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
@@ -104,21 +99,51 @@ namespace LobbyManager.pages
                 var data = Encoding.ASCII.GetBytes(txt_pass.Value);
                 var sha1data = sha1.ComputeHash(data);
 
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                if (!recordOption.Value.Equals("E"))
                 {
-                    conn.Open();
-                    cmd.CommandText = "INSERT INTO tbl_usr_users (usr_id, usr_role, usr_username, usr_password, usr_status, usr_name) \n" +
-                                      "values (@usr_id, @usr_role, @usr_username, @usr_password, @usr_status, @usr_name)";
-                    cmd.Parameters.AddWithValue("usr_id", reg_id);
-                    cmd.Parameters.AddWithValue("usr_role", roleSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("usr_username", txt_usr.Value);
-                    cmd.Parameters.AddWithValue("usr_password", sha1data);
-                    cmd.Parameters.AddWithValue("usr_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("usr_status", (chk_active.Checked) ? "1" : "0");
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    CleanForm();
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO tbl_usr_users (usr_id, usr_role, usr_username, usr_password, usr_status, usr_name) \n" +
+                                          "values (@usr_id, @usr_role, @usr_username, @usr_password, @usr_status, @usr_name)";
+                        cmd.Parameters.AddWithValue("usr_id", reg_id);
+                        cmd.Parameters.AddWithValue("usr_role", roleSelect.SelectedValue);
+                        cmd.Parameters.AddWithValue("usr_username", txt_usr.Value);
+                        cmd.Parameters.AddWithValue("usr_password", sha1data);
+                        cmd.Parameters.AddWithValue("usr_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("usr_status", (chk_active.Checked) ? "1" : "0");
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
+                }
+                else
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        if (txt_pass.Value.Equals("$No-Change")) {
+                            cmd.CommandText = "UPDATE tbl_usr_users SET usr_role = @usr_role, usr_username = @usr_username, usr_status = @usr_status, usr_name = @usr_name \n" +
+                                          "WHERE usr_id = @usr_id ";
+                        }
+                        else
+                        {
+                            cmd.CommandText = "UPDATE tbl_usr_users SET usr_role = @usr_role, usr_username = @usr_username, usr_password = @usr_password, usr_status = @usr_status, usr_name = @usr_name \n" +
+                                          "WHERE usr_id = @usr_id ";
+                            cmd.Parameters.AddWithValue("usr_password", sha1data);
+                        }
+                        
+                        cmd.Parameters.AddWithValue("usr_id", selectedID.Value);
+                        cmd.Parameters.AddWithValue("usr_role", roleSelect.SelectedValue);
+                        cmd.Parameters.AddWithValue("usr_username", txt_usr.Value);
+                        cmd.Parameters.AddWithValue("usr_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("usr_status", (chk_active.Checked) ? "1" : "0");
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
                 }
             }
             catch (Exception a)

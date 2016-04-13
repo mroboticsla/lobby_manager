@@ -43,7 +43,7 @@
                         <td>
                             <img src="../images/sykeslogo.png" height="36" />
                         </td>
-                        <td class="fa-align-center">Control de Visitantes - LobbyManager®</td>
+                        <td class="fa-align-center">LobbyManager®</td>
                     </tr>
                 </table>
             </a>
@@ -60,5 +60,6 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+    <span style="color: gray;" class="pull-right">Desarrollado por M-Robotics Latin America <%= DateTime.Now.Year %></span>
 </body>
 </html>
