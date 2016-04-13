@@ -19,10 +19,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <asp:Label ID="lblTitle" runat="server">Usuarios Registrados en el Sistema</asp:Label>
-                    </div>
+                <div class="panel" style="background-color:transparent;">
                     <div class="panel-body">
                         <div class="row">
                             <div  style="float: right; margin-bottom: 10px;">

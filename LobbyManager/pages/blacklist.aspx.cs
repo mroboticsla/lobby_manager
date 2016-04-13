@@ -97,20 +97,41 @@ namespace LobbyManager.pages
                     dreader.Close();
                     conn.Close();
                 }
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                if (!recordOption.Value.Equals("E"))
                 {
-                    conn.Open();
-                    cmd.CommandText = "INSERT INTO [tbl_vis_blacklist] (vis_id, vis_document, vis_name, vis_lastname, vis_alert_level) \n" +
-                                      "values (@vis_id, @vis_document, @vis_name, @vis_lastname, @vis_alert_level)";
-                    cmd.Parameters.AddWithValue("vis_id", vis_id);
-                    cmd.Parameters.AddWithValue("vis_document", txt_document.Value);
-                    cmd.Parameters.AddWithValue("vis_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("vis_lastname", txt_lastname.Value);
-                    cmd.Parameters.AddWithValue("vis_alert_level", alertSelect.SelectedValue);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    CleanForm();
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO [tbl_vis_blacklist] (vis_id, vis_document, vis_name, vis_lastname, vis_alert_level) \n" +
+                                          "values (@vis_id, @vis_document, @vis_name, @vis_lastname, @vis_alert_level)";
+                        cmd.Parameters.AddWithValue("vis_id", vis_id);
+                        cmd.Parameters.AddWithValue("vis_document", txt_document.Value);
+                        cmd.Parameters.AddWithValue("vis_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("vis_lastname", txt_lastname.Value);
+                        cmd.Parameters.AddWithValue("vis_alert_level", alertSelect.SelectedValue);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
+                }
+                else
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "UPDATE [tbl_vis_blacklist] SET vis_document = @vis_document, vis_name = @vis_name, vis_lastname = @vis_lastname, vis_alert_level = @vis_alert_level \n" +
+                                          "WHERE vis_id = @vis_id";
+                        cmd.Parameters.AddWithValue("vis_id", selectedID.Value);
+                        cmd.Parameters.AddWithValue("vis_document", txt_document.Value);
+                        cmd.Parameters.AddWithValue("vis_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("vis_lastname", txt_lastname.Value);
+                        cmd.Parameters.AddWithValue("vis_alert_level", alertSelect.SelectedValue);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
                 }
             }
             catch (Exception a)
