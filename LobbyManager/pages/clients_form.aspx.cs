@@ -83,19 +83,40 @@ namespace LobbyManager.pages
             try
             {
                 string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                if (!recordOption.Value.Equals("E"))
                 {
-                    conn.Open();
-                    cmd.CommandText = "INSERT INTO [tbl_dev_clients] (dev_id, dev_name, dev_station, dev_status) \n" +
-                                      "values (@dev_id, @dev_name, @dev_station, @dev_status)";
-                    cmd.Parameters.AddWithValue("dev_id", txt_serviceID.Value);
-                    cmd.Parameters.AddWithValue("dev_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("dev_station", stationSelect.SelectedValue);
-                    cmd.Parameters.AddWithValue("dev_status", (chk_active.Checked) ? "1" : "0");
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    CleanForm();
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO [tbl_dev_clients] (dev_id, dev_name, dev_station, dev_status) \n" +
+                                          "values (@dev_id, @dev_name, @dev_station, @dev_status)";
+                        cmd.Parameters.AddWithValue("dev_id", txt_serviceID.Value);
+                        cmd.Parameters.AddWithValue("dev_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("dev_station", stationSelect.SelectedValue);
+                        cmd.Parameters.AddWithValue("dev_status", (chk_active.Checked) ? "1" : "0");
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
+                }
+                else
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "UPDATE [tbl_dev_clients] SET dev_id = @dev_id, dev_name = @dev_name, dev_station = @dev_station, dev_status = @dev_status \n" +
+                                          "WHERE dev_id = @selected_id";
+                        cmd.Parameters.AddWithValue("dev_id", txt_serviceID.Value);
+                        cmd.Parameters.AddWithValue("selected_id", selectedID.Value);
+                        cmd.Parameters.AddWithValue("dev_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("dev_station", stationSelect.SelectedValue);
+                        cmd.Parameters.AddWithValue("dev_status", (chk_active.Checked) ? "1" : "0");
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
                 }
             }
             catch (Exception a)
