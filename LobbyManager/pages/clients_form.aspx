@@ -98,7 +98,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Estación de Enrolamiento</h4>
+                                    <h4 class="modal-title">Dispositivos móviles</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="panel panel-default">
@@ -107,9 +107,7 @@
                                         </div>
                                         <div class="panel-body">
                                             <fieldset id="fs_personalData" runat="server">
-                                                <div class="alert alert-warning" id="msgWarn" runat="server">
-                                                    El campo 'Nombre' es obligatorio
-                                                </div>
+                                                <div class="alert alert-danger" id="msgFormError" style="display:none;"></div>
                                                 <div class="form-group">
                                                     <label for="eqTypeSelect">Nombre</label>
                                                     <input runat="server" id="txt_serviceID" class="form-control" placeholder="" />

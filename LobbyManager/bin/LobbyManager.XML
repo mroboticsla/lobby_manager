@@ -1331,15 +1331,6 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.clients_form.msgWarn">
-            <summary>
-            msgWarn control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
         <member name="F:LobbyManager.pages.clients_form.txt_serviceID">
             <summary>
             txt_serviceID control.
@@ -2118,18 +2109,27 @@
             <param name="sender">Objeto que llama a la acción</param>
             <param name="e">Evento Ejecutado</param>
         </member>
-        <member name="F:LobbyManager.pages.documents_form.ScriptManager1">
+        <member name="F:LobbyManager.pages.documents_form.selectedID">
             <summary>
-            ScriptManager1 control.
+            selectedID control.
             </summary>
             <remarks>
             Auto-generated field.
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.documents_form.lblTitle">
+        <member name="F:LobbyManager.pages.documents_form.recordOption">
             <summary>
-            lblTitle control.
+            recordOption control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.documents_form.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
             </summary>
             <remarks>
             Auto-generated field.
@@ -2163,15 +2163,6 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.documents_form.msgWarn">
-            <summary>
-            msgWarn control.
-            </summary>
-            <remarks>
-            Auto-generated field.
-            To modify move field declaration from designer file to code-behind file.
-            </remarks>
-        </member>
         <member name="F:LobbyManager.pages.documents_form.txt_name">
             <summary>
             txt_name control.
@@ -2193,6 +2184,15 @@
         <member name="F:LobbyManager.pages.documents_form.chk_oficial">
             <summary>
             chk_oficial control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.documents_form.btnDelete">
+            <summary>
+            btnDelete control.
             </summary>
             <remarks>
             Auto-generated field.

@@ -38,7 +38,6 @@ namespace LobbyManager.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            msgWarn.Visible = false;
             SqlDataSourceList.SelectCommand = "SELECT dev_id, dev_name, dev_station, dev_status FROM tbl_dev_clients";
         }
 
@@ -77,7 +76,6 @@ namespace LobbyManager.pages
         {
             if (txt_name.Value.Trim().Length == 0)
             {
-                msgWarn.Visible = true;
                 return;
             }
             try
@@ -133,7 +131,6 @@ namespace LobbyManager.pages
             txt_serviceID.Value = "";
             txt_name.Value = "";
             chk_active.Checked = false;
-            msgWarn.Visible = false;
             Response.Redirect(Request.Url.ToString()); 
         }
 

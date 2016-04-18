@@ -42,7 +42,6 @@ namespace LobbyManager.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            msgWarn.Visible = false;
             SqlDataSourceList.SelectCommand = "SELECT doc_id, doc_name, doc_abreviature, doc_is_national_idcard FROM tbl_doc_documents";
 
             if (Request.QueryString["approve"] != null)
@@ -97,7 +96,6 @@ namespace LobbyManager.pages
         {
             if (txt_name.Value.Trim().Length == 0)
             {
-                msgWarn.Visible = true;
                 return;
             }
             try
@@ -118,20 +116,41 @@ namespace LobbyManager.pages
                     conn.Close();
                 }
 
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                if (!recordOption.Value.Equals("E"))
                 {
-                    conn.Open();
-                    cmd.CommandText = "INSERT INTO [tbl_doc_documents] (doc_id, doc_name, doc_abreviature, doc_is_national_idcard, doc_status) \n" +
-                                      "values (@doc_id, @doc_name, @doc_abreviature, @doc_is_national_idcard, @doc_status)";
-                    cmd.Parameters.AddWithValue("doc_id", reg_id);
-                    cmd.Parameters.AddWithValue("doc_name", txt_name.Value);
-                    cmd.Parameters.AddWithValue("doc_abreviature",  txt_abr.Value);
-                    cmd.Parameters.AddWithValue("doc_is_national_idcard", (chk_oficial.Checked) ? "1" : "0");
-                    cmd.Parameters.AddWithValue("doc_status", 1);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    CleanForm();
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO [tbl_doc_documents] (doc_id, doc_name, doc_abreviature, doc_is_national_idcard, doc_status) \n" +
+                                          "values (@doc_id, @doc_name, @doc_abreviature, @doc_is_national_idcard, @doc_status)";
+                        cmd.Parameters.AddWithValue("doc_id", reg_id);
+                        cmd.Parameters.AddWithValue("doc_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("doc_abreviature", txt_abr.Value);
+                        cmd.Parameters.AddWithValue("doc_is_national_idcard", (chk_oficial.Checked) ? "1" : "0");
+                        cmd.Parameters.AddWithValue("doc_status", 1);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
+                }
+                else
+                {
+                    using (var conn = new SqlConnection(connStr))
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = "UPDATE [tbl_doc_documents] SET doc_name = @doc_name, doc_abreviature = @doc_abreviature, doc_is_national_idcard = @doc_is_national_idcard \n" +
+                                          "WHERE doc_id = @doc_id";
+                        cmd.Parameters.AddWithValue("doc_id", selectedID.Value);
+                        cmd.Parameters.AddWithValue("doc_name", txt_name.Value);
+                        cmd.Parameters.AddWithValue("doc_abreviature", txt_abr.Value);
+                        cmd.Parameters.AddWithValue("doc_is_national_idcard", (chk_oficial.Checked) ? "1" : "0");
+                        cmd.Parameters.AddWithValue("doc_status", 1);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        CleanForm();
+                    }
                 }
             }
             catch (Exception a)
@@ -148,7 +167,6 @@ namespace LobbyManager.pages
             txt_name.Value = "";
             txt_abr.Value = "";
             chk_oficial.Checked = false;
-            msgWarn.Visible = false;
             Response.Redirect(Request.Url.ToString()); 
         }
 
