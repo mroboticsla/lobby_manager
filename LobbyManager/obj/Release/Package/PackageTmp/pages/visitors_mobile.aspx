@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel" style="background-color: transparent;">
                     <div class="panel-body">
                         <div class="row" runat="server" id="images">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="imageTabs">
@@ -76,7 +76,7 @@
                                                         </div>
                                                         <div class="col-xs-5 text-center">
                                                             <div class="h2">
-                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Iniciar con Documento"></asp:Label>
+                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Iniciar Visita"></asp:Label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -85,7 +85,7 @@
                                         </div>
                                     </a>
 
-                                    <a data-toggle="modal" href="#noDocDlg">
+                                    <a runat="server" id="NoDocOption" data-toggle="modal" href="#noDocDlg" style="display:none;">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-red">
                                                 <div class="panel-heading">

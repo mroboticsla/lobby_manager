@@ -5,8 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
-        <input type="text" id="selectedID" runat="server" value="" visible="false" />
-        <input type="text" id="option" runat="server" value="" visible="false" />
+        <asp:hiddenfield ID="selectedID" runat="server" value="" />
+        <asp:hiddenfield ID="option" runat="server" value="" />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div class="row">
@@ -19,10 +19,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <asp:Label ID="lblTitle" runat="server">Roles Registrados en el Sistema</asp:Label>
-                    </div>
+                <div class="panel">
                     <div class="panel-body">
                         <div class="row">
                             <div  style="float: right; margin-bottom: 10px;">

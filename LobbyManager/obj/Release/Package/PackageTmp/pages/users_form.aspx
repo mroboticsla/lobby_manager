@@ -5,6 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
+        <asp:hiddenfield ID="selectedID" runat="server" value="" />
+        <asp:hiddenfield ID="recordOption" runat="server" value="" />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div class="row">
@@ -17,10 +19,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <asp:Label ID="lblTitle" runat="server">Usuarios Registrados en el Sistema</asp:Label>
-                    </div>
+                <div class="panel" style="background-color:transparent;">
                     <div class="panel-body">
                         <div class="row">
                             <div  style="float: right; margin-bottom: 10px;">
@@ -36,6 +35,7 @@
                                             <th>Usuario</th>
                                             <th>Rol</th>
                                             <th>Nombre Real</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,11 +43,21 @@
                                             <ContentTemplate>
                                                 <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceList">
                                                     <ItemTemplate>
-                                                        <tr class="gradeU" onclick="showMsg('<%# DataBinder.Eval(Container.DataItem, "usr_id").ToString().Trim() %>');">
+                                                        <tr class="gradeU">
                                                             <td><%# DataBinder.Eval(Container.DataItem, "usr_id").ToString().Trim() %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "usr_username").ToString().Trim() %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "role_name").ToString().Trim() %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "usr_name").ToString().Trim() %></td>
+                                                            <td>
+                                                                <%# "<button type=\"button\" class=\"btn btn-info\" onclick=\"editRecord('" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_id").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_name").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_username").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_password").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_role").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "usr_status").ToString().Trim() +
+                                                                    "');\"><i class=\"fa fa-pencil\"></i></button>" %>
+                                                            </td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
@@ -101,6 +111,7 @@
                                                 <div class="alert alert-warning" id="msgWarn" runat="server">
                                                     El campo 'Nombre' es obligatorio
                                                 </div>
+                                                <div class="alert alert-danger" id="msgFormError" style="display:none;"></div>
                                                 <div class="form-group">
                                                     <label>Nombre</label>
                                                     <input runat="server" id="txt_name" class="form-control" placeholder="" />
@@ -127,8 +138,9 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button class="btn btn-success" runat="server" Text="Guardar" OnClick="saveItem" />
-                                    <asp:Button class="btn btn-danger" runat="server" data-dismiss="modal" Text="Cancelar" ID="btnCancelForm" OnClick="btnCancelForm_Click"/>
+                                    <asp:Button class="btn btn-success" runat="server" OnClientClick="if (!validateForm()) return false;" Text="Guardar" OnClick="saveItem" />
+                                    <asp:Button class="btn btn-danger" ID="btnDelete" runat="server" Text="Eliminar" OnClientClick="deleteRecord();" />
+                                    <asp:Button class="btn btn-default" runat="server" data-dismiss="modal" Text="Cancelar" ID="btnCancelForm" OnClick="btnCancelForm_Click"/>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +175,60 @@
             }
         });
 
+        function validateForm(){
+            var res = true;
+
+            $("#msgFormError").slideUp(function (){
+                if ($('#<%=txt_name.ClientID%>').val() === ""){
+                    $("#msgFormError").text('Nombre requerido');
+                    $("#msgFormError").slideDown();
+                    res = false;
+                }
+
+                if ($('#<%=txt_usr.ClientID%>').val() === ""){
+                    $("#msgFormError").text('Usuario requerido');
+                    $("#msgFormError").slideDown();
+                    res = false;
+                }
+
+                if ($('#<%=txt_pass.ClientID%>').val() === ""){
+                    $("#msgFormError").text('Contraseña requerida');
+                    $("#msgFormError").slideDown();
+                    res = false;
+                }
+            });
+
+            return res;
+        }
+
+        function showForm() {
+            $('#<%=recordOption.ClientID%>').val('A');
+            $('#<%=txt_name.ClientID%>').val('');
+            $('#<%=txt_pass.ClientID%>').val('');
+            $('#<%=txt_usr.ClientID%>').val('');
+            $('#<%=btnDelete.ClientID%>').hide();
+            $('#addDlg').modal('show');
+            setFocus();
+        }
+
+        function editRecord(rec, name, usr, pass, role, status) {
+            currentrecord = rec;
+            $('#<%=recordOption.ClientID%>').val('E');
+            $('#<%=selectedID.ClientID%>').val(rec);
+            $('#<%=btnDelete.ClientID%>').show();
+            $('#<%=txt_name.ClientID%>').val(name);
+            $('#<%=txt_usr.ClientID%>').val(usr);
+            $('#<%=txt_pass.ClientID%>').val('$No-Change');
+            $('#<%=roleSelect.ClientID%>').val(role);
+            $('#<%=chk_active.ClientID%>').prop('checked', (status === '1')? true : false);
+            $('#addDlg').modal('show');
+            setFocus();
+        }
+
+        function setFocus() {
+            setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+        }
+
         function deleteRecord() {
             PageMethods.deleteRecord(currentrecord, OnSuccess);
             function OnSuccess(response, userContext, methodName) {
@@ -172,27 +238,13 @@
             }
         }
 
-        function showForm() {
-            $('#addDlg').modal('show');
-        }
-
-        function showMsg(rec) {
-            currentrecord = rec;
-            $('#deleteDlg').modal('show');
+        function showMsg() {
+            currentrecord = $('#<%=selectedID.ClientID%>').val();
+            deleteRecord();
         }
 
         function hideMsg() {
             $('#deleteDlg').modal('hide');
-        }
-
-        function finishProc() {
-            if ((<%= approved.ToString().ToLower() %>))
-            {
-                window.location="visitors_approve.aspx?visitor=<%= visitorID.ToString().ToLower() %>&finish=true";
-            }else{
-                window.location="visitors.aspx?finish=true";
-            }
-            
         }
     </script>
 </asp:Content>

@@ -5,6 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHolder" runat="server">
     <form role="form" runat="server">
+        <asp:hiddenfield ID="selectedID" runat="server" value="" />
+        <asp:hiddenfield ID="recordOption" runat="server" value="" />
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div class="row">
@@ -36,6 +38,7 @@
                                             <th>NOMBRE</th>
                                             <th>CONTACTO</th>
                                             <th>TELEFONO</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,11 +46,19 @@
                                             <ContentTemplate>
                                                 <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceList">
                                                     <ItemTemplate>
-                                                        <tr class="gradeU" onclick="showMsg('<%# DataBinder.Eval(Container.DataItem, "dep_id") %>');">
+                                                        <tr class="gradeU">
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dep_id") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dep_name") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dep_contact") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dep_phone") %></td>
+                                                            <td>
+                                                                <%# "<button type=\"button\" class=\"btn btn-info\" onclick=\"editRecord('" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "dep_id").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "dep_name").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "dep_contact").ToString().Trim() + "','" + 
+                                                                                    DataBinder.Eval(Container.DataItem, "dep_phone").ToString().Trim() + 
+                                                                    "');\"><i class=\"fa fa-pencil\"></i></button>" %>
+                                                            </td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
@@ -119,7 +130,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button class="btn btn-success" runat="server" Text="Guardar" OnClick="saveItem" />
-                                    <asp:Button class="btn btn-danger" runat="server" data-dismiss="modal" Text="Cancelar" ID="btnCancelForm" OnClick="btnCancelForm_Click"/>
+                                    <asp:Button class="btn btn-danger" ID="btnDelete" runat="server" Text="Eliminar" OnClientClick="deleteRecord();" />
+                                    <asp:Button class="btn btn-default" runat="server" data-dismiss="modal" Text="Cancelar" ID="btnCancelForm" OnClick="btnCancelForm_Click"/>
                                 </div>
                             </div>
                         </div>
@@ -156,6 +168,32 @@
             }
         });
 
+        function showForm() {
+            $('#<%=recordOption.ClientID%>').val('A');
+            $('#<%=txt_name.ClientID%>').val('');
+            $('#<%=txt_contact.ClientID%>').val('');
+            $('#<%=txt_phone.ClientID%>').val('');
+            $('#<%=btnDelete.ClientID%>').hide();
+            $('#addDlg').modal('show');
+            setFocus();
+        }
+
+        function editRecord(rec, name, contact, phone) {
+            currentrecord = rec;
+            $('#<%=recordOption.ClientID%>').val('E');
+            $('#<%=selectedID.ClientID%>').val(rec);
+            $('#<%=btnDelete.ClientID%>').show();
+            $('#<%=txt_name.ClientID%>').val(name);
+            $('#<%=txt_contact.ClientID%>').val(contact);
+            $('#<%=txt_phone.ClientID%>').val(phone);
+            $('#addDlg').modal('show');
+            setFocus();
+        }
+
+        function setFocus(){
+            setTimeout(function(){ $( "#<%=txt_name.ClientID%>" ).focus(); }, 500);
+        }
+
         function deleteRecord() {
             PageMethods.deleteRecord(currentrecord, OnSuccess);
             function OnSuccess(response, userContext, methodName) {
@@ -165,13 +203,9 @@
             }
         }
 
-        function showForm() {
-            $('#addDlg').modal('show');
-        }
-
-        function showMsg(rec) {
-            currentrecord = rec;
-            $('#deleteDlg').modal('show');
+        function showMsg() {
+            currentrecord = $('#<%=selectedID.ClientID%>').val();
+            deleteRecord();
         }
 
         function hideMsg() {

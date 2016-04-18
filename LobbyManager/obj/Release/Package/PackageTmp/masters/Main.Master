@@ -47,7 +47,7 @@
                             <td>
                                 <img src="../images/sykeslogo.png" height="36" />
                             </td>
-                            <td class="fa-align-center">Control de Visitantes - LobbyManager®</td>
+                            <td class="fa-align-center">LobbyManager®</td>
                         </tr>
                     </table>
                 </a>
@@ -182,6 +182,5 @@
     </script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-
 </body>
 </html>
