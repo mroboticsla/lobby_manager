@@ -349,6 +349,11 @@ namespace LobbyManager.pages
             return _code;
         }
 
+        /// <summary>
+        /// Web Service para listar Empleados en las pantallas de registro de visitantes.
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         [WebMethod]
         public static string[] GetEmployees(string keyword)
         {

@@ -3926,6 +3926,13 @@
             </summary>
             <param name="dt"></param>
         </member>
+        <member name="M:LobbyManager.pages.visitors_assign.finishVisit(System.Int32)">
+            <summary>
+            Finaliza la visita.
+            </summary>
+            <param name="sender">Objeto que llama a la acción</param>
+            <param name="e">Evento Ejecutado</param>
+        </member>
         <member name="M:LobbyManager.pages.visitors_assign.btnExportTable(System.Object,System.EventArgs)">
             <summary>
             Ejecuta la exportación a XLS
@@ -3942,9 +3949,9 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
-        <member name="F:LobbyManager.pages.visitors_assign.tableContainer">
+        <member name="F:LobbyManager.pages.visitors_assign.mainTitle">
             <summary>
-            tableContainer control.
+            mainTitle control.
             </summary>
             <remarks>
             Auto-generated field.
