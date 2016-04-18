@@ -4156,6 +4156,13 @@
             <param name="img">Mapa de Bits a convertir</param>
             <returns>String base64</returns>
         </member>
+        <member name="M:LobbyManager.pages.visitors.GetEmployees(System.String)">
+            <summary>
+            Web Service para listar Empleados en las pantallas de registro de visitantes.
+            </summary>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
         <member name="F:LobbyManager.pages.visitors.images">
             <summary>
             images control.

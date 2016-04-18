@@ -60,6 +60,10 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-    <span style="color: gray;" class="pull-right">Desarrollado por M-Robotics Latin America <%= DateTime.Now.Year %></span>
+
+    <div class="row">
+        <div style="color: gray; text-align: center;" class="col-lg-12">Desarrollado por M-Robotics Latin America <%= DateTime.Now.Year %></div>
+    </div>
+    
 </body>
 </html>
