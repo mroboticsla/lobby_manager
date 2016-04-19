@@ -1,0 +1,11 @@
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\obj\Debug\WSEmpleados.csprojResolveAssemblyReference.cache
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\bin\WSEmpleados.dll
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\bin\WSEmpleados.pdb
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\obj\Debug\WSEmpleados.dll
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\obj\Debug\WSEmpleados.pdb
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.dll.config
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.pdb
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.csprojResolveAssemblyReference.cache
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.dll
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.pdb

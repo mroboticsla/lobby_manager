@@ -1,0 +1,4 @@
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\bin\WSEmpleados.dll
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\bin\WSEmpleados.pdb
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\obj\Release\WSEmpleados.dll
+C:\Users\mendozle1\documents\visual studio 2012\Projects\WSEmpleados\WSEmpleados\obj\Release\WSEmpleados.pdb

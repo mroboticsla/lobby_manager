@@ -62,7 +62,7 @@
     <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
 
     <div class="row">
-        <div style="color: gray; text-align: center;" class="col-lg-12">Desarrollado por M-Robotics Latin America <%= DateTime.Now.Year %></div>
+        <div style="color: gray; text-align: center;" class="col-lg-12">Derechos reservados para M-Robotics Latin America <%= DateTime.Now.Year %></div>
     </div>
     
 </body>

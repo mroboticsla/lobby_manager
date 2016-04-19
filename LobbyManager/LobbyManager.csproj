@@ -421,6 +421,7 @@
     <Content Include="css\feedback.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\ScrollTable.css" />
+    <Content Include="EmployeesWebService.svc" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ImageCollector.svc" />
     <Content Include="js\feedback.js" />
@@ -537,16 +538,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <None Include="Service References\EmployeesWS\EmployeesWebService.wsdl" />
-    <None Include="Service References\EmployeesWS\EmployeesWebService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EmployeesWS\EmployeesWebService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EmployeesWS\EmployeesWebService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Service References\ActiveEmployeesWS\Service1.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1099,10 +1091,10 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\npm.js" />
-    <None Include="Service References\EmployeesWS\EmployeesWebService.disco" />
-    <None Include="Service References\EmployeesWS\configuration91.svcinfo" />
-    <None Include="Service References\EmployeesWS\configuration.svcinfo" />
-    <None Include="Service References\EmployeesWS\Reference.svcmap">
+    <None Include="Service References\ActiveEmployeesWS\Service1.disco" />
+    <None Include="Service References\ActiveEmployeesWS\configuration91.svcinfo" />
+    <None Include="Service References\ActiveEmployeesWS\configuration.svcinfo" />
+    <None Include="Service References\ActiveEmployeesWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1111,6 +1103,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeesWebService.svc.cs">
+      <DependentUpon>EmployeesWebService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IEmployeesWebService.cs" />
     <Compile Include="IImageCollector.cs" />
     <Compile Include="ImageCollector.svc.cs">
       <DependentUpon>ImageCollector.svc</DependentUpon>
@@ -1291,18 +1287,17 @@
       <DependentUpon>visitors.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\EmployeesWS\Reference.cs">
+    <Compile Include="Service References\ActiveEmployeesWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\EmployeesWS\" />
+    <WCFMetadataStorage Include="Service References\ActiveEmployeesWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
