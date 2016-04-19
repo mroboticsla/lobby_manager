@@ -1,0 +1,6 @@
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\bin\EmployeesWebService.dll.config
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\bin\EmployeesWebService.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\bin\EmployeesWebService.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\obj\Debug\EmployeesWebService.csprojResolveAssemblyReference.cache
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\obj\Debug\EmployeesWebService.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesWebService\obj\Debug\EmployeesWebService.pdb

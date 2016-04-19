@@ -15,11 +15,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyManager", "LobbyManager\LobbyManager.csproj", "{D5AABA06-3DFC-4C6E-96BC-1F46647C4308}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0C635781-AE4D-496D-9801-7E2C91D8CA82} = {0C635781-AE4D-496D-9801-7E2C91D8CA82}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyManagerService", "LobbyManagerService\LobbyManagerService.csproj", "{C16DB052-FF12-4E84-9F0A-39DFA41EA5D8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D5AABA06-3DFC-4C6E-96BC-1F46647C4308} = {D5AABA06-3DFC-4C6E-96BC-1F46647C4308}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesWebService", "EmployeesWebService\EmployeesWebService.csproj", "{0C635781-AE4D-496D-9801-7E2C91D8CA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +40,10 @@ Global
 		{C16DB052-FF12-4E84-9F0A-39DFA41EA5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16DB052-FF12-4E84-9F0A-39DFA41EA5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16DB052-FF12-4E84-9F0A-39DFA41EA5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C635781-AE4D-496D-9801-7E2C91D8CA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C635781-AE4D-496D-9801-7E2C91D8CA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C635781-AE4D-496D-9801-7E2C91D8CA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C635781-AE4D-496D-9801-7E2C91D8CA82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
