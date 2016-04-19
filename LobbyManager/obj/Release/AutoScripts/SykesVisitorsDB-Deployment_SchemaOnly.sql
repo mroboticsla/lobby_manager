@@ -2,6 +2,20 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[tbl_alerts](
+	[alert_id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[alert_name] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[alert_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tbl_com_comments](
 	[com_id] [int] NOT NULL,
 	[com_date] [datetime2](7) NOT NULL,
@@ -37,6 +51,37 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[tbl_dev_clients](
+	[dev_id] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dev_name] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dev_station] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dev_status] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[dev_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_dev_stations](
+	[dev_id] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dev_name] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dev_status] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[dev_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tbl_doc_documents](
 	[doc_id] [bigint] NOT NULL,
 	[doc_name] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -46,6 +91,27 @@ CREATE TABLE [dbo].[tbl_doc_documents](
 PRIMARY KEY CLUSTERED 
 (
 	[doc_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_emp_employees](
+	[emp_id] [int] NOT NULL,
+	[emp_dep] [int] NULL,
+	[emp_name] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[emp_lastname] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[emp_email] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[emp_phone] [nchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[emp_notify] [int] NULL,
+	[emp_notify_by_phone] [int] NULL,
+	[emp_status] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[emp_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
@@ -71,6 +137,20 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[tbl_lbl_labels](
+	[lbl_desk] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[lbl_name] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[lbl_serial] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[lbl_equipment] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[lbl_desc] [nchar](200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[lbl_owner] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tbl_log_events](
 	[log_id] [int] NOT NULL,
 	[log_notification] [int] NOT NULL,
@@ -80,6 +160,25 @@ CREATE TABLE [dbo].[tbl_log_events](
 PRIMARY KEY CLUSTERED 
 (
 	[log_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_menu](
+	[menu_id] [int] NOT NULL,
+	[menu_root] [int] NULL,
+	[menu_label] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[menu_file] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[menu_status] [int] NULL,
+	[menu_root_level] [int] NULL,
+	[menu_icon] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[menu_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
@@ -100,6 +199,50 @@ CREATE TABLE [dbo].[tbl_reg_equipment](
 PRIMARY KEY CLUSTERED 
 (
 	[reg_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_role_menu](
+	[role_id] [int] NOT NULL,
+	[role_menu] [int] NOT NULL,
+	[role_access] [int] NOT NULL
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_roles](
+	[role_id] [int] NOT NULL,
+	[role_name] [nchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[role_level] [int] NULL,
+	[role_status] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[role_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_temp_images](
+	[temp_desk] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[temp_front] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[temp_back] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[temp_profile] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[temp_ocr] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[temp_desk] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
@@ -141,6 +284,41 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[tbl_usr_users](
+	[usr_id] [int] NOT NULL,
+	[usr_role] [int] NULL,
+	[usr_username] [nchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[usr_password] [binary](20) NULL,
+	[usr_status] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[usr_name] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[usr_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_vis_blacklist](
+	[vis_id] [int] NOT NULL,
+	[vis_document] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[vis_name] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[vis_lastname] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[vis_alert_level] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[vis_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tbl_vis_visitors](
 	[vis_id] [bigint] NOT NULL,
 	[vis_name] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -158,8 +336,8 @@ CREATE TABLE [dbo].[tbl_vis_visitors](
 	[vis_image_record] [int] NULL,
 	[vis_with_equipment] [int] NULL,
 	[vis_checkout] [datetime] NULL,
-	[vis_visitor_card] [int] NULL,
-	[vis_in_charge] [int] NULL,
+	[vis_visitor_card] [nchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[vis_in_charge] [nchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[vis_id] ASC

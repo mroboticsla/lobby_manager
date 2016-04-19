@@ -45,7 +45,7 @@
                                                         <tr class="gradeU">
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_id") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "dev_name") %></td>
-                                                            <td><%# (DataBinder.Eval(Container.DataItem, "dev_status").Equals("1"))?"Activo":"Inactivo" %></td>
+                                                            <td><%# (DataBinder.Eval(Container.DataItem, "dev_status").ToString().Trim().Equals("1"))?"Activo":"Inactivo" %></td>
                                                             <td>
                                                                 <%# "<button type=\"button\" class=\"btn btn-info\" onclick=\"editRecord('" + 
                                                                                     DataBinder.Eval(Container.DataItem, "dev_id").ToString().Trim() + "','" + 
