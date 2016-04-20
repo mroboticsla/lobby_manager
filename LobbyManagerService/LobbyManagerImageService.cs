@@ -72,7 +72,7 @@ namespace LobbyManagerService
                 }
                 else
                 {
-                    File.AppendAllText(Path.Combine(path, @"log\errors.txt"), Environment.NewLine + "ERROR: NULL");
+                    //File.AppendAllText(Path.Combine(path, @"log\errors.txt"), Environment.NewLine + "ERROR: NULL");
                 }
             }
             catch (Exception ex)
