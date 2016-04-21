@@ -11,6 +11,9 @@ using System.Text;
 
 namespace LobbyManager
 {
+    /// <summary>
+    /// Clase que permite la sincronización de empleados activos con un WebService de Terceros hacia una tabla local del sistema.
+    /// </summary>
     public class EmployeesWebService : IEmployeesWebService
     {
         static String mainConnectionString = "SykesVisitorsDB";

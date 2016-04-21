@@ -4,6 +4,21 @@
         <name>LobbyManager</name>
     </assembly>
     <members>
+        <member name="T:LobbyManager.EmployeesWebService">
+            <summary>
+            Clase que permite la sincronización de empleados activos con un WebService de Terceros hacia una tabla local del sistema.
+            </summary>
+        </member>
+        <member name="T:LobbyManager.IEmployeesWebService">
+            <summary>
+            Clase que permite la sincronización de empleados activos con un WebService de Terceros hacia una tabla local del sistema.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.IEmployeesWebService.SyncEmployees">
+            <summary>
+            Sincroniza listado de empleados activos
+            </summary>
+        </member>
         <member name="M:LobbyManager.EmployeesWebService.SyncEmployees">
             <summary>
             Sincroniza listado de empleados activos
@@ -11,22 +26,46 @@
         </member>
         <member name="T:LobbyManager.IImageCollector">
             <summary>
-            Images controller Web Service
-            </summary>
-        </member>
-        <member name="M:LobbyManager.IImageCollector.DoWork">
-            <summary>
-            Default constructor
+            Clase que permite la recolección de datos de imagen a partir del servicio de windows instalado en cada estación de ingreso de visitantes.
             </summary>
         </member>
         <member name="M:LobbyManager.IImageCollector.SaveImages(System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Save images on temp table as a base 64 String
+            Guarda las imagenes recolectadas desde una estación de captura de datos.
             </summary>
-            <param name="desk"></param>
-            <param name="front"></param>
-            <param name="back"></param>
-            <param name="profile"></param>
+            <param name="desk">ID de Escritorio</param>
+            <param name="front">Imagen Frontal en String Base64</param>
+            <param name="back">Imagen Posterior en String Base64</param>
+            <param name="profile">Imagen Facial en String Base64</param>
+            <param name="ocr">Archivo de extracción de datos.</param>
+        </member>
+        <member name="M:LobbyManager.IImageCollector.label(System.String)">
+            <summary>
+            Monitorea la impresión de viñetas para ingreso de equipo.
+            </summary>
+            <param name="desk">ID de Escritorio</param>
+        </member>
+        <member name="T:LobbyManager.ImageCollector">
+            <summary>
+            Clase que permite la recolección de datos de imagen a partir del servicio de windows instalado en cada estación de ingreso de visitantes.
+            </summary>
+        </member>
+        <member name="M:LobbyManager.ImageCollector.SaveImages(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Guarda las imagenes recolectadas desde una estación de captura de datos.
+            </summary>
+            <param name="desk">ID de Escritorio</param>
+            <param name="front">Imagen Frontal en String Base64</param>
+            <param name="back">Imagen Posterior en String Base64</param>
+            <param name="profile">Imagen Facial en String Base64</param>
+            <param name="ocr">Archivo de extracción de datos.</param>
+        </member>
+        <member name="M:LobbyManager.ImageCollector.label(System.String)">
+            <summary>
+            Monitorea la impresión de viñetas para ingreso de equipo.
+            </summary>
+            <param name="desk">ID de Escritorio</param>
+            <returns></returns>
         </member>
         <member name="T:LobbyManager.Mobile">
             <summary>

@@ -6,6 +6,9 @@ using SyncLobbyManagerEmployees.EmployeesWS;
 
 namespace SyncLobbyManagerEmployees
 {
+    /// <summary>
+    /// Cliente de sincronización de empleados para LobbyManager
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

@@ -11,14 +11,21 @@ namespace LobbyManager
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ImageCollector" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select ImageCollector.svc or ImageCollector.svc.cs at the Solution Explorer and start debugging.
+    /// <summary>
+    /// Clase que permite la recolección de datos de imagen a partir del servicio de windows instalado en cada estación de ingreso de visitantes.
+    /// </summary>
     public class ImageCollector : IImageCollector
     {
         String mainConnectionString = "SykesVisitorsDB";
         
-        public void DoWork()
-        {
-        }
-        
+        /// <summary>
+        /// Guarda las imagenes recolectadas desde una estación de captura de datos.
+        /// </summary>
+        /// <param name="desk">ID de Escritorio</param>
+        /// <param name="front">Imagen Frontal en String Base64</param>
+        /// <param name="back">Imagen Posterior en String Base64</param>
+        /// <param name="profile">Imagen Facial en String Base64</param>
+        /// <param name="ocr">Archivo de extracción de datos.</param>
         public void SaveImages(String desk, String front, String back, String profile, String ocr)
         {
             string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
@@ -48,6 +55,11 @@ namespace LobbyManager
             }
         }
 
+        /// <summary>
+        /// Monitorea la impresión de viñetas para ingreso de equipo.
+        /// </summary>
+        /// <param name="desk">ID de Escritorio</param>
+        /// <returns></returns>
         public String label(string desk)
         {
             String lbl = null;
