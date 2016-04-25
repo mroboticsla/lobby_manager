@@ -190,7 +190,7 @@ GO
 CREATE TABLE [dbo].[tbl_reg_equipment](
 	[reg_id] [int] NOT NULL,
 	[reg_type] [int] NOT NULL,
-	[reg_quantity] [int] NOT NULL DEFAULT ((1)),
+	[reg_quantity] [int] NOT NULL,
 	[reg_serial] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[reg_desc] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[reg_visitor] [int] NOT NULL,
@@ -364,4 +364,6 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
+GO
+ALTER TABLE [dbo].[tbl_reg_equipment] ADD  DEFAULT ((1)) FOR [reg_quantity]
 GO
