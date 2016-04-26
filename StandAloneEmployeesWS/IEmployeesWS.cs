@@ -17,6 +17,9 @@ namespace StandAloneEmployeesWS
         string DeleteCurrentData();
 
         [OperationContract]
+        string InsertDataSet(DataTable data);
+
+        [OperationContract]
         string InsertDataRow(string id, string name, string lastname);
     }
 }

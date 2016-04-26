@@ -8,3 +8,9 @@ C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.csprojResolveAssemblyReference.cache
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.dll
 C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.dll.config
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.csprojResolveAssemblyReference.cache
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.dll
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\obj\Release\WSEmpleados.pdb

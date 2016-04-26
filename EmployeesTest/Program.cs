@@ -1,4 +1,5 @@
-﻿using EmployeesTest.SykesEmployeesWS;
+﻿using EmployeesTest.LobbyManagerEmployeesWS;
+using EmployeesTest.SykesEmployeesWS;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,8 @@ namespace EmployeesTest
             {
                 Console.WriteLine("Conectando a WS...");
                 Service1SoapClient externalWS = new Service1SoapClient();
+                EmployeesWSClient LM_Employees = new EmployeesWSClient();
+
                 Console.WriteLine("Consultando base de datos...");
                 DataTable employees = externalWS.getEmployeesActive();
                 Console.WriteLine("Consulta realizada con exito!");
@@ -37,6 +40,9 @@ namespace EmployeesTest
                     }
                     Console.WriteLine("******************************************************************");
                     Console.WriteLine("");
+                    Console.WriteLine("Sincronizando base actual... " + LM_Employees.DeleteCurrentData());
+                    Console.WriteLine("Guardando en la base de datos " + employees.Rows.Count + " registros...");
+                    Console.WriteLine(LM_Employees.InsertDataSet(employees));
                 }
                 else
                 {

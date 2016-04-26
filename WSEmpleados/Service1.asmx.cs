@@ -34,7 +34,7 @@ namespace WSEmpleados
         {
             DataTable dataTable = new DataTable();
             dataTable.TableName = "EMPLOYEES";
-            string connString = sqlConnectionString;
+            string connString = sqlConnectionStringSQL;
             string query = "select '11184' as 'SALID','Luis' as 'EMP_FIRST_NAME', 'Ernesto' as EMP_SECOND_NAME, 'Mendoza' as EMP_FIRST_SURNAME,'Sanchez' as EMP_SECOND_SURNAME";
 
             SqlConnection conn = new SqlConnection(connString);

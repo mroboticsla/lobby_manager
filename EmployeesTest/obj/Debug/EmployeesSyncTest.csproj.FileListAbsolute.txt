@@ -1,0 +1,5 @@
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesTest\bin\Debug\EmployeesTest.exe.config
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesTest\obj\Debug\EmployeesTest.exe
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesTest\obj\Debug\EmployeesTest.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesTest\bin\Debug\EmployeesTest.exe
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\EmployeesTest\bin\Debug\EmployeesTest.pdb

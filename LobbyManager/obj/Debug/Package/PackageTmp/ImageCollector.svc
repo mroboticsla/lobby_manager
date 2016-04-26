@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="LobbyManager.ImageCollector" CodeBehind="ImageCollector.svc.cs" %>

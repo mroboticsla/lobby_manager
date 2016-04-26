@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EmployeesWS" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:60826/EmployeesWS.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:60826/EmployeesWS.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60826/EmployeesWS.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEmployeesWS_DeleteCurrentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCurrentData" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_DeleteCurrentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCurrentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_InsertDataSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertDataSet" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_InsertDataSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_InsertDataRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertDataRow" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_InsertDataRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertDataRowResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEmployeesWS">
+    <wsdl:operation name="DeleteCurrentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/DeleteCurrentData" message="tns:IEmployeesWS_DeleteCurrentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/DeleteCurrentDataResponse" message="tns:IEmployeesWS_DeleteCurrentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDataSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataSet" message="tns:IEmployeesWS_InsertDataSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataSetResponse" message="tns:IEmployeesWS_InsertDataSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertDataRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataRow" message="tns:IEmployeesWS_InsertDataRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataRowResponse" message="tns:IEmployeesWS_InsertDataRow_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEmployeesWS" type="tns:IEmployeesWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DeleteCurrentData">
+      <soap:operation soapAction="http://tempuri.org/IEmployeesWS/DeleteCurrentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDataSet">
+      <soap:operation soapAction="http://tempuri.org/IEmployeesWS/InsertDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertDataRow">
+      <soap:operation soapAction="http://tempuri.org/IEmployeesWS/InsertDataRow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeesWS">
+    <wsdl:port name="BasicHttpBinding_IEmployeesWS" binding="tns:BasicHttpBinding_IEmployeesWS">
+      <soap:address location="http://localhost:60826/EmployeesWS.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

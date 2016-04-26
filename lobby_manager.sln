@@ -26,14 +26,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyManagerService", "Lobb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSEmpleados", "WSEmpleados\WSEmpleados.csproj", "{F76B1044-6D42-4F52-A0B5-C87D2B2B9D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncLobbyManagerEmployees", "SyncLobbyManagerEmployees\SyncLobbyManagerEmployees.csproj", "{07BD1DEF-8904-4979-8681-6973C61B1022}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesSyncService", "SyncLobbyManagerEmployees\EmployeesSyncService.csproj", "{07BD1DEF-8904-4979-8681-6973C61B1022}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D5AABA06-3DFC-4C6E-96BC-1F46647C4308} = {D5AABA06-3DFC-4C6E-96BC-1F46647C4308}
+		{F76B1044-6D42-4F52-A0B5-C87D2B2B9D58} = {F76B1044-6D42-4F52-A0B5-C87D2B2B9D58}
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B} = {F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesTest", "EmployeesTest\EmployeesTest.csproj", "{B4E710EF-8FF2-4CEB-8A37-70B012623A7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesSyncTest", "EmployeesTest\EmployeesSyncTest.csproj", "{B4E710EF-8FF2-4CEB-8A37-70B012623A7E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F76B1044-6D42-4F52-A0B5-C87D2B2B9D58} = {F76B1044-6D42-4F52-A0B5-C87D2B2B9D58}
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B} = {F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandAloneEmployeesWS", "StandAloneEmployeesWS\StandAloneEmployeesWS.csproj", "{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}"

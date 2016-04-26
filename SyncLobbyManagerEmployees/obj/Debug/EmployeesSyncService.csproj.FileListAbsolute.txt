@@ -1,0 +1,5 @@
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\SyncLobbyManagerEmployees\bin\Debug\SyncLobbyManagerEmployees.exe.config
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\SyncLobbyManagerEmployees\bin\Debug\SyncLobbyManagerEmployees.exe
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\SyncLobbyManagerEmployees\bin\Debug\SyncLobbyManagerEmployees.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\SyncLobbyManagerEmployees\obj\Debug\SyncLobbyManagerEmployees.exe
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\SyncLobbyManagerEmployees\obj\Debug\SyncLobbyManagerEmployees.pdb
