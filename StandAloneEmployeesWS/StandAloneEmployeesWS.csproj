@@ -105,14 +105,14 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.22.8-build00154.js" />
     <Content Include="scripts\ai.0.22.8-build00154.min.js" />
-    <Content Include="EmployeesWS.svc" />
+    <Content Include="StandAloneEmployeesWS.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeesWS.svc.cs">
-      <DependentUpon>EmployeesWS.svc</DependentUpon>
+    <Compile Include="StandAloneEmployeesWS.svc.cs">
+      <DependentUpon>StandAloneEmployeesWS.svc</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesWS.cs" />
+    <Compile Include="IEmployeesWS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

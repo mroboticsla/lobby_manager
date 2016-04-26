@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -14,5 +15,8 @@ namespace StandAloneEmployeesWS
 
         [OperationContract]
         string DeleteCurrentData();
+
+        [OperationContract]
+        string InsertDataRow(string id, string name, string lastname);
     }
 }

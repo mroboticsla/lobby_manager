@@ -42,7 +42,7 @@ namespace StandAloneEmployeesWS
             
             return result;
         }
-
+        /*
         public String InsertDataSet(DataTable data)
         {
             String result = "PROCESO INCOMPLETO";
@@ -65,6 +65,35 @@ namespace StandAloneEmployeesWS
                         cmd.Parameters.AddWithValue("emp_lastname", lastname);
                         cmd.ExecuteNonQuery();
                     }
+                    conn.Close();
+
+                    result = "OK";
+                }
+            }
+            catch (Exception ex)
+            {
+                result = "ERROR: " + ex.Message;
+            }
+
+            return result;
+        }
+         * */
+        public String InsertDataRow(string id, string name, string lastname)
+        {
+            String result = "PROCESO INCOMPLETO";
+
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO tbl_emp_employees (emp_id, emp_name, emp_lastname, emp_status) values (@emp_id, @emp_name, @emp_lastname, 1)";
+                    cmd.Parameters.AddWithValue("emp_id", id);
+                    cmd.Parameters.AddWithValue("emp_name", name);
+                    cmd.Parameters.AddWithValue("emp_lastname", lastname);
+                    cmd.ExecuteNonQuery();
                     conn.Close();
 
                     result = "OK";
