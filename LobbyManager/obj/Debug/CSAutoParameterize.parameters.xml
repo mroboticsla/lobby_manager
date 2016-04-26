@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="SykesVisitorsDB-Web.config Connection String" description="SykesVisitorsDB Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SykesVisitorsDB.mdf;Integrated Security=True;MultipleActiveResultSets=True" tags="SqlConnectionString">
+  <parameter name="SykesVisitorsDB-Web.config Connection String" description="SykesVisitorsDB Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDB)\v11.0;AttachDbFileName=|DataDirectory|\SykesVisitorsDB.mdf;Integrated Security=True;MultipleActiveResultSets=True" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\desarrollo03\\Documents\\Visual\ Studio\ 2013\\Projects\\LobbyManagerDemo\\Git\\lobby_manager\\LobbyManager\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SykesVisitorsDB']/@connectionString" />
   </parameter>
 </parameters>

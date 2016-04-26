@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesTest", "EmployeesT
 		{F76B1044-6D42-4F52-A0B5-C87D2B2B9D58} = {F76B1044-6D42-4F52-A0B5-C87D2B2B9D58}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandAloneEmployeesWS", "StandAloneEmployeesWS\StandAloneEmployeesWS.csproj", "{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{B4E710EF-8FF2-4CEB-8A37-70B012623A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E710EF-8FF2-4CEB-8A37-70B012623A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4E710EF-8FF2-4CEB-8A37-70B012623A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6D72EA3-EC92-44E0-BF42-5E473C60FA8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

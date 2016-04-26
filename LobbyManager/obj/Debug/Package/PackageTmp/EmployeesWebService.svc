@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="LobbyManager.EmployeesWebService" CodeBehind="EmployeesWebService.svc.cs" %>
