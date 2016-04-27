@@ -42,6 +42,35 @@ namespace StandAloneEmployeesWS
             
             return result;
         }
+
+        public string CountCurrentData()
+        {
+            String result = "PROCESO INCOMPLETO";
+
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings[mainConnectionString].ConnectionString;
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "SELECT COUNT(*) com_total FROM [tbl_emp_employees]";
+                    SqlDataReader dreader = cmd.ExecuteReader();
+                    if (dreader.Read())
+                    {
+                        result = dreader["com_total"].ToString().Trim();
+                    }
+                    dreader.Close();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                result = "ERROR: " + ex.Message;
+            }
+
+            return result;
+        }
         
         public String InsertDataSet(DataTable data)
         {
@@ -59,15 +88,15 @@ namespace StandAloneEmployeesWS
                         string id = data.Rows[i].ItemArray[0].ToString();
                         string name = data.Rows[i].ItemArray[1].ToString() + " " + data.Rows[i].ItemArray[2].ToString();
                         string lastname = data.Rows[i].ItemArray[3].ToString() + " " + data.Rows[i].ItemArray[4].ToString();
-                        cmd.CommandText = "INSERT INTO tbl_emp_employees (emp_id, emp_name, emp_lastname, emp_status) values (@emp_id, @emp_name, @emp_lastname, 1)";
-                        cmd.Parameters.AddWithValue("emp_id", id);
-                        cmd.Parameters.AddWithValue("emp_name", name);
-                        cmd.Parameters.AddWithValue("emp_lastname", lastname);
+                        cmd.CommandText = "INSERT INTO tbl_emp_employees (emp_id, emp_name, emp_lastname, emp_status) values (@emp_id_" + i + ", @emp_name_" + i + ", @emp_lastname_" + i + ", 1)";
+                        cmd.Parameters.AddWithValue("emp_id_" + i, id);
+                        cmd.Parameters.AddWithValue("emp_name_" + i, name);
+                        cmd.Parameters.AddWithValue("emp_lastname_" + i, lastname);
                         cmd.ExecuteNonQuery();
+                        
                     }
                     conn.Close();
-
-                    result = "OK";
+                    result = "OK!";
                 }
             }
             catch (Exception ex)

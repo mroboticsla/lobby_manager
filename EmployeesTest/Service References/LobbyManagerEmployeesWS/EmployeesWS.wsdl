@@ -13,6 +13,12 @@
   <wsdl:message name="IEmployeesWS_DeleteCurrentData_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCurrentDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IEmployeesWS_CountCurrentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:CountCurrentData" />
+  </wsdl:message>
+  <wsdl:message name="IEmployeesWS_CountCurrentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CountCurrentDataResponse" />
+  </wsdl:message>
   <wsdl:message name="IEmployeesWS_InsertDataSet_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertDataSet" />
   </wsdl:message>
@@ -30,6 +36,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/DeleteCurrentData" message="tns:IEmployeesWS_DeleteCurrentData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/DeleteCurrentDataResponse" message="tns:IEmployeesWS_DeleteCurrentData_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CountCurrentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/CountCurrentData" message="tns:IEmployeesWS_CountCurrentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/CountCurrentDataResponse" message="tns:IEmployeesWS_CountCurrentData_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="InsertDataSet">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataSet" message="tns:IEmployeesWS_InsertDataSet_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmployeesWS/InsertDataSetResponse" message="tns:IEmployeesWS_InsertDataSet_OutputMessage" />
@@ -43,6 +53,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DeleteCurrentData">
       <soap:operation soapAction="http://tempuri.org/IEmployeesWS/DeleteCurrentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountCurrentData">
+      <soap:operation soapAction="http://tempuri.org/IEmployeesWS/CountCurrentData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

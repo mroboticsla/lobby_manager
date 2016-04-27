@@ -19,3 +19,4 @@ C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_m
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\bin\Interop.bpac.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.pdb
+C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\LobbyManager\obj\Debug\LobbyManager.csprojResolveAssemblyReference.cache

@@ -18,6 +18,9 @@ namespace EmployeesTest.LobbyManagerEmployeesWS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeesWS/DeleteCurrentData", ReplyAction="http://tempuri.org/IEmployeesWS/DeleteCurrentDataResponse")]
         string DeleteCurrentData();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeesWS/CountCurrentData", ReplyAction="http://tempuri.org/IEmployeesWS/CountCurrentDataResponse")]
+        string CountCurrentData();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeesWS/InsertDataSet", ReplyAction="http://tempuri.org/IEmployeesWS/InsertDataSetResponse")]
         string InsertDataSet(System.Data.DataTable data);
         
@@ -54,6 +57,10 @@ namespace EmployeesTest.LobbyManagerEmployeesWS {
         
         public string DeleteCurrentData() {
             return base.Channel.DeleteCurrentData();
+        }
+        
+        public string CountCurrentData() {
+            return base.Channel.CountCurrentData();
         }
         
         public string InsertDataSet(System.Data.DataTable data) {

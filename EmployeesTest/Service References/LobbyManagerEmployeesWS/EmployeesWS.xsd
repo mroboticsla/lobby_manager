@@ -12,6 +12,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CountCurrentData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CountCurrentDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CountCurrentDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="InsertDataSet">
     <xs:complexType>
       <xs:sequence>

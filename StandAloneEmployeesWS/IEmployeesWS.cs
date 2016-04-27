@@ -17,6 +17,9 @@ namespace StandAloneEmployeesWS
         string DeleteCurrentData();
 
         [OperationContract]
+        string CountCurrentData();
+
+        [OperationContract]
         string InsertDataSet(DataTable data);
 
         [OperationContract]
