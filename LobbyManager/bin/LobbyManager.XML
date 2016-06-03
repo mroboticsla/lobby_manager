@@ -2826,6 +2826,42 @@
             To modify move field declaration from designer file to code-behind file.
             </remarks>
         </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.ScriptManager1">
+            <summary>
+            ScriptManager1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.UpdatePanel1">
+            <summary>
+            UpdatePanel1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.VisitorsTimer">
+            <summary>
+            VisitorsTimer control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.lbl_CurrentTime">
+            <summary>
+            lbl_CurrentTime control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
         <member name="F:LobbyManager.pages.visitors_mobile.txt_name">
             <summary>
             txt_name control.
@@ -2919,6 +2955,24 @@
         <member name="F:LobbyManager.pages.visitors_mobile.chk_addEQ">
             <summary>
             chk_addEQ control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.btn_submitData">
+            <summary>
+            btn_submitData control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:LobbyManager.pages.visitors_mobile.btn_continue">
+            <summary>
+            btn_continue control.
             </summary>
             <remarks>
             Auto-generated field.

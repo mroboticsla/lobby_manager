@@ -60,23 +60,23 @@
                             </div>
                         </div>
                         <div class="alert alert-warning" id="msgWarn" runat="server">
-                                Sus datos no han sido procesados correctamente, <a data-toggle="modal" href="#imagesDlg" class="alert-link">Reintentar</a>
+                                Sus datos no han sido procesados correctamente, <a onclick="showDocMsg();" class="alert-link">Reintentar</a>
                         </div>
                         <div class="alert alert-danger" id="msgFormError" style="display:none;"></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset id="fs_images" runat="server">
-                                    <a data-toggle="modal" href="#imagesDlg">
+                                    <a onclick="showDocMsg();">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
                                                     <div class="row">
-                                                        <div class="col-xs-2">
+                                                        <div class="col-xs-3">
                                                             <i class="fa fa-arrow-circle-o-right fa-5x"></i>
                                                         </div>
-                                                        <div class="col-xs-5 text-center">
+                                                        <div class="col-xs-9">
                                                             <div class="h2">
-                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="Iniciar Visita"></asp:Label>
+                                                                <asp:Label ID="lbl_newCommentsCount" runat="server" Text="INICIAR VISITA"></asp:Label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,6 +104,19 @@
                                         </div>
                                     </a>
                                 </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                        <asp:timer id="VisitorsTimer" runat="server" Interval="1000"></asp:timer>
+                                        <fieldset>
+                                            <asp:Label ID="lbl_CurrentTime" Font-Size="Smaller" ForeColor="GrayText" runat="server" Text="Cargando..."></asp:Label><br />
+                                        </fieldset>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
                         <div class="row">
@@ -258,9 +271,10 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="pull-right bottom">
-                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep6(true);">Anterior</button>
-                                                <asp:Button runat="server" class="btn btn-success btn-lg" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
-                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();">Cancelar</button>
+                                                <asp:Button runat="server" class="btn btn-success btn-lg invisible" ID="btn_submitData" OnClick="InsertVisitor" Text="Aceptar"></asp:Button>
+                                                <button type="button" class="btn btn-info btn-lg" onclick="toggleStep6(true);" id="back_button">Anterior</button>
+                                                <button type="button" class="btn btn-success btn-lg" onclick="submitVisitorData();" id="submitData_button">Aceptar</button>
+                                                <button type="reset" class="btn btn-danger btn-lg" onclick="cancelProc();" id="cancel_button">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -318,7 +332,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button class="btn btn-primary" runat="server" Text="Continuar" OnClick="ImportImages" />
+                        <asp:Button ID="btn_continue" class="btn btn-primary invisible" runat="server" Text="Continuar" OnClick="ImportImages" />
+                        <button type="button" class="btn btn-primary" id="continue_button" onclick="disableContinue();" value="Cargando..."></button>
                     </div>
                 </div>
             </div>
@@ -370,6 +385,26 @@
             //alert("Working...");
             if (<%= showMg.ToString().ToLower() %>) showMsg();
         });
+
+        function showDocMsg(){
+            $("#continue_button").prop( "disabled", false );
+            $("#continue_button").text('Continuar');
+            $('#imagesDlg').modal('show');
+        }
+
+        function disableContinue(){
+            $("#continue_button").text('Procesando...');
+            $("#continue_button").prop( "disabled", true );
+            $("#<%= btn_continue.ClientID %>").click();
+        }
+
+        function submitVisitorData(){
+            $("#back_button").prop( "disabled", true );
+            $("#cancel_button").prop( "disabled", true );
+            $("#submitData_button").text('Procesando...');
+            $("#submitData_button").prop( "disabled", true );
+            $("#<%= btn_submitData.ClientID %>").click();
+        }
 
         function showMsg() {
             $('#completeDlg').modal('show');

@@ -13,3 +13,4 @@ C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_m
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\bin\WSEmpleados.pdb
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.dll
 C:\Users\Mauricio\Documents\M-Robotics\Proyectos\Sykes\Visual Studio\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.pdb
+C:\Users\desarrollo03\Documents\Visual Studio 2013\Projects\LobbyManagerDemo\Git\lobby_manager\WSEmpleados\obj\Debug\WSEmpleados.csprojResolveAssemblyReference.cache

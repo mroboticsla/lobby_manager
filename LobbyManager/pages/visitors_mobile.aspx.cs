@@ -70,6 +70,13 @@ namespace LobbyManager.pages
             {
                 Response.Redirect("login.aspx", true);
             }
+
+            VisitorsTimer.Tick += VisitorsTimer_Tick;
+        }
+
+        void VisitorsTimer_Tick(object sender, EventArgs e)
+        {
+            lbl_CurrentTime.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
         }
 
         /// <summary>
