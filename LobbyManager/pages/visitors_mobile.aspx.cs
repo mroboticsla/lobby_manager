@@ -104,7 +104,7 @@ namespace LobbyManager.pages
                     dreader.Close();
                     conn.Close();
                 }
-                
+
                 using (var conn = new SqlConnection(connStr))
                 using (var cmd = conn.CreateCommand())
                 {
@@ -195,12 +195,14 @@ namespace LobbyManager.pages
                 {
                     conn.Open();
                     cmd.CommandText = "INSERT INTO tbl_img_images (img_id, img_visitor, img_front, img_back, img_profile) \n" +
-                                      "values (@img_id, @img_visitor, @img_front, @img_back, @img_profile)";
+                                      "SELECT @img_id, @img_visitor, temp_front, temp_back, temp_profile FROM tbl_temp_images WHERE temp_desk = @temp_desk";
+                                      //"values (@img_id, @img_visitor, @img_front, @img_back, @img_profile)";
                     cmd.Parameters.AddWithValue("img_id", img_id);
                     cmd.Parameters.AddWithValue("img_visitor", vis_id);
-                    cmd.Parameters.AddWithValue("img_front", txt_imgFront.Value);
-                    cmd.Parameters.AddWithValue("img_back", txt_imgBack.Value);
-                    cmd.Parameters.AddWithValue("img_profile", txt_imgProfile.Value);
+                    cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
+                    //cmd.Parameters.AddWithValue("img_front", txt_imgFront.Value);
+                    //cmd.Parameters.AddWithValue("img_back", txt_imgBack.Value);
+                    //cmd.Parameters.AddWithValue("img_profile", txt_imgProfile.Value);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     if (chk_addEQ.Checked)
@@ -215,6 +217,16 @@ namespace LobbyManager.pages
 
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "showMsg", "showMsg();", true);
                     //ScriptManager.RegisterClientScriptBlock(this, typeof(System.Web.UI.Page), "showMsg", "showMsg();", true);
+                }
+
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "DELETE FROM tbl_temp_images WHERE temp_desk = @temp_desk";
+                    cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
             }
             catch (Exception a)
@@ -334,15 +346,15 @@ namespace LobbyManager.pages
                 }
                 else
                 {
-                    using (var conn = new SqlConnection(connStr))
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        conn.Open();
-                        cmd.CommandText = "DELETE FROM tbl_temp_images WHERE temp_desk = @temp_desk";
-                        cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                    }
+                    //using (var conn = new SqlConnection(connStr))
+                    //using (var cmd = conn.CreateCommand())
+                    //{
+                    //    conn.Open();
+                    //    cmd.CommandText = "DELETE FROM tbl_temp_images WHERE temp_desk = @temp_desk";
+                    //    cmd.Parameters.AddWithValue("temp_desk", Session["usr_device"].ToString());
+                    //    cmd.ExecuteNonQuery();
+                    //    conn.Close();
+                    //}
                 }
             }
         }
