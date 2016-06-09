@@ -165,8 +165,8 @@ namespace LobbyManager.pages
             using (var cmd = conn.CreateCommand())
             {
                 conn.Open();
-                cmd.CommandText = "select usr_id, usr_role, usr_password, usr_status, usr_name \n" +
-                    "from tbl_usr_users where usr_username = @usr_username and usr_status = 1";
+                cmd.CommandText = "select usr_id, usr_role, role_level, usr_password, usr_status, usr_name \n" +
+                    "from tbl_usr_users a, tbl_roles b where b.role_id = a.usr_role and usr_username = @usr_username and usr_status = 1";
                 cmd.Parameters.AddWithValue("usr_username", txt_usr.Text);
                 SqlDataReader dreader = cmd.ExecuteReader();
                 if (dreader.Read())
@@ -180,6 +180,7 @@ namespace LobbyManager.pages
                             valid = true;
                             Session["usr_id"] = dreader["usr_id"].ToString();
                             Session["usr_role"] = dreader["usr_role"].ToString();
+                            Session["role_level"] = dreader["role_level"].ToString();
                             Session["usr_name"] = dreader["usr_name"].ToString();
                         }
                         else

@@ -29,12 +29,21 @@ namespace LobbyManager.pages
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            mainTitle.InnerText = "Visitantes en Espera - " + Session["usr_device"].ToString();
-            SqlDataSourceVisitors.SelectCommand = "SELECT vis_id, vis_date, vis_department, upper(vis_name) vis_name, upper(vis_lastname) vis_lastname, upper(vis_internal_contact) vis_internal_contact, upper(dep_name) dep_name, img_profile, vis_with_equipment, " + 
-                            "isnull((select vis_alert_level from tbl_vis_blacklist b where b.vis_document = a.vis_docnumber or (UPPER(RTRIM(a.vis_name)) like '%' + UPPER(RTRIM(b.vis_name)) + '%' and UPPER(RTRIM(a.vis_lastname)) like '%' + UPPER(RTRIM(b.vis_lastname)) + '%')), '') alert " +
+            String sql = "SELECT vis_id, vis_date, vis_department, upper(vis_name) vis_name, upper(vis_lastname) vis_lastname, upper(vis_internal_contact) vis_internal_contact, upper(dep_name) dep_name, img_profile, vis_with_equipment, " +
+                            "isnull((select vis_alert_level from tbl_vis_blacklist b where b.vis_document = a.vis_docnumber or (UPPER(RTRIM(a.vis_name)) like '%' + UPPER(RTRIM(b.vis_name)) + '%' and UPPER(RTRIM(a.vis_lastname)) like '%' + UPPER(RTRIM(b.vis_lastname)) + '%')), '') alert, log_user " +
                             "FROM [tbl_vis_visitors] a, tbl_dep_departments, tbl_img_images, tbl_log_events " +
-                            "where dep_id = vis_department and vis_status = 1 and img_visitor = vis_id and log_visitor_record = vis_id and log_user = '" + Session["usr_device"].ToString() + "' " +
-                            "order by vis_id desc";
+                            "where dep_id = vis_department and vis_status = 1 and img_visitor = vis_id and log_visitor_record = vis_id";
+            if (!Session["role_level"].ToString().Equals("0"))
+            {
+                sql += " and log_user = '" + Session["usr_device"].ToString() + "'";
+                mainTitle.InnerText = "Visitantes en Espera - " + Session["usr_device"].ToString();
+            }
+            else
+            {
+                mainTitle.InnerText = "Visitantes en Espera - Todas las Estaciones";
+            }
+            sql += " order by vis_id desc";
+            SqlDataSourceVisitors.SelectCommand = sql;
         }
 
         /// <summary>

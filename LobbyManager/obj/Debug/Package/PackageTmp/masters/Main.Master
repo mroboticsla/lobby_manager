@@ -1,0 +1,186 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="LobbyManager.Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>LobbyManager®</title>
+
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
+    <link href="../dist/css/timeline.css" rel="stylesheet" />
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet" />
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet" />
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet" />
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Ocultar/Mostrar Panel</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="../images/sykeslogo.png" height="36" />
+                            </td>
+                            <td class="fa-align-center">LobbyManager®</td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+
+                        <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourceNotifications">
+                            <ItemTemplate>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class='<%# DataBinder.Eval(Container.DataItem, "type_class") %>'></i>
+                                            <p><%# DataBinder.Eval(Container.DataItem, "log_user") %> - <%# DataBinder.Eval(Container.DataItem, "dep_name") %></p>
+                                            <p><%# DataBinder.Eval(Container.DataItem, "type_label") %>: <%# DataBinder.Eval(Container.DataItem, "vis_name") %></p>
+                                            <span class="pull-right text-muted small"><em><%# DataBinder.Eval(Container.DataItem, "log_date") %></em></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a data-toggle="modal" href="#userDlg"><i class="fa fa-user fa-fw"></i>Perfil de Usuario</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Opciones</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a id="link_logoff" onclick="logoff();"><i class="fa fa-sign-out fa-fw"></i>Salir</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-default sidebar" style="display: none;" role="navigation" id="menuBlock">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <asp:Repeater ID="UserMenuBuilder" runat="server" DataSourceID="SqlDataSourceMenu">
+                                <ItemTemplate>
+                                    <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim())? "<li>" : "") %>
+                                    <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "openList").ToString().Trim()))? "<ul class=\"nav nav-second-level\">" : "" %>
+                                        <%# !(DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("0"))? "<li>" : "" %>
+                                            <a href="<%# DataBinder.Eval(Container.DataItem, "menu_file").ToString().Trim() + "?access=" + DataBinder.Eval(Container.DataItem, "role_access").ToString().Trim() %>"><i class="fa <%# DataBinder.Eval(Container.DataItem, "menu_icon").ToString().Trim() %> fa-fw"></i><%# DataBinder.Eval(Container.DataItem, "menu_label").ToString().Trim() %><%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "menu_root").ToString().Trim())? "<span class=\"fa arrow\"></span>" : "") %></a>
+                                        <%# !(DataBinder.Eval(Container.DataItem, "menu_root_level").ToString().Trim().Equals("0"))? "</li>" : "" %>
+                                    <%# (DataBinder.Eval(Container.DataItem, "menu_id").ToString().Trim().Equals(DataBinder.Eval(Container.DataItem, "closeList").ToString().Trim()))? "</ul></li>" : "" %>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="modal fade" id="userDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">M-Robotics LobbyManager®</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Información de Usuario
+                            </div>
+                            <div class="panel-body">
+                                <fieldset id="fs_visitDetails" runat="server">
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Nombre de Usuario</label>
+                                        <label runat="server" class="form-control" id="txt_user"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Estación</label>
+                                        <label runat="server" class="form-control" id="txt_station" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reasonSelect">Tipo de Usuario</label>
+                                        <label runat="server" class="form-control" id="txt_rol" />
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" runat="server" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-wrapper">
+            <asp:ContentPlaceHolder ID="MainHolder" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+    <asp:SqlDataSource ID="SqlDataSourceMenu" runat="server" ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"></asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SqlDataSourceNotifications" runat="server"
+        ConnectionString="<%$ ConnectionStrings:SykesVisitorsDB %>"
+        SelectCommand="SELECT TOP 3 CONVERT(VARCHAR, log_date, 0) AS log_date,UPPER(log_user) log_user,type_label, type_class, vis_name, dep_name 
+                    FROM tbl_log_events, tbl_type_notifications, tbl_vis_visitors, tbl_dep_departments 
+                    where log_notification = type_id and log_visitor_record = vis_id and dep_id = vis_department ORDER BY log_id DESC"></asp:SqlDataSource>
+
+    <script src="../js/jquery.min.js"></script>
+    <link href="../css/jquery-ui.css" rel="stylesheet" />
+    <script src="../js/jquery-ui-min.js"></script>
+    
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
+    
+    <script type="text/javascript">
+        function logoff() {
+            window.location = "login.aspx?finish=true";
+        }
+
+        $(document).ready(function () {
+            $('#menuBlock').fadeIn("slow");
+        });
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>
